@@ -9,7 +9,11 @@ android {
     defaultConfig {
         applicationId "com.example.material3app"
         minSdk 21
+        compileSdkVersion 31
         targetSdk 32
+        defaultConfig {
+            targetSdkVersion 31
+        }
         versionCode 1
         versionName "1.0"
 
