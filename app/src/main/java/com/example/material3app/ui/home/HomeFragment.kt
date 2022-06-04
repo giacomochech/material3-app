@@ -4,39 +4,47 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.material3app.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
+    private lateinit var binding: FragmentHomeBinding
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        binding = FragmentHomeBinding.inflate(inflater, container, false)// infalete(r.layoutfragment home...)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+
+
+        val viewPager = binding.ViewPager//r.id.text_home
+        viewPager.adapter = AdapterViewPager()
+
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+
+    }
+    inner class AdapterViewPager : FragmentStateAdapter(childFragmentManager,lifecycle){
+        override fun getItemCount(): Int {
+          return Int.MAX_VALUE
+        }
+
+        override fun createFragment(position: Int): Fragment {
+            return ListaCiboFragment()
+        }
+
+
+
     }
 }
