@@ -1,12 +1,17 @@
 package com.example.material3app.ui.home
 
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.material3app.databinding.FragmentHomeBinding
+import java.time.LocalDate
+import java.util.*
 
 class HomeFragment : Fragment() {
 
@@ -40,8 +45,14 @@ class HomeFragment : Fragment() {
           return Int.MAX_VALUE
         }
 
+        @RequiresApi(Build.VERSION_CODES.O)
         override fun createFragment(position: Int): Fragment {
-            return ListaCiboFragment()
+
+            val day =  LocalDate.now().plusDays(position.toLong()).dayOfMonth
+
+            val month = LocalDate.now().plusDays(position.toLong()).month
+
+            return ListaCiboFragment(day,month,1000)
         }
 
 
