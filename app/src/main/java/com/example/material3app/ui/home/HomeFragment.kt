@@ -2,6 +2,7 @@ package com.example.material3app.ui.home
 
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -32,6 +33,7 @@ class HomeFragment : Fragment() {
 
         val viewPager = binding.ViewPager//r.id.text_home
         viewPager.adapter = AdapterViewPager()
+        viewPager.setCurrentItem(Int.MAX_VALUE/2,false)
 
         return root
     }
@@ -48,9 +50,9 @@ class HomeFragment : Fragment() {
         @RequiresApi(Build.VERSION_CODES.O)
         override fun createFragment(position: Int): Fragment {
 
-            val day =  LocalDate.now().plusDays(position.toLong()).dayOfMonth
 
-            val month = LocalDate.now().plusDays(position.toLong()).month
+            val day =  LocalDate.now().plusDays((position-Int.MAX_VALUE/2).toLong()).dayOfMonth
+            val month = LocalDate.now().plusDays((position-Int.MAX_VALUE/2).toLong()).month
 
             return ListaCiboFragment(day,month,1000)
         }

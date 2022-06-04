@@ -7,18 +7,22 @@
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3255" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_baseline_fastfood_24.xml" value="0.3255" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3255" />
+        <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2715" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_menu_camera.xml" value="0.3255" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.3255" />
+        <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.2715" />
+        <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/side_nav_bar.xml" value="0.2715" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/activity_main.xml" value="0.46195652173913043" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/app_bar_main.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/content_main.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_gallery.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_home.xml" value="0.5541666666666667" />
-        <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_lista_cibo.xml" value="0.43650047036688616" />
+        <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_lista_cibo.xml" value="0.33" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_slideshow.xml" value="0.33" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/nav_header_main.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/menu/activity_main_drawer.xml" value="0.42864583333333334" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/menu/main.xml" value="0.48802083333333335" />
+        <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2715" />
       </map>
     </option>
   </component>
