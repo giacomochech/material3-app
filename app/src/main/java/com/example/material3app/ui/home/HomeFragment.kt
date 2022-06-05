@@ -62,9 +62,15 @@ class HomeFragment : Fragment() {
             val key = LocalDate.now().plusDays((position-Int.MAX_VALUE/2).toLong())
 
             if(map.containsKey(key)) {
-                return map[key]?.let { ListaCiboFragment(key, it) }!!
+                return map[key]?.let { ListaCiboFragment().apply {
+                    date= key
+                    KcalAssunte= map[key]!!
+                } }!!
             }
-            return ListaCiboFragment(key,0)
+            return ListaCiboFragment().apply {
+                date=key
+                KcalAssunte=0
+            }
         }
 
 

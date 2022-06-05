@@ -19,8 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_rowWeight="1"
-            android:layout_margin="15dp"
+
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
             app:cardBackgroundColor="@color/material_dynamic_secondary70"
@@ -100,13 +99,10 @@
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/recyclerView"
-            android:layout_margin="8dp"
-            android:elevation="8dp"
-
-            />
-    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="LinearLayoutManager" />
+</LinearLayout>
 
