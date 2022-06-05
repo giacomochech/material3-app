@@ -1,5 +1,8 @@
 package com.example.material3app
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
@@ -13,7 +16,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
 import com.example.material3app.databinding.ActivityMainBinding
+import com.example.material3app.ui.home.AddFragmentDialog
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,13 +32,16 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.bind(findViewById<ViewGroup>(android.R.id.content).getChildAt(0))
         setSupportActionBar(binding.appBarMain.toolbar)
-
-        binding.appBarMain.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
+
+
+        binding.appBarMain.fab.setOnClickListener { view ->
+                var dialog :DialogFragment = AddFragmentDialog()
+
+            dialog.show(supportFragmentManager,"addDialog")
+        }
+
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
