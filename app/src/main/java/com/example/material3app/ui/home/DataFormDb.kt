@@ -24,7 +24,7 @@ class DataFormDb {
                 var alimento= Cibo("aliemto n $i$j",1950+(j*13)+i)
                 listaAlimeto.add(alimento)
             }
-        mappa[LocalDate.now().plusDays(i.toLong())]= listaAlimeto
+            mappa[LocalDate.now().plusDays(i.toLong())]= listaAlimeto
 
         }
     }

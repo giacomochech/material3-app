@@ -8,9 +8,13 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp">
+
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="50dp"
+        app:cardBackgroundColor="@color/material_dynamic_neutral80">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
