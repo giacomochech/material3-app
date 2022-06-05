@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Dao
 
+@Dao
 interface FoodDao
 {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
