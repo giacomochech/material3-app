@@ -1,6 +1,5 @@
 package com.example.material3app.ui.home
 
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,12 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.cardview.widget.CardView
 import androidx.core.content.res.ResourcesCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.example.material3app.R
-import com.example.material3app.ui.Material3AppTheme
-import com.google.android.material.color.MaterialColors
 import java.time.LocalDate
 
 // TODO: Rename parameter arguments, choose names that match
@@ -26,13 +23,16 @@ import java.time.LocalDate
  * create an instance of this fragment.
  */
 @RequiresApi(Build.VERSION_CODES.O)
-class ListaCiboFragment(date : LocalDate, private val KcalAssunte: Int) : Fragment() {
+class ListaCiboFragment() : Fragment() {
+    var KcalAssunte :Int = 0
+    lateinit var date : LocalDate
 
-
-    private val day = date.dayOfMonth
-    private val month = date.month
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if(savedInstanceState!= null) {
+            KcalAssunte = savedInstanceState.getInt(KCAL_SAVE)
+            date = savedInstanceState.getSerializable(DATE_SAVE) as LocalDate
+        }
     }
 
 
@@ -45,23 +45,37 @@ class ListaCiboFragment(date : LocalDate, private val KcalAssunte: Int) : Fragme
         val textKcalAssunte : TextView = view.findViewById(R.id.KcalAssunte)
         val textGiorno : TextView = view.findViewById(R.id.giorno_del_mese)
         val textMese : TextView = view.findViewById(R.id.mese)
-        var card : CardView = view.findViewById(R.id.cardView)
+        val card : CardView = view.findViewById(R.id.cardView)
+        val recyclerView : RecyclerView = view.findViewById(R.id.recyclerView)
+
+        val listaCibo = DataFormDb().getListCibo(date)
+
+
       if(KcalAssunte> 2000){//TODO: Obiettivo
           card.setCardBackgroundColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.m3_sys_color_dark_error,null))
           textKcalAssunte.setTextColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.m3_sys_color_dark_on_error,null))
       }
         textKcalAssunte.text = KcalAssunte.toString()
 
-        textGiorno.text = day.toString()
-        textMese.text = month.toString()
+        textGiorno.text = date.dayOfMonth.toString()
+        textMese.text = date.month.toString()
 
 
+
+        recyclerView.adapter= CiboAdapter(listaCibo)
 
         return view
     }
 
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(KCAL_SAVE,KcalAssunte)
+        outState.putSerializable(DATE_SAVE,date)
+    }
 
-
-
+companion object {
+    const val KCAL_SAVE = "KCal"
+    const val DATE_SAVE = "dataSave"
+}
 }
