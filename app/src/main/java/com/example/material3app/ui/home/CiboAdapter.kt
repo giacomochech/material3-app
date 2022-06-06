@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.material3app.Cibo
 import com.example.material3app.R
+import com.example.material3app.data.Food
 
 class CiboAdapter(private val listaCibo: MutableList<Cibo>) :
     RecyclerView.Adapter<CiboAdapter.CiboViewHolder>() {
@@ -32,6 +33,17 @@ class CiboAdapter(private val listaCibo: MutableList<Cibo>) :
     override fun onBindViewHolder(holder: CiboViewHolder, position: Int) {
 
         holder.bind(listaCibo[position].getName(),listaCibo[position].getKcal());
+    }
+
+    fun setData(food: List<Food>){
+        //List<Food> ---> MutableList<Cibo>
+        val it: ListIterator<Food> = food.listIterator()
+
+        while (it.hasNext()) {
+            val e = it.next()
+            val c = Cibo(e.nome,e.calorie)
+            listaCibo.add(c)
+        }
     }
 
     override fun getItemCount(): Int {

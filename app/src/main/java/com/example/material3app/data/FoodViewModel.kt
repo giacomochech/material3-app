@@ -10,12 +10,14 @@ import kotlinx.coroutines.launch
 class FoodViewModel(application: Application): AndroidViewModel(application)
 {
     private val readAllData:LiveData<List<Food>>
+
     private val repository: FoodRepository
 
     init {
         val foodDao = FoodDatabase.getDatabase(application).foodDao()
         repository = FoodRepository(foodDao)
         readAllData = repository.readAllData
+
     }
 
     fun addFood(food: Food){
@@ -23,5 +25,10 @@ class FoodViewModel(application: Application): AndroidViewModel(application)
             repository.addFood(food)
         }
     }
+
+    fun readFoodInSpecifiedDay(date : String) : LiveData<List<Food>>{
+        return repository.readFoodInSpecifiedDay(date)
+    }
+
 
 }

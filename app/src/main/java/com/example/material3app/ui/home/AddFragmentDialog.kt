@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,8 +17,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.material3app.Cibo
 import com.example.material3app.R
+import com.example.material3app.data.Food
+import com.example.material3app.data.FoodViewModel
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -30,6 +35,7 @@ class AddFragmentDialog : DialogFragment() {
 
     }
 
+    private lateinit var mFoodViewModel: FoodViewModel
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,15 +63,21 @@ class AddFragmentDialog : DialogFragment() {
                      },dataPiked.year.toInt(),dataPiked.monthValue,dataPiked.dayOfMonth)
                  dpd.show()
          }
+
+        mFoodViewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
         confirmButton.setOnClickListener{
-            try {
-                val alimento = Cibo(nomeCibo.text.toString(),  Kcal.text.toString().toInt())
+
+            var alimento : Cibo = Cibo("",0)
+                try {
+                alimento = Cibo(nomeCibo.text.toString(),  Kcal.text.toString().toInt())
             } catch (e:  java.lang.NumberFormatException) {
-                val alimento = Cibo(nomeCibo.text.toString(),  0)
-                Toast.makeText(requireContext(), "kCal non Valido Inserimento Automatico", Toast.LENGTH_SHORT).show()
+                alimento = Cibo(nomeCibo.text.toString(),  -1)
+
             }
 
-            // TODO : Carica in db alimento e dataPiked
+
+            insertDataToDatabase(alimento,dataPiked)
+
             dismiss()
         }
         annullaButton.setOnClickListener {
@@ -74,6 +86,28 @@ class AddFragmentDialog : DialogFragment() {
         return rootView
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun insertDataToDatabase(alimento: Cibo, data: LocalDate){
+
+        val nome = alimento.getName()
+        val kcal = alimento.getKcal()
+        val date = data.format(DateTimeFormatter.ISO_DATE)
+
+        if(inputCheck(alimento,date)){
+            val food = Food(0,date,nome,kcal)
+
+            mFoodViewModel.addFood(food)
+            Toast.makeText(requireContext(),"Dati inseriti correttamente", Toast.LENGTH_LONG).show()
+            // Navigate Back
+        }
+        else{
+            Toast.makeText(requireContext(), "Dati non inseriti", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun inputCheck(food: Cibo, date: String) : Boolean{
+        return !(TextUtils.isEmpty(food.getName()) && (food.getKcal() == -1) && TextUtils.isEmpty(date) )
+    }
 
 }
 
