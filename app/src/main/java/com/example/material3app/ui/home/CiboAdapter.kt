@@ -35,17 +35,6 @@ class CiboAdapter(private val listaCibo: MutableList<Cibo>) :
         holder.bind(listaCibo[position].getName(),listaCibo[position].getKcal());
     }
 
-    fun setData(food: List<Food>){
-        //List<Food> ---> MutableList<Cibo>
-        val it: ListIterator<Food> = food.listIterator()
-
-        while (it.hasNext()) {
-            val e = it.next()
-            val c = Cibo(e.nome,e.calorie)
-            listaCibo.add(c)
-        }
-    }
-
     override fun getItemCount(): Int {
         return listaCibo.size
     }
