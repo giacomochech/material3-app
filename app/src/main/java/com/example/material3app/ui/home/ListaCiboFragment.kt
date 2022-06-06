@@ -58,21 +58,30 @@ class ListaCiboFragment() : Fragment() {
 
 
 
-      if(KcalAssunte> 2000){//TODO: Obiettivo
-          card.setCardBackgroundColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.m3_sys_color_dark_error,null))
-          textKcalAssunte.setTextColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.m3_sys_color_dark_on_error,null))
-      }
+
         textKcalAssunte.text = KcalAssunte.toString()
 
         textGiorno.text = date.dayOfMonth.toString()
         textMese.text = date.month.toString()
 
-
-        val listaCibo = mutableListOf<Cibo>()
         mFoodViewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
-        mFoodViewModel.readFoodInSpecifiedDay(date.format(DateTimeFormatter.ISO_DATE)).observe(viewLifecycleOwner, Observer{
+        mFoodViewModel.readFoodInSpecifiedDay(date.format(DateTimeFormatter.ISO_DATE)).
+        observe(viewLifecycleOwner, Observer{
             food ->
-            recyclerView.adapter = CiboAdapter(toMutableCibo(food,listaCibo)) //chiedi a Umbe cibo adapter
+            val listaCibo = toMutableCibo(food)
+            KcalAssunte=0
+            listaCibo.forEach {
+                KcalAssunte += it.getKcal()
+            }
+
+            textKcalAssunte.text = KcalAssunte.toString()
+
+            if(KcalAssunte> 2000){//TODO: Obiettivo
+                card.setCardBackgroundColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.m3_sys_color_dark_error,null))
+                textKcalAssunte.setTextColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.m3_sys_color_dark_on_error,null))
+            }
+
+            recyclerView.adapter = CiboAdapter(listaCibo) //chiedi a Umbe cibo adapter
         })
 
 
@@ -90,8 +99,9 @@ class ListaCiboFragment() : Fragment() {
         outState.putSerializable(DATE_SAVE,date)
     }
 
-    fun toMutableCibo(food: List<Food>, ret: MutableList<Cibo>) : MutableList<Cibo>{
+    fun toMutableCibo(food: List<Food>) : MutableList<Cibo>{
         //List<Food> ---> MutableList<Cibo>
+        val ret = mutableListOf<Cibo>()
         val it: ListIterator<Food> = food.listIterator()
 
         while (it.hasNext()) {

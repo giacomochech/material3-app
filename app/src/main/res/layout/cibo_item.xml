@@ -9,12 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="20dp"
-        app:cardCornerRadius="50dp"
-        app:cardBackgroundColor="@color/material_dynamic_neutral80">
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@color/material_dynamic_neutral95">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

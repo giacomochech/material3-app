@@ -60,7 +60,7 @@ class AddFragmentDialog : DialogFragment() {
 
                          dateTextView.text= dataPiked.format(DateTimeFormatter
                              .ofLocalizedDate(FormatStyle.MEDIUM))
-                     },dataPiked.year.toInt(),dataPiked.monthValue,dataPiked.dayOfMonth)
+                     },dataPiked.year.toInt(),dataPiked.monthValue-1,dataPiked.dayOfMonth)
                  dpd.show()
          }
 
@@ -106,7 +106,7 @@ class AddFragmentDialog : DialogFragment() {
     }
 
     private fun inputCheck(food: Cibo, date: String) : Boolean{
-        return !(TextUtils.isEmpty(food.getName()) && (food.getKcal() == -1) && TextUtils.isEmpty(date) )
+        return !(TextUtils.isEmpty(food.getName()) || (food.getKcal() == -1) || TextUtils.isEmpty(date) )
     }
 
 }
