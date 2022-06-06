@@ -14,4 +14,8 @@ interface FoodDao
 
     @Query("SELECT * FROM food_table ORDER BY id ASC")
     fun readAllData(): LiveData<List<Food>>
+
+    @Query("SELECT * FROM food_table WHERE date = :date ")
+    fun readFoodInSpecifiedDay(date: String): LiveData<List<Food>>
+
 }

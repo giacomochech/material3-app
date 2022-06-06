@@ -10,9 +10,15 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
 import androidx.core.content.res.ResourcesCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.example.material3app.Cibo
 import com.example.material3app.R
+import com.example.material3app.data.Food
+import com.example.material3app.data.FoodViewModel
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 // TODO: Rename parameter arguments, choose names that match
 
@@ -26,6 +32,7 @@ import java.time.LocalDate
 class ListaCiboFragment() : Fragment() {
     var KcalAssunte :Int = 0
     lateinit var date : LocalDate
+    private lateinit var mFoodViewModel: FoodViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +55,7 @@ class ListaCiboFragment() : Fragment() {
         val card : CardView = view.findViewById(R.id.cardView)
         val recyclerView : RecyclerView = view.findViewById(R.id.recyclerView)
 
-        val listaCibo = DataFormDb().getListCibo(date)
+
 
 
       if(KcalAssunte> 2000){//TODO: Obiettivo
@@ -61,8 +68,17 @@ class ListaCiboFragment() : Fragment() {
         textMese.text = date.month.toString()
 
 
+        val listaCibo = mutableListOf<Cibo>()
+        mFoodViewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
+        mFoodViewModel.readFoodInSpecifiedDay(date.format(DateTimeFormatter.ISO_DATE)).observe(viewLifecycleOwner, Observer{
+            food ->
+            recyclerView.adapter = CiboAdapter(toMutableCibo(food,listaCibo)) //chiedi a Umbe cibo adapter
+        })
 
-        recyclerView.adapter= CiboAdapter(listaCibo)
+
+        //recyclerView.adapter= CiboAdapter()
+
+
 
         return view
     }
@@ -72,6 +88,19 @@ class ListaCiboFragment() : Fragment() {
         super.onSaveInstanceState(outState)
         outState.putInt(KCAL_SAVE,KcalAssunte)
         outState.putSerializable(DATE_SAVE,date)
+    }
+
+    fun toMutableCibo(food: List<Food>, ret: MutableList<Cibo>) : MutableList<Cibo>{
+        //List<Food> ---> MutableList<Cibo>
+        val it: ListIterator<Food> = food.listIterator()
+
+        while (it.hasNext()) {
+            val e = it.next()
+            val c = Cibo(e.nome,e.calorie)
+            ret.add(c)
+        }
+
+        return ret
     }
 
 companion object {

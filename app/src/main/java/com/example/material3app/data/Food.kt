@@ -8,7 +8,7 @@ import java.sql.Date
 data class Food(
     @PrimaryKey(autoGenerate = true)
     val id:Int,
-    //val date : Date?,
+    val date : String,
     val nome: String,
     val calorie: Int
 )
