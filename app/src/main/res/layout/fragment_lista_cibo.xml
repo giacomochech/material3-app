@@ -95,7 +95,8 @@
                         android:layout_height="wrap_content"
                         android:text="2500"
                         android:textSize="50sp"
-                        android:textStyle="bold"/></LinearLayout>
+                        android:textStyle="bold"
+                        android:singleLine="true"/></LinearLayout>
 
             </LinearLayout>
 

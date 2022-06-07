@@ -85,7 +85,6 @@ class ListaCiboFragment() : Fragment() {
         })
 
 
-        //recyclerView.adapter= CiboAdapter()
 
 
 
