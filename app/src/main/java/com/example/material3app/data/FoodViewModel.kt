@@ -30,5 +30,10 @@ class FoodViewModel(application: Application): AndroidViewModel(application)
         return repository.readFoodInSpecifiedDay(date)
     }
 
+    fun deleteFood(id: Int){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.delete(id)
+        }
+    }
 
 }

@@ -67,7 +67,7 @@ class AddFragmentDialog : DialogFragment() {
         mFoodViewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
         confirmButton.setOnClickListener{
 
-            var alimento : Cibo = Cibo("",0)
+            var alimento : Cibo = Cibo("",0,0)
                 try {
                 alimento = Cibo(nomeCibo.text.toString(),  Kcal.text.toString().toInt())
             } catch (e:  java.lang.NumberFormatException) {
