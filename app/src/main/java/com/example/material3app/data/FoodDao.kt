@@ -18,4 +18,7 @@ interface FoodDao
     @Query("SELECT * FROM food_table WHERE date = :date ")
     fun readFoodInSpecifiedDay(date: String): LiveData<List<Food>>
 
+    @Query("DELETE FROM food_table WHERE id = :id")
+    fun delete(id:Int)
+
 }
