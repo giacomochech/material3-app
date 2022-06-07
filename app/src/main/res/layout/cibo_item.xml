@@ -9,27 +9,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="20dp"
-        app:cardCornerRadius="50dp"
-        app:cardBackgroundColor="@color/material_dynamic_neutral80">
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@color/material_dynamic_neutral95">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
             <ImageView
                 android:id="@+id/iconCibo"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:layout_margin="25dp"
                 app:srcCompat="@drawable/ic_baseline_fastfood_24"
-                /><LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_margin="25dp"
+                />
+            <LinearLayout
+                android:layout_width="130dp"
+                android:layout_height="60dp"
+                android:orientation="vertical"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="25dp"
             >
             <TextView
                 android:id="@+id/NomeCibo"
@@ -38,23 +41,43 @@
                 android:text="Nome Cibo"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                android:textColor="@color/material_dynamic_primary10"/>
+                android:textColor="@color/material_dynamic_primary10"
+                android:singleLine="true"
+              />
             <TextView
                 android:id="@+id/NumeroCalrie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2500 Kcal"
                 android:textSize="25dp"
-                android:textColor="@color/material_dynamic_primary30"/>
+                android:textColor="@color/material_dynamic_primary30"
+                android:singleLine="true"/>
         </LinearLayout>
 
+
+            <ImageButton
+                android:id="@+id/deleteButton"
+                android:layout_width="10dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                app:srcCompat="@drawable/ic_twotone_delete_outline_24"
+                android:backgroundTint="@color/material_dynamic_neutral95"
+
+                />
         </LinearLayout>
+
+
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"></LinearLayout>
+        android:orientation="vertical">
+
+
+    </LinearLayout>
 
 
 </FrameLayout>
