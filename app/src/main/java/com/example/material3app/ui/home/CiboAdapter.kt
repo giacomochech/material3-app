@@ -10,12 +10,17 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.material3app.Cibo
 import com.example.material3app.R
 import com.example.material3app.data.Food
+import com.example.material3app.data.FoodViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.NonDisposableHandle.parent
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import java.security.AccessController.getContext
 import java.time.LocalDate
 
@@ -26,17 +31,17 @@ class CiboAdapter(val listaCibo: MutableList<Cibo>) :
         private val nomeTextView : TextView = itemView.findViewById(R.id.NomeCibo)
         private val KCalTextView : TextView = itemView.findViewById(R.id.NumeroCalrie)
         private val deleteButton : ImageButton = itemView.findViewById(R.id.deleteButton)
-
+        private lateinit var mFoodViewModel: FoodViewModel
 
         fun bind(id: Int, nome : String, Kcal : Int){
 
             nomeTextView.text = nome
             KCalTextView.text = Kcal.toString()
             deleteButton.setOnClickListener {
-                //TODO : elimina qui l'element id
+                mFoodViewModel = ViewModelProvider(itemView.context as ViewModelStoreOwner).get(FoodViewModel::class.java)
+                runBlocking { delay(300) }
+                mFoodViewModel.deleteFood(id)
             }
-
-
         }
     }
 
