@@ -105,7 +105,7 @@ class ListaCiboFragment() : Fragment() {
 
         while (it.hasNext()) {
             val e = it.next()
-            val c = Cibo(e.nome,e.calorie)
+            val c = Cibo(e.id, /*LocalDate.parse(e.date),*/e.nome,e.calorie)
             ret.add(c)
         }
 

@@ -17,8 +17,9 @@ import com.example.material3app.data.Food
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.NonDisposableHandle.parent
 import java.security.AccessController.getContext
+import java.time.LocalDate
 
-class CiboAdapter(private val listaCibo: MutableList<Cibo>) :
+class CiboAdapter(val listaCibo: MutableList<Cibo>) :
     RecyclerView.Adapter<CiboAdapter.CiboViewHolder>() {
 
     class CiboViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -27,15 +28,13 @@ class CiboAdapter(private val listaCibo: MutableList<Cibo>) :
         private val deleteButton : ImageButton = itemView.findViewById(R.id.deleteButton)
 
 
-        init{
-            deleteButton.setOnClickListener {
-               //TODO : remove from db
-        }
-        }
-        fun bind( nome : String, Kcal : Int){
+        fun bind(id: Int, nome : String, Kcal : Int){
 
             nomeTextView.text = nome
             KCalTextView.text = Kcal.toString()
+            deleteButton.setOnClickListener {
+                //TODO : elimina qui l'element id
+            }
 
 
         }
@@ -51,7 +50,7 @@ class CiboAdapter(private val listaCibo: MutableList<Cibo>) :
 
     override fun onBindViewHolder(holder: CiboViewHolder, position: Int) {
 
-        holder.bind(listaCibo[position].getName(),listaCibo[position].getKcal());
+        holder.bind(listaCibo[position].getId(),listaCibo[position].getName(),listaCibo[position].getKcal());
     }
 
     override fun getItemCount(): Int {
