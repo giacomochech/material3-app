@@ -76,10 +76,10 @@ class ListaCiboFragment() : Fragment() {
 
             textKcalAssunte.text = KcalAssunte.toString()
 
-            if(KcalAssunte> 2000){//TODO: Obiettivo
+            /*if(KcalAssunte> 2000){//TODO: Obiettivo
                 card.setCardBackgroundColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.m3_sys_color_dark_error,null))
-                textKcalAssunte.setTextColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.m3_sys_color_dark_on_error,null))
-            }
+                textKcalAssunte.setTextColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.m3_sys_color_dark_error_container,null))
+            }*/
 
             recyclerView.adapter = CiboAdapter(listaCibo) //chiedi a Umbe cibo adapter
         })

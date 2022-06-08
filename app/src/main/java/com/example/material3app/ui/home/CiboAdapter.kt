@@ -30,7 +30,7 @@ class CiboAdapter(val listaCibo: MutableList<Cibo>) :
     class CiboViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         private val nomeTextView : TextView = itemView.findViewById(R.id.NomeCibo)
         private val KCalTextView : TextView = itemView.findViewById(R.id.NumeroCalrie)
-        private val deleteButton : ImageButton = itemView.findViewById(R.id.deleteButton)
+        private val deleteButton : Button = itemView.findViewById(R.id.deleteButton)
         private lateinit var mFoodViewModel: FoodViewModel
 
         fun bind(id: Int, nome : String, Kcal : Int){

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -13,8 +14,8 @@
         android:layout_marginLeft="40dp"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="10dp"
-        app:cardCornerRadius="8dp"
-        app:cardBackgroundColor="@color/material_dynamic_neutral95">
+        android:backgroundTint="?attr/colorSecondaryContainer"
+       style="?attr/materialCardViewElevatedStyle">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -24,7 +25,7 @@
                 android:id="@+id/iconCibo"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:layout_margin="25dp"
+                android:layout_margin="20dp"
                 app:srcCompat="@drawable/ic_baseline_fastfood_24"
                 />
             <LinearLayout
@@ -41,8 +42,8 @@
                 android:text="Nome Cibo"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                android:textColor="@color/material_dynamic_primary10"
                 android:singleLine="true"
+                android:textColor="?attr/colorOnSecondaryContainer"
               />
             <TextView
                 android:id="@+id/NumeroCalrie"
@@ -50,26 +51,26 @@
                 android:layout_height="wrap_content"
                 android:text="2500 Kcal"
                 android:textSize="25dp"
-                android:textColor="@color/material_dynamic_primary30"
-                android:singleLine="true"/>
-        </LinearLayout>
+                android:singleLine="true"
+                android:textColor="?attr/colorOnSecondaryContainer"/>
 
 
-            <ImageButton
+            </LinearLayout>
+
+            <Button
                 android:id="@+id/deleteButton"
-                android:layout_width="10dp"
-                android:layout_weight="1"
+                style="@style/Widget.Material3.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                app:srcCompat="@drawable/ic_twotone_delete_outline_24"
-                android:backgroundTint="@color/material_dynamic_neutral95"
+                app:icon="@drawable/ic_twotone_delete_outline_24"
+                app:iconSize="30dp"
 
-                />
+                tools:ignore="SpeakableTextPresentCheck" />
+
         </LinearLayout>
 
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <LinearLayout
         android:layout_width="match_parent"

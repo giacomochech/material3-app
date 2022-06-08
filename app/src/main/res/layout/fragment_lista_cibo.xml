@@ -14,7 +14,7 @@
 
 
 
-        <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,9 +22,8 @@
             android:layout_marginTop="18dp"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp"
-            app:cardBackgroundColor="@color/material_dynamic_secondary70"
+            style="?attr/materialCardViewFilledStyle"
+
             >
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -37,14 +36,11 @@
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="15dp"
                 >
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="8dp"
-                    android:backgroundTint="@color/material_dynamic_neutral100"
-                    >
+                    style="?attr/materialCardViewOutlinedStyle">
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -59,7 +55,7 @@
                             android:text="15"
                             android:textSize="50sp"
                             android:textStyle="bold"
-                            android:textColor="@color/material_dynamic_primary10"
+                            android:textColor="?android:attr/textColorSecondary"
                             />
 
 
@@ -69,12 +65,12 @@
                             android:layout_height="wrap_content"
                             android:text="maggio"
                             android:textStyle="bold"
-                            android:textColor="@color/material_dynamic_primary10"/>
+                            android:textColor="?android:attr/textColorSecondary"/>
 
 
 
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -87,8 +83,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Calorie Assunte"
-                        android:textSize="25sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textColor="?android:attr/textColorSecondary"/>
                     <TextView
                         android:id="@+id/KcalAssunte"
                         android:layout_width="wrap_content"
@@ -96,11 +93,12 @@
                         android:text="2500"
                         android:textSize="50sp"
                         android:textStyle="bold"
-                        android:singleLine="true"/></LinearLayout>
+                        android:singleLine="true"
+                        android:textColor="?android:attr/textColorSecondary"/></LinearLayout>
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

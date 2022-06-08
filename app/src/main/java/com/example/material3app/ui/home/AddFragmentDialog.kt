@@ -17,11 +17,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import com.example.material3app.Cibo
 import com.example.material3app.R
 import com.example.material3app.data.Food
 import com.example.material3app.data.FoodViewModel
+import com.google.android.material.datepicker.MaterialDatePicker
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -41,7 +43,7 @@ class AddFragmentDialog : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_add_dialog, container, false)
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        //dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val dateButton : Button = rootView.findViewById(R.id.data_button)
         val dateTextView : TextView = rootView.findViewById(R.id.dataPiked)
         val nomeCibo : EditText = rootView.findViewById(R.id.AddNomeCibo)
@@ -52,15 +54,11 @@ class AddFragmentDialog : DialogFragment() {
         dateTextView.text= dataPiked.format(DateTimeFormatter
             .ofLocalizedDate(FormatStyle.MEDIUM))
 
-
+        val datePicker = MaterialDatePicker.Builder.datePicker()
+         //   .setTheme() TODO : Continua qui
+                .build()
          dateButton.setOnClickListener{
-             val dpd = DatePickerDialog(requireContext(),android.R.style.Theme_DeviceDefault_Dialog,DatePickerDialog.OnDateSetListener { datePicker, y, m, d ->
-                         dataPiked = LocalDate.of(y,m+1,d)
-
-                         dateTextView.text= dataPiked.format(DateTimeFormatter
-                             .ofLocalizedDate(FormatStyle.MEDIUM))
-                     },dataPiked.year.toInt(),dataPiked.monthValue-1,dataPiked.dayOfMonth)
-                 dpd.show()
+             datePicker.show(getParentFragmentManager(),"DATE_Piker")
          }
 
         mFoodViewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
