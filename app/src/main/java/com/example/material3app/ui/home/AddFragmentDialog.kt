@@ -1,13 +1,13 @@
 package com.example.material3app.ui.home
 
 import android.app.DatePickerDialog
-import android.content.Context
+
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +18,6 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.example.material3app.Cibo
 import com.example.material3app.R
 import com.example.material3app.data.Food
@@ -55,7 +54,7 @@ class AddFragmentDialog : DialogFragment() {
 
 
          dateButton.setOnClickListener{
-             val dpd = DatePickerDialog(requireContext(),DatePickerDialog.OnDateSetListener { datePicker, y, m, d ->
+             val dpd = DatePickerDialog(requireContext(),android.R.style.Theme_DeviceDefault_Dialog,DatePickerDialog.OnDateSetListener { datePicker, y, m, d ->
                          dataPiked = LocalDate.of(y,m+1,d)
 
                          dateTextView.text= dataPiked.format(DateTimeFormatter
