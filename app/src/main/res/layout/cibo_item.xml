@@ -64,7 +64,6 @@
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_twotone_delete_outline_24"
                 app:iconSize="30dp"
-
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>

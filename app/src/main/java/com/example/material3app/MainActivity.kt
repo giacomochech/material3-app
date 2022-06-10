@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.appBarMain.fab.setOnClickListener { view ->
                 var dialog :DialogFragment = AddFragmentDialog()
-
+            //dialog.get
             dialog.show(supportFragmentManager,"addDialog")
         }
 

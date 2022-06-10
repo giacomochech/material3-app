@@ -1,13 +1,10 @@
 package com.example.material3app.ui.home
 
-import android.app.DatePickerDialog
-
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +14,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import com.example.material3app.Cibo
 import com.example.material3app.R
@@ -25,8 +21,13 @@ import com.example.material3app.data.Food
 import com.example.material3app.data.FoodViewModel
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalDateTime.ofInstant
+import java.time.LocalTime.ofInstant
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
+import java.util.*
 
 
 class AddFragmentDialog : DialogFragment() {
@@ -43,7 +44,7 @@ class AddFragmentDialog : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_add_dialog, container, false)
-        //dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val dateButton : Button = rootView.findViewById(R.id.data_button)
         val dateTextView : TextView = rootView.findViewById(R.id.dataPiked)
         val nomeCibo : EditText = rootView.findViewById(R.id.AddNomeCibo)
@@ -55,11 +56,20 @@ class AddFragmentDialog : DialogFragment() {
             .ofLocalizedDate(FormatStyle.MEDIUM))
 
         val datePicker = MaterialDatePicker.Builder.datePicker()
-         //   .setTheme() TODO : Continua qui
                 .build()
          dateButton.setOnClickListener{
              datePicker.show(getParentFragmentManager(),"DATE_Piker")
          }
+        datePicker.addOnPositiveButtonClickListener {
+            val calendar: Calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+            datePicker.selection?.let { it1 -> calendar.setTimeInMillis(it1) }
+
+            dataPiked = LocalDateTime.ofInstant(calendar.toInstant(), ZoneId.systemDefault()).toLocalDate()
+
+            dateTextView.text= dataPiked.format(DateTimeFormatter
+                .ofLocalizedDate(FormatStyle.MEDIUM))
+        }
+
 
         mFoodViewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
         confirmButton.setOnClickListener{

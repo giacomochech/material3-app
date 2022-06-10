@@ -9,6 +9,7 @@
 
     <TextView
         android:id="@+id/TitoloCalc"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Calorie Obiettivo"
@@ -16,20 +17,21 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.255"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.084" />
+        app:layout_constraintVertical_bias="0.086" />
 
     <TextView
         android:id="@+id/Sesso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="60dp"
         android:text="Sesso"
         android:textSize="20dp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/menu"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TitoloCalc" />
 
@@ -56,81 +58,128 @@
         app:layout_constraintStart_toStartOf="@id/Sesso"
         app:layout_constraintTop_toBottomOf="@id/Eta" />
 
-    <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="wrap_content"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextCalorieObiettivo"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="1000"
+        android:hint="Calorie Obiettivo"
         android:inputType="number"
+        android:minWidth="70dp"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/AnnullaCalc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        app:layout_constraintTop_toBottomOf="@+id/ButtonCalcola">
 
-    <Spinner
-        android:id="@+id/spinner"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextInputCalorieObiettivo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:gravity="center"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/menu"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:hint="Sesso"
         app:layout_constraintBottom_toBottomOf="@+id/Sesso"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Sesso" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/Sesso"
+        app:layout_constraintTop_toTopOf="@+id/Sesso">
 
-    <EditText
-        android:id="@+id/editTextNumber2"
-        android:layout_width="72dp"
-        android:layout_height="41dp"
-        android:ems="10"
-        android:inputType="number"
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextCalorieObiettivo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="60dp"
+        android:hint="Età"
         app:layout_constraintBottom_toBottomOf="@+id/Eta"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Sesso" />
+        app:layout_constraintStart_toEndOf="@+id/Sesso"
+        app:layout_constraintTop_toTopOf="@+id/Eta">
 
-    <EditText
-        android:id="@+id/editTextNumberDecimal"
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:id="@+id/editTextInputEta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextPeso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="numberDecimal"
+        android:hint="Peso"
+        android:minWidth="70dp"
         app:layout_constraintBottom_toBottomOf="@+id/Peso"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Sesso" />
+        app:layout_constraintStart_toEndOf="@+id/Sesso"
+        app:layout_constraintTop_toTopOf="@+id/Peso">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextInputPeso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/editTextNumber"
+        android:id="@+id/ButtonCalcola"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:text="Calcola"
+        app:layout_constraintBottom_toTopOf="@+id/editTextCalorieObiettivo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal"
-        style="@style/Widget.Material3.Button.ElevatedButton"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextPeso" />
 
     <Button
         android:id="@+id/AccettaCalc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_width="135dp"
+        android:layout_height="75dp"
+        android:text="Accetta"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/AnnullaCalc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/AnnullaCalc"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCalorieObiettivo"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/AnnullaCalc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_width="135dp"
+        android:layout_height="75dp"
+        android:backgroundTint="?attr/colorTertiaryContainer"
+        android:text="Annulla"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/AccettaCalc"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextCalorieObiettivo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

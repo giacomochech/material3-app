@@ -52,7 +52,7 @@ class ListaCiboFragment() : Fragment() {
         val textKcalAssunte : TextView = view.findViewById(R.id.KcalAssunte)
         val textGiorno : TextView = view.findViewById(R.id.giorno_del_mese)
         val textMese : TextView = view.findViewById(R.id.mese)
-        val card : CardView = view.findViewById(R.id.cardView)
+        //val card : CardView = view.findViewById(R.id.cardView)
         val recyclerView : RecyclerView = view.findViewById(R.id.recyclerView)
 
 
