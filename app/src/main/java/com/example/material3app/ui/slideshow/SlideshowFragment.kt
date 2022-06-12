@@ -5,10 +5,7 @@ import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.material3app.R
@@ -33,6 +30,9 @@ class SlideshowFragment : Fragment() {
         var editTextCalObiettivo = rootView.findViewById<TextInputEditText>(R.id.editTextInputCalorieObiettivo)
         var editTextPeso = rootView.findViewById<TextInputEditText>(R.id.editTextInputPeso)
         val buttonCalcola = rootView.findViewById<Button>(R.id.ButtonCalcola)
+        val dorpDown = rootView.findViewById<AutoCompleteTextView>(R.id.dropdown)
+        val sex = resources.getStringArray(R.array.SelectSex)
+        dorpDown.setAdapter(ArrayAdapter(requireContext(),R.layout.dropdown_sesso_item,sex))
 
         buttonCalcola.setOnClickListener {
             if(editTextPeso.text?.let { it1 -> editTextEta.text?.let { it2 ->
@@ -43,9 +43,13 @@ class SlideshowFragment : Fragment() {
                 Toast.makeText(requireContext(),"dati Inseriti Parzialmente",Toast.LENGTH_LONG).show()
             }
             else{
-            var peso   = editTextPeso.text.toString().toInt()
-            var età  = editTextEta.text.toString().toInt()
-                editTextCalObiettivo.setText(MET(peso,età, false).toString()) }
+                var isF : Boolean = true
+                if(dorpDown.text.toString()==sex[0])
+                    isF = false
+
+                val peso   = editTextPeso.text.toString().toInt()
+                val età  = editTextEta.text.toString().toInt()
+                    editTextCalObiettivo.setText(MET(peso,età, isF).toString()) }
         }
 
 

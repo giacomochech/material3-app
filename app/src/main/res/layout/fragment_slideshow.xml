@@ -6,57 +6,136 @@
     android:layout_height="match_parent"
     tools:context=".ui.slideshow.SlideshowFragment">
 
-
-    <TextView
-        android:id="@+id/TitoloCalc"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:layout_width="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/CardCalcolo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Calorie Obiettivo"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_margin="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.255"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.086" />
+        style="@style/Widget.Material3.CardView.Filled">
 
-    <TextView
-        android:id="@+id/Sesso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="Sesso"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/menu"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TitoloCalc" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/Eta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            <TextView
+                android:id="@+id/Sesso"
+                android:layout_width="111dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Sesso"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/menu"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        android:layout_marginTop="40dp"
-        android:text="Età"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/Sesso"
-        app:layout_constraintTop_toBottomOf="@id/Sesso" />
+            <TextView
+                android:id="@+id/Eta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-    <TextView
-        android:id="@+id/Peso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="peso"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/Sesso"
-        app:layout_constraintTop_toBottomOf="@id/Eta" />
+                android:layout_marginTop="40dp"
+                android:text="Età"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/Sesso"
+                app:layout_constraintTop_toBottomOf="@id/Sesso" />
+
+            <TextView
+                android:id="@+id/Peso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="40dp"
+                android:text="peso"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/Sesso"
+                app:layout_constraintTop_toBottomOf="@id/Eta" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/menu"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Sesso"
+                app:layout_constraintBottom_toBottomOf="@+id/Sesso"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/Sesso"
+                app:layout_constraintTop_toTopOf="@+id/Sesso">
+
+                <AutoCompleteTextView
+                    android:id="@+id/dropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:text="Maschio" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editTextPeso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Peso"
+                android:minWidth="70dp"
+                app:layout_constraintBottom_toBottomOf="@+id/Peso"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/Sesso"
+                app:layout_constraintTop_toTopOf="@+id/Peso">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextInputPeso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/EtaTextInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Età"
+                android:minWidth="60dp"
+                app:layout_constraintBottom_toBottomOf="@+id/Eta"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/Sesso"
+                app:layout_constraintTop_toTopOf="@+id/Eta">
+
+                <com.google.android.material.textfield.TextInputEditText
+
+                    android:id="@+id/editTextInputEta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/ButtonCalcola"
+
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_margin="40dp"
+                android:text="Calcola"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextPeso"
+                style="@style/Widget.Material3.Button.ElevatedButton"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -72,8 +151,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ButtonCalcola">
-
+        app:layout_constraintTop_toBottomOf="@+id/CardCalcolo">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextInputCalorieObiettivo"
             android:layout_width="match_parent"
@@ -83,76 +161,6 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/menu"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Sesso"
-        app:layout_constraintBottom_toBottomOf="@+id/Sesso"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/Sesso"
-        app:layout_constraintTop_toTopOf="@+id/Sesso">
-
-        <AutoCompleteTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="none" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTextCalorieObiettivo2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="60dp"
-        android:hint="Età"
-        app:layout_constraintBottom_toBottomOf="@+id/Eta"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Sesso"
-        app:layout_constraintTop_toTopOf="@+id/Eta">
-
-        <com.google.android.material.textfield.TextInputEditText
-
-            android:id="@+id/editTextInputEta"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTextPeso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Peso"
-        android:minWidth="70dp"
-        app:layout_constraintBottom_toBottomOf="@+id/Peso"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Sesso"
-        app:layout_constraintTop_toTopOf="@+id/Peso">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextInputPeso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/ButtonCalcola"
-        style="@style/Widget.Material3.Button.TonalButton"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:text="Calcola"
-        app:layout_constraintBottom_toTopOf="@+id/editTextCalorieObiettivo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPeso" />
 
     <Button
         android:id="@+id/AccettaCalc"
@@ -181,5 +189,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextCalorieObiettivo" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

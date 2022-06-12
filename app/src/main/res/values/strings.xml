@@ -6,10 +6,16 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
     <string name="menu_home">Lista Cibo</string>
     <string name="menu_gallery">Pippo</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_slideshow">Calcolo Calorie</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
+    <string-array name="SelectSex">
+        <item>Maschio</item>
+        <item>Femmina</item>
+    </string-array>
 </resources>
