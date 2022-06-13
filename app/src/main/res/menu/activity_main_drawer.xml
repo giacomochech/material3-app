@@ -3,18 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_baseline_fastfood_24"
+            android:enabled="true"
+
+            android:icon="@drawable/munu_selected"
+
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
-        <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:enabled="true"
+
+            android:icon="@drawable/calc_selected"
             android:title="@string/menu_slideshow" />
-    </group>
+        <item
+            android:id="@+id/nav_gallery"
+            android:enabled="true"
+
+            android:icon="@drawable/user_selected"
+            android:title="@string/menu_gallery" />
+
 </menu>

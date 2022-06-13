@@ -10,29 +10,18 @@
         android:name="com.example.material3app.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_nav_home_to_addFragment"
-            app:destination="@id/addFragment" />
-    </fragment>
+        </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.material3app.ui.gallery.GalleryFragment"
+        android:name="com.example.material3app.ui.user.UserFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_user" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.material3app.ui.slideshow.SlideshowFragment"
+        android:name="com.example.material3app.ui.slideshow.CalcolaFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-    <fragment
-        android:id="@+id/addFragment"
-        android:name="com.example.material3app.AddFragment"
-        android:label="fragment_add"
-        tools:layout="@layout/fragment_add" >
-        <action
-            android:id="@+id/action_addFragment_to_nav_home"
-            app:destination="@id/nav_home" />
-    </fragment>
+        tools:layout="@layout/fragment_calcola" />
+
 </navigation>

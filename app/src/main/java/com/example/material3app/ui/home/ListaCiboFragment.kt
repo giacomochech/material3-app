@@ -1,5 +1,6 @@
 package com.example.material3app.ui.home
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,6 +18,8 @@ import com.example.material3app.Cibo
 import com.example.material3app.R
 import com.example.material3app.data.Food
 import com.example.material3app.data.FoodViewModel
+import com.example.material3app.ui.slideshow.CalcolaFragment
+import com.example.material3app.ui.slideshow.CalcolaFragment.Companion.SHARED_PREF_PAGINA_CALC
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -54,9 +57,11 @@ class ListaCiboFragment() : Fragment() {
         val textMese : TextView = view.findViewById(R.id.mese)
         //val card : CardView = view.findViewById(R.id.cardView)
         val recyclerView : RecyclerView = view.findViewById(R.id.recyclerView)
+      //  val
 
 
-
+        val ciboAdapter = CiboAdapter()
+        recyclerView.adapter = ciboAdapter
 
 
         textKcalAssunte.text = KcalAssunte.toString()
@@ -76,12 +81,19 @@ class ListaCiboFragment() : Fragment() {
 
             textKcalAssunte.text = KcalAssunte.toString()
 
-            /*if(KcalAssunte> 2000){//TODO: Obiettivo
-                card.setCardBackgroundColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.m3_sys_color_dark_error,null))
+            val sharedPref = activity?.getSharedPreferences(SHARED_PREF_PAGINA_CALC,Context.MODE_PRIVATE)
+            val obiettivo = sharedPref?.getInt(CalcolaFragment.INT_OBIETTIVO,0)
+           if(KcalAssunte> obiettivo!!){//TODO: Obiettivo
+               // card.setCardBackgroundColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.m3_sys_color_dark_error,null))
                 textKcalAssunte.setTextColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.m3_sys_color_dark_error_container,null))
-            }*/
+            }
+            else{
+               textKcalAssunte.setTextColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.m3_ref_palette_primary50,null))
+            }
 
-            recyclerView.adapter = CiboAdapter(listaCibo) //chiedi a Umbe cibo adapter
+            ciboAdapter.listaCibo.clear()
+            ciboAdapter.listaCibo.addAll(listaCibo)
+            ciboAdapter.notifyDataSetChanged()
         })
 
 

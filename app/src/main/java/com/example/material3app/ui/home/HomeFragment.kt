@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.material3app.R
 import com.example.material3app.databinding.FragmentHomeBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.time.LocalDate
 
 class HomeFragment : Fragment() {
@@ -27,11 +30,16 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)// infalete(r.layoutfragment home...)
         val root: View = binding.root
 
-        /*
+
        
         //TODO() : riempi da database
+        val fab = root.findViewById<FloatingActionButton>(R.id.floating_action_button)
+        fab.setOnClickListener { view ->
+                var dialog : DialogFragment = AddFragmentDialog()
+            //dialog.get
+            dialog.show(getParentFragmentManager()  ,"ADD DIALOG")
+        }
 
-*/
         val viewPager = binding.ViewPager//r.id.text_home
         viewPager.adapter = AdapterViewPager()
         viewPager.setCurrentItem(Int.MAX_VALUE/2,false)

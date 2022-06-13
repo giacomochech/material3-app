@@ -1,68 +1,57 @@
 package com.example.material3app
 
-import android.app.Dialog
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
-import android.view.Menu
 import android.view.View
-import android.view.ViewGroup
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
+import android.view.WindowInsets
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.DialogFragment
-import com.example.material3app.databinding.ActivityMainBinding
-import com.example.material3app.ui.home.AddFragmentDialog
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.marginTop
+import androidx.core.view.setPadding
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.example.material3app.ui.user.UserFragment
+import com.example.material3app.ui.home.HomeFragment
+import com.example.material3app.ui.slideshow.CalcolaFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityMainBinding
-
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        WindowCompat.setDecorFitsSystemWindows(window,false)
+        window.navigationBarColor= Color.TRANSPARENT
 
 
-        binding = ActivityMainBinding.bind(findViewById<ViewGroup>(android.R.id.content).getChildAt(0))
-        setSupportActionBar(binding.appBarMain.toolbar)
-        val drawerLayout: DrawerLayout = binding.drawerLayout
-        val navView: NavigationView = binding.navView
+        val home: Fragment = HomeFragment()
 
 
-        binding.appBarMain.fab.setOnClickListener { view ->
-                var dialog :DialogFragment = AddFragmentDialog()
-            //dialog.get
-            dialog.show(supportFragmentManager,"addDialog")
+        //makeCurrentFragment(HomeFragment())
+        val navigationBar = findViewById<BottomNavigationView>(R.id.bottom_navigation_main)
+        navigationBar.setOnApplyWindowInsetsListener{ v,insets->
+            val inset1= WindowInsetsCompat.toWindowInsetsCompat(insets).getInsets(WindowInsetsCompat.Type.systemBars())
+            navigationBar.setPadding(0,0,0,inset1.bottom)
+            findViewById<View>(R.id.fr_wreapper).setPadding(0,inset1.top,0,0)
+            insets
         }
+        navigationBar.setupWithNavController((supportFragmentManager.findFragmentById(R.id.fr_wreapper) as NavHostFragment).navController)
 
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
-            ), drawerLayout
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+
+
+
+
+
+
+
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
 
-        return true
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
 }

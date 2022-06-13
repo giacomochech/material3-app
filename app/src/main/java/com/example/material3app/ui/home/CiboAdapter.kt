@@ -2,6 +2,7 @@ package com.example.material3app.ui.home
 
 import android.content.Context
 import android.content.DialogInterface
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.example.material3app.Cibo
 import com.example.material3app.R
 import com.example.material3app.data.Food
 import com.example.material3app.data.FoodViewModel
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.NonDisposableHandle.parent
 import kotlinx.coroutines.delay
@@ -24,13 +26,15 @@ import kotlinx.coroutines.runBlocking
 import java.security.AccessController.getContext
 import java.time.LocalDate
 
-class CiboAdapter(val listaCibo: MutableList<Cibo>) :
+class CiboAdapter() :
     RecyclerView.Adapter<CiboAdapter.CiboViewHolder>() {
-
+    val listaCibo: MutableList<Cibo> = mutableListOf()
     class CiboViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+
         private val nomeTextView : TextView = itemView.findViewById(R.id.NomeCibo)
         private val KCalTextView : TextView = itemView.findViewById(R.id.NumeroCalrie)
         private val deleteButton : Button = itemView.findViewById(R.id.deleteButton)
+        private val card :MaterialCardView = itemView.findViewById(R.id.card_cibo_item)
         private lateinit var mFoodViewModel: FoodViewModel
 
         fun bind(id: Int, nome : String, Kcal : Int){
@@ -42,23 +46,27 @@ class CiboAdapter(val listaCibo: MutableList<Cibo>) :
                 runBlocking { delay(300) }
                 mFoodViewModel.deleteFood(id)
             }
+
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CiboViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.cibo_item,parent,false)
+        val view : View
+
+           view = LayoutInflater.from(parent.context)
+                 .inflate(R.layout.cibo_item,parent,false)
 
 
         return CiboViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: CiboViewHolder, position: Int) {
-
-        holder.bind(listaCibo[position].getId(),listaCibo[position].getName(),listaCibo[position].getKcal());
+            holder.bind(listaCibo[position].getId(),listaCibo[position].getName(),listaCibo[position].getKcal());
     }
 
     override fun getItemCount(): Int {
+
         return listaCibo.size
     }
 
