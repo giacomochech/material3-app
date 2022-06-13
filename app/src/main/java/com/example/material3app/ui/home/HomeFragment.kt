@@ -31,13 +31,11 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
 
-       
-        //TODO() : riempi da database
+
         val fab = root.findViewById<FloatingActionButton>(R.id.floating_action_button)
-        fab.setOnClickListener { view ->
-                var dialog : DialogFragment = AddFragmentDialog()
-            //dialog.get
-            dialog.show(getParentFragmentManager()  ,"ADD DIALOG")
+        fab.setOnClickListener {
+            val dialog : DialogFragment = AddFragmentDialog()
+            dialog.show(parentFragmentManager,"ADD DIALOG")
         }
 
         val viewPager = binding.ViewPager//r.id.text_home
@@ -47,10 +45,7 @@ class HomeFragment : Fragment() {
         return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
-    inner class AdapterViewPager() : FragmentStateAdapter(childFragmentManager,lifecycle){
+    inner class AdapterViewPager : FragmentStateAdapter(childFragmentManager,lifecycle){
         override fun getItemCount(): Int {
           return Int.MAX_VALUE
         }
@@ -61,7 +56,7 @@ class HomeFragment : Fragment() {
 
             return ListaCiboFragment().apply {
                 date=key
-                KcalAssunte=0
+                kCalAssunte=0
             }
         }
 

@@ -25,19 +25,19 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center">
+
             <Button
                 android:id="@+id/data_button"
                 android:layout_width="150dp"
                 android:layout_height="75dp"
                 android:layout_marginTop="20dp"
-                android:text="Data"
-                android:textSize="20dp"
+                android:text="@string/data"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:icon="@drawable/ic_twotone_edit_calendar_24"
                 app:iconSize="25dp"
-                android:textColor="?attr/colorOnPrimary"
                 app:iconTint="?attr/colorOnPrimary"
-                />
+                tools:ignore="TextContrastCheck" />
 
 
                 <TextView
@@ -45,7 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="21/05/2000"
+                    android:text="@string/datePlaceHolder"
                     android:textSize="20sp"
                     android:textStyle="bold"/>
 
@@ -77,15 +77,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Alimento"
-            android:textSize="25dp"
+            android:text="@string/alimento"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/AddNomeCiboTextInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nome"
+                android:hint="@string/nome"
                 android:minHeight="48dp"
                 android:layout_margin="5dp"
                 >
@@ -94,7 +94,8 @@
 
                     android:id="@+id/AddNomeCibo"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    tools:ignore="TextContrastCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -103,7 +104,7 @@
                 android:id="@+id/AddCalorieCiboNomeCiboTextInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Calorie"
+                android:hint="@string/calorie"
                 android:minHeight="48dp"
                 android:layout_margin="5dp">
 
@@ -112,7 +113,8 @@
                     android:id="@+id/AddCalorieCibo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    tools:ignore="TextContrastCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -129,21 +131,22 @@
             android:layout_height="75dp"
             android:layout_marginEnd="20dp"
             android:backgroundTint="?attr/colorTertiaryContainer"
-            android:text="Annulla"
+            android:text="@string/annulla"
             android:textColor="?attr/colorOnSecondaryContainer"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textSize="20sp"
+            android:textStyle="bold"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
                 android:id="@+id/AddConfermaBotton"
                 android:layout_width="135dp"
                 android:layout_height="75dp"
-                android:text="Aggiungi"
-                android:textSize="20dp"
+                android:text="@string/aggiungi"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="?attr/colorOnSecondaryContainer"
                 android:backgroundTint="?attr/colorPrimary"
-                />
+            style="?android:attr/buttonBarButtonStyle" />
         </LinearLayout>
 
 

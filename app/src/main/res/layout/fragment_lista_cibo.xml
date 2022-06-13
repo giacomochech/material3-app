@@ -52,7 +52,7 @@
                             android:id="@+id/giorno_del_mese"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="15"
+                            android:text="@string/_15"
                             android:textSize="50sp"
                             android:textStyle="bold"
                             android:textColor="?android:attr/textColorSecondary"
@@ -63,7 +63,7 @@
                             android:id="@+id/mese"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="maggio"
+                            android:text="@string/maggio"
                             android:textStyle="bold"
                             android:textColor="?android:attr/textColorSecondary"/>
 
@@ -82,7 +82,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Calorie Assunte"
+                        android:text="@string/calorie_assunte"
                         android:textStyle="bold"
                         android:textAppearance="?attr/textAppearanceTitleMedium"
                         android:textColor="?android:attr/textColorSecondary"/>
@@ -90,7 +90,7 @@
                         android:id="@+id/KcalAssunte"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2500"
+                        android:text="@string/_2500"
                         android:textSize="50sp"
                         android:textStyle="bold"
                         android:singleLine="true"

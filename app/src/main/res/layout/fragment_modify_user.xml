@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.user.ModifyUserFragment"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
     android:background="@drawable/dialog_bg">
 
-    <!-- TODO: Update blank fragment layout -->
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
 
         <TextView
             android:id="@+id/TitoloDialogInsert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Inserisci i dati"
+            android:text="@string/inserisci_i_dati"
             android:layout_margin="24dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/TextInputLayoutNomeUtente"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:hint="Nome Utente"
+            android:hint="@string/nome_utente"
             android:minWidth="60dp"
             android:layout_marginBottom="12dp">
 
@@ -35,7 +31,8 @@
                 android:id="@+id/editTextInputNomeUtente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                tools:ignore="TextContrastCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -43,7 +40,7 @@
             android:id="@+id/TextInputMAil"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:hint="e-mail"
+            android:hint="@string/e_mail"
             android:minWidth="60dp"
 >
 
@@ -52,7 +49,8 @@
                 android:id="@+id/editTextInputMail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                tools:ignore="TextContrastCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,22 +65,22 @@
                 style="@style/Widget.Material3.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="canc"
+                android:text="@string/canc"
                 android:textColor="?attr/colorSecondary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/accettoUtenteButton"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
 
             <Button
                 android:id="@+id/accettoUtenteButton"
                 style="@style/Widget.Material3.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ok"
+                android:text="@string/ok"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
-
-</FrameLayout>
+</LinearLayout>

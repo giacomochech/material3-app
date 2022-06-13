@@ -25,6 +25,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:contentDescription="@string/icona_cibo"
                 android:id="@+id/iconCibo"
                 android:layout_width="40dp"
                 android:layout_height="48dp"
@@ -40,7 +41,7 @@
                 android:id="@+id/deleteButton"
                 style="@style/Widget.Material3.Button.TextButton.Icon"
                 android:layout_width="51dp"
-                android:layout_height="39dp"
+                android:layout_height="48dp"
 
                 android:layout_marginEnd="10dp"
                 app:icon="@drawable/ic_twotone_delete_outline_24"
@@ -70,9 +71,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:text="Nome Cibo"
+                    android:text="@string/nome_cibo"
                     android:textColor="?attr/colorOnSecondaryContainer"
-                    android:textSize="25dp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -80,9 +81,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:text="2500 Kcal"
+                    android:text="@string/_2500_kcal"
                     android:textColor="?attr/colorOnSecondaryContainer"
-                    android:textSize="25dp" />
+                    android:textSize="25sp" />
 
 
             </LinearLayout>

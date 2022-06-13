@@ -9,8 +9,39 @@
     <string name="menu_home">Diario</string>
     <string name="menu_gallery">Utente</string>
     <string name="menu_slideshow">Cal. Calorie</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="icona_cibo">icona cibo</string>
+    <string name="nome_cibo">Nome Cibo</string>
+    <string name="_2500_kcal">2500 Kcal</string>
+    <string name="text">text</string>
+    <string name="data">Data</string>
+    <string name="datePlaceHolder">10/07/2020</string>
+    <string name="alimento">Alimento</string>
+    <string name="nome">Nome</string>
+    <string name="calorie">Calorie</string>
+    <string name="aggiungi">Aggiungi</string>
+    <string name="sesso">Sesso</string>
+    <string name="peso">Peso</string>
+    <string name="eta">Età</string>
+    <string name="calcola">Calcola</string>
+    <string name="calorie_obiettivo">Calorie Obiettivo</string>
+    <string name="maschio">Maschio</string>
+    <string name="annulla">Annulla</string>
+    <string name="accetta">Accetta</string>
+    <string name="add">Add</string>
+    <string name="_15">15</string>
+    <string name="maggio">maggio</string>
+    <string name="calorie_assunte">Calorie Assunte</string>
+    <string name="inserisci_i_dati">Inserisci i dati</string>
+    <string name="e_mail">e-mail</string>
+    <string name="canc">canc</string>
+    <string name="ok">OK</string>
+    <string name="_2500">2500</string>
+    <string name="Saluto">Ciao, Nome Utente</string>
+    <string name="titolo_obiettivo">Il tuo obiettivo calorico attuale è di</string>
+    <string name="placeholder_mail">example@gmail.com</string>
+    <string name="nome_utente">Nome Utente</string>
+    <string name="immagine_utente">immagine Utente</string>
 
 
     <string-array name="SelectSex">

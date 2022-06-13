@@ -28,8 +28,8 @@
                 android:layout_width="111dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:text="Sesso"
-                android:textSize="20dp"
+                android:text="@string/sesso"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/menu"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -42,8 +42,8 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="40dp"
-                android:text="Età"
-                android:textSize="20dp"
+                android:text="@string/eta"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/Sesso"
                 app:layout_constraintTop_toBottomOf="@id/Sesso" />
@@ -54,8 +54,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="40dp"
-                android:text="peso"
-                android:textSize="20dp"
+                android:text="@string/peso"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/Sesso"
                 app:layout_constraintTop_toBottomOf="@id/Eta" />
@@ -65,7 +65,7 @@
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Sesso"
+                android:hint="@string/sesso"
                 app:layout_constraintBottom_toBottomOf="@+id/Sesso"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -77,14 +77,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
-                    android:text="Maschio" />
+                    android:text="@string/maschio"
+                    android:hint="@string/sesso"
+                    tools:ignore="TextContrastCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editTextPeso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Peso"
+                android:hint="@string/peso"
                 android:minWidth="70dp"
                 app:layout_constraintBottom_toBottomOf="@+id/Peso"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +97,8 @@
                     android:id="@+id/editTextInputPeso"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,7 +106,7 @@
                 android:id="@+id/EtaTextInput"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Età"
+                android:hint="@string/eta"
                 android:minWidth="60dp"
                 app:layout_constraintBottom_toBottomOf="@+id/Eta"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -115,21 +118,23 @@
                     android:id="@+id/editTextInputEta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/ButtonCalcola"
 
+                style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="100dp"
                 android:layout_height="70dp"
                 android:layout_margin="40dp"
-                android:text="Calcola"
+                android:text="@string/calcola"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextPeso"
-                style="@style/Widget.Material3.Button.ElevatedButton"/>
+                tools:ignore="TextContrastCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -143,7 +148,7 @@
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Calorie Obiettivo"
+        android:hint="@string/calorie_obiettivo"
         android:inputType="number"
         android:minWidth="70dp"
         android:minHeight="48dp"
@@ -152,12 +157,14 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CardCalcolo">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextInputCalorieObiettivo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:inputType="number"
-            android:gravity="center"/>
+            tools:ignore="TextContrastCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -166,29 +173,31 @@
         android:id="@+id/AccettaCalc"
         android:layout_width="135dp"
         android:layout_height="75dp"
-        android:text="Accetta"
-        android:textSize="20dp"
+        android:text="@string/accetta"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/AnnullaCalc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/AnnullaCalc"
         app:layout_constraintTop_toBottomOf="@+id/editTextCalorieObiettivo"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/AnnullaCalc"
         android:layout_width="135dp"
         android:layout_height="75dp"
         android:backgroundTint="?attr/colorTertiaryContainer"
-        android:text="Annulla"
-        android:textSize="20dp"
+        android:text="@string/annulla"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/AccettaCalc"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCalorieObiettivo" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextCalorieObiettivo"
+        tools:ignore="TextContrastCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

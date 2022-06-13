@@ -2,7 +2,6 @@ package com.example.material3app.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.sql.Date
 
 @Entity(tableName = "food_table")
 data class Food(

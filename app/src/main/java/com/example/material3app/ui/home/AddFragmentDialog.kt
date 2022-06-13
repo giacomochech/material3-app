@@ -22,8 +22,6 @@ import com.example.material3app.data.FoodViewModel
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.time.LocalDate
 import java.time.LocalDateTime
-import java.time.LocalDateTime.ofInstant
-import java.time.LocalTime.ofInstant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -31,11 +29,6 @@ import java.util.*
 
 
 class AddFragmentDialog : DialogFragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     private lateinit var mFoodViewModel: FoodViewModel
 
@@ -49,7 +42,7 @@ class AddFragmentDialog : DialogFragment() {
         val dateButton : Button = rootView.findViewById(R.id.data_button)
         val dateTextView : TextView = rootView.findViewById(R.id.dataPiked)
         val nomeCibo : EditText = rootView.findViewById(R.id.AddNomeCibo)
-        val Kcal : EditText = rootView.findViewById(R.id.AddCalorieCibo)
+        val kCal : EditText = rootView.findViewById(R.id.AddCalorieCibo)
         val confirmButton : Button = rootView.findViewById(R.id.AddConfermaBotton)
         val annullaButton : Button = rootView.findViewById(R.id.AddAnnullaBotton)
         var dataPiked = LocalDate.now()
@@ -59,11 +52,11 @@ class AddFragmentDialog : DialogFragment() {
         val datePicker = MaterialDatePicker.Builder.datePicker()
                 .build()
          dateButton.setOnClickListener{
-             datePicker.show(getParentFragmentManager(),"DATE_Piker")
+             datePicker.show(parentFragmentManager,"DATE_Piker")
          }
         datePicker.addOnPositiveButtonClickListener {
             val calendar: Calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
-            datePicker.selection?.let { it1 -> calendar.setTimeInMillis(it1) }
+            datePicker.selection?.let { it1 -> calendar.timeInMillis = it1 }
 
             dataPiked = LocalDateTime.ofInstant(calendar.toInstant(), ZoneId.systemDefault()).toLocalDate()
 
@@ -72,14 +65,14 @@ class AddFragmentDialog : DialogFragment() {
         }
 
 
-        mFoodViewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
+        mFoodViewModel = ViewModelProvider(this)[FoodViewModel::class.java]
         confirmButton.setOnClickListener{
 
-            var alimento : Cibo = Cibo(0, "",0)
+            var alimento = Cibo(0, "",0)
                 try {
-                alimento = Cibo(0,nomeCibo.text.toString(),  Kcal.text.toString().toInt())
+                alimento = Cibo(0,nomeCibo.text.toString(),  kCal.text.toString().toInt())
             } catch (e:  java.lang.NumberFormatException) {
-                alimento = Cibo(0,nomeCibo.text.toString(),  -1)
+                Cibo(0,nomeCibo.text.toString(),  -1)
 
             }
 

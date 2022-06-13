@@ -1,7 +1,7 @@
 package com.example.material3app.data
 
 import androidx.lifecycle.LiveData
-import java.util.concurrent.Executors
+
 
 class FoodRepository(private val foodDao:FoodDao)
 {
@@ -16,7 +16,7 @@ class FoodRepository(private val foodDao:FoodDao)
         foodDao.addFood(food)
     }
 
-    suspend fun delete(id:Int){
+    fun delete(id:Int){
         foodDao.delete(id)
     }
 }

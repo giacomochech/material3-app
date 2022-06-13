@@ -1,5 +1,6 @@
 package com.example.material3app.ui.home
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
@@ -9,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.cardview.widget.CardView
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -20,32 +20,29 @@ import com.example.material3app.data.Food
 import com.example.material3app.data.FoodViewModel
 import com.example.material3app.ui.slideshow.CalcolaFragment
 import com.example.material3app.ui.slideshow.CalcolaFragment.Companion.SHARED_PREF_PAGINA_CALC
+import com.google.android.material.R.color.m3_sys_color_dark_error_container
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-// TODO: Rename parameter arguments, choose names that match
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ListaCiboFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 @RequiresApi(Build.VERSION_CODES.O)
-class ListaCiboFragment() : Fragment() {
-    var KcalAssunte :Int = 0
+class ListaCiboFragment : Fragment() {
+    var kCalAssunte :Int = 0
     lateinit var date : LocalDate
     private lateinit var mFoodViewModel: FoodViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if(savedInstanceState!= null) {
-            KcalAssunte = savedInstanceState.getInt(KCAL_SAVE)
+            kCalAssunte = savedInstanceState.getInt(KCAL_SAVE)
             date = savedInstanceState.getSerializable(DATE_SAVE) as LocalDate
         }
     }
 
 
+    @SuppressLint("PrivateResource", "NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -64,7 +61,7 @@ class ListaCiboFragment() : Fragment() {
         recyclerView.adapter = ciboAdapter
 
 
-        textKcalAssunte.text = KcalAssunte.toString()
+        textKcalAssunte.text = kCalAssunte.toString()
 
         textGiorno.text = date.dayOfMonth.toString()
         textMese.text = date.month.toString()
@@ -74,21 +71,20 @@ class ListaCiboFragment() : Fragment() {
         observe(viewLifecycleOwner, Observer{
             food ->
             val listaCibo = toMutableCibo(food)
-            KcalAssunte=0
+            kCalAssunte=0
             listaCibo.forEach {
-                KcalAssunte += it.getKcal()
+                kCalAssunte += it.getKcal()
             }
 
-            textKcalAssunte.text = KcalAssunte.toString()
+            textKcalAssunte.text = kCalAssunte.toString()
 
             val sharedPref = activity?.getSharedPreferences(SHARED_PREF_PAGINA_CALC,Context.MODE_PRIVATE)
             val obiettivo = sharedPref?.getInt(CalcolaFragment.INT_OBIETTIVO,0)
-           if(KcalAssunte> obiettivo!!){//TODO: Obiettivo
-               // card.setCardBackgroundColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.m3_sys_color_dark_error,null))
-                textKcalAssunte.setTextColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.m3_sys_color_dark_error_container,null))
+           if(kCalAssunte> obiettivo!!){
+                textKcalAssunte.setTextColor(ResourcesCompat.getColor(resources, m3_sys_color_dark_error_container,null))
             }
             else{
-               textKcalAssunte.setTextColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.m3_ref_palette_primary50,null))
+               textKcalAssunte.setTextColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.primary_text_default_material_light,null))
             }
 
             ciboAdapter.listaCibo.clear()
@@ -106,7 +102,7 @@ class ListaCiboFragment() : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt(KCAL_SAVE,KcalAssunte)
+        outState.putInt(KCAL_SAVE,kCalAssunte)
         outState.putSerializable(DATE_SAVE,date)
     }
 

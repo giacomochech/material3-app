@@ -24,10 +24,10 @@ class CalcolaFragment : Fragment() {
 
         val rootView = inflater.inflate(R.layout.fragment_calcola, container, false)
         val editTextEta = rootView.findViewById<TextInputEditText>(R.id.editTextInputEta)
-        var editTextCalObiettivo = rootView.findViewById<TextInputEditText>(R.id.editTextInputCalorieObiettivo)
-        var editTextPeso = rootView.findViewById<TextInputEditText>(R.id.editTextInputPeso)
+        val editTextCalObiettivo = rootView.findViewById<TextInputEditText>(R.id.editTextInputCalorieObiettivo)
+        val editTextPeso = rootView.findViewById<TextInputEditText>(R.id.editTextInputPeso)
         val buttonCalcola = rootView.findViewById<Button>(R.id.ButtonCalcola)
-        dorpDown = rootView.findViewById<AutoCompleteTextView>(R.id.dropdown)
+        dorpDown = rootView.findViewById(R.id.dropdown)
         val aggiungiButton = rootView.findViewById<Button>(R.id.AccettaCalc)
         val annullaButton = rootView.findViewById<Button>(R.id.AnnullaCalc)
 
@@ -47,21 +47,21 @@ class CalcolaFragment : Fragment() {
                 Toast.makeText(requireContext(),"dati Inseriti Parzialmente",Toast.LENGTH_LONG).show()
             }
             else{
-                var isF : Boolean = true
+                var isF = true
                 if(dorpDown.text.toString()==sex[0])
                     isF = false
 
                 val peso   = editTextPeso.text.toString().toInt()
-                val età  = editTextEta.text.toString().toInt()
-                    editTextCalObiettivo.setText(MET(peso,età, isF).toString()) }
+                val eta  = editTextEta.text.toString().toInt()
+                    editTextCalObiettivo.setText(MET(peso,eta, isF).toString()) }
         }
 
 
         aggiungiButton.setOnClickListener {
             if(!editTextCalObiettivo.text.isNullOrBlank()){
             val obiettivo = editTextCalObiettivo.text.toString().toInt()
-                val sharedPref = activity?.getSharedPreferences(SHARED_PREF_PAGINA_CALC,Context.MODE_PRIVATE)
-                val editor = sharedPref?.edit()
+                val sharedPrefCalc = activity?.getSharedPreferences(SHARED_PREF_PAGINA_CALC,Context.MODE_PRIVATE)
+                val editor = sharedPrefCalc?.edit()
                 editor?.apply {
                     putInt(INT_OBIETTIVO,obiettivo)
                 }?.apply()
@@ -71,42 +71,42 @@ class CalcolaFragment : Fragment() {
                 Toast.makeText(requireContext(),"obiettivo non immesso",Toast.LENGTH_LONG).show()
         }
         annullaButton.setOnClickListener {
-            val sharedPref = activity?.getSharedPreferences(SHARED_PREF_PAGINA_CALC,Context.MODE_PRIVATE)
-            sharedPref?.getInt(INT_OBIETTIVO,0)?.let { editTextCalObiettivo.setText(it.toString()) }
+            val sharedPrefCalc = activity?.getSharedPreferences(SHARED_PREF_PAGINA_CALC,Context.MODE_PRIVATE)
+            sharedPrefCalc?.getInt(INT_OBIETTIVO,0)?.let { editTextCalObiettivo.setText(it.toString()) }
             Toast.makeText(requireContext(),"Annullato",Toast.LENGTH_SHORT).show()
         }
 
        return rootView
     }
-    private fun MET(Peso :Int, età : Int, sesso : Boolean): Int {
-    var Met: Double  = 0.00
-    if(sesso) {
-        when(età) {
-            in 3..9 ->Met = (22.5 * Peso) + 499
-            in 10 .. 17 -> Met =(12.2 * Peso) + 746
-            in 18  .. 29  -> Met =(14.7 * Peso) + 496
-            in 30   .. 60   -> Met =(8.7  * Peso) + 829
-            !in 3   .. 60  -> Met =(10.5 * Peso) + 596
-            else -> Met = 0.00
-        }
+    private fun MET(Peso :Int, eta : Int, sesso : Boolean): Int {
+        val met: Double
+        if(sesso) {
+            met = when(eta) {
+                in 3..9 -> (22.5 * Peso) + 499
+                in 10 .. 17 -> (12.2 * Peso) + 746
+                in 18  .. 29  -> (14.7 * Peso) + 496
+                in 30   .. 60   -> (8.7  * Peso) + 829
+                !in 3   .. 60  -> (10.5 * Peso) + 596
+                else -> 0.00
+            }
     }else
-        when(età) {
-            in 3..9 ->Met = (22.7 * Peso) + 495
-            in 10 .. 17 -> Met =(22.7 * Peso) + 651
-            in 18  .. 29  -> Met =(15.3 * Peso) + 679
-            in 30   .. 60   -> Met =(11.6  * Peso) + 879
-            !in 3   .. 60  -> Met =(13.5 * Peso) + 487
-            else -> Met = 0.00
+        met = when(eta) {
+            in 3..9 -> (22.7 * Peso) + 495
+            in 10 .. 17 -> (22.7 * Peso) + 651
+            in 18  .. 29  -> (15.3 * Peso) + 679
+            in 30   .. 60   -> (11.6  * Peso) + 879
+            !in 3   .. 60  -> (13.5 * Peso) + 487
+            else -> 0.00
         }
 
-    return Met.toInt()
+    return met.toInt()
 }
     private fun isInputNull(peso: Editable,eta: Editable):Boolean{
-        return peso.isNullOrBlank()||eta.isNullOrBlank()
+        return peso.isBlank()||eta.isBlank()
 }
     companion object{
-        val SHARED_PREF_PAGINA_CALC = "sharPref"
-        val INT_OBIETTIVO = "sharedObiettivo"
+        const val SHARED_PREF_PAGINA_CALC = "sharPref"
+        const val INT_OBIETTIVO = "sharedObiettivo"
     }
 
     override fun onResume() {
