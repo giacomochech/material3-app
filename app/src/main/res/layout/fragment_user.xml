@@ -26,6 +26,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Saluto"
+        android:backgroundTint="?attr/colorPrimaryContainer"
         style="@style/Widget.Material3.CardView.Outlined"
         >
 
@@ -54,7 +55,7 @@
                     android:id="@+id/imageView"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
-                    tools:src="@drawable/photo"
+                    tools:src="@drawable/avatar"
                     android:backgroundTint="?attr/colorPrimary"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toTopOf="@+id/view"
@@ -127,7 +128,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_2500"
-            android:textSize="24sp"
+            android:textSize="48sp"
             android:textStyle="bold"/>
 
     </LinearLayout>

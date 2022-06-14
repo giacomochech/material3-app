@@ -7,16 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.example.material3app.R
-import com.example.material3app.ui.home.AddFragmentDialog
 import com.example.material3app.ui.slideshow.CalcolaFragment
 import com.google.android.material.card.MaterialCardView
 
 class UserFragment : Fragment() {
     lateinit var titoloTextView : TextView
-    lateinit var NomeUserTextView : TextView
+    private lateinit var nomeUserTextView : TextView
     lateinit var mailUserTextView : TextView
     lateinit var obiettivoAttualeTextView : TextView
 
@@ -29,20 +27,21 @@ class UserFragment : Fragment() {
     ): View {
         val rootView = inflater.inflate(R.layout.fragment_user, container, false)
         val card = rootView.findViewById<MaterialCardView>(R.id.cardUser)
-        obiettivoAttualeTextView = rootView.findViewById<TextView>(R.id.ObiettivoCaloricoAttuale)
+        obiettivoAttualeTextView = rootView.findViewById(R.id.ObiettivoCaloricoAttuale)
         val image = rootView.findViewById<ImageView>(R.id.imageView)
-        image.setImageResource(R.drawable.photo)
-        titoloTextView = rootView.findViewById<TextView>(R.id.Saluto)
-        NomeUserTextView = rootView.findViewById<TextView>(R.id.NomeUtente)
-        mailUserTextView = rootView.findViewById<TextView>(R.id.MailUtente)
+        image.setImageResource(R.drawable.avatar)
+        titoloTextView = rootView.findViewById(R.id.Saluto)
+        nomeUserTextView = rootView.findViewById(R.id.NomeUtente)
+        mailUserTextView = rootView.findViewById(R.id.MailUtente)
 
 
 
         card.setOnClickListener {
             val d = ModifyUserFragment()
             d.callback={nome,email->
-                titoloTextView.text = "Ciao, $nome"
-                NomeUserTextView.text = nome
+                val titolo = "Ciao, $nome"
+                titoloTextView.text = titolo
+                nomeUserTextView.text = nome
                 mailUserTextView.text=email
             }
             d.show(parentFragmentManager,"ADD DIALOG MODIFY USER")
@@ -50,13 +49,18 @@ class UserFragment : Fragment() {
         val sharedPref = activity?.getSharedPreferences(
             CalcolaFragment.SHARED_PREF_PAGINA_CALC,
             Context.MODE_PRIVATE)
-        sharedPref?.getInt(CalcolaFragment.INT_OBIETTIVO,0)?.let { obiettivoAttualeTextView.setText("${it.toString()} KCalorie") }
+        sharedPref?.getInt(CalcolaFragment.INT_OBIETTIVO,0)?.let {
+
+            val s = "$it KCalorie"
+            obiettivoAttualeTextView.text = s
+        }
         val sharedPrefUser = activity?.getSharedPreferences(ModifyUserFragment.SHARED_PREF_USER_DATA,Context.MODE_PRIVATE)
         val stringNomeUser = sharedPrefUser!!.getString(ModifyUserFragment.STRING_NOME_USER,"Name")
-        val mailUser = sharedPrefUser!!.getString(ModifyUserFragment.STRING_MAIL_USER,"example@ex.com")
+        val mailUser = sharedPrefUser.getString(ModifyUserFragment.STRING_MAIL_USER,"example@ex.com")
 
-        titoloTextView.text = "Ciao, $stringNomeUser"
-        NomeUserTextView.text = stringNomeUser
+        val titolo = "Ciao, $stringNomeUser"
+        titoloTextView.text = titolo
+        nomeUserTextView.text = stringNomeUser
         mailUserTextView.text=mailUser
 
 
@@ -71,16 +75,17 @@ class UserFragment : Fragment() {
         val sharedPref = activity?.getSharedPreferences(
             CalcolaFragment.SHARED_PREF_PAGINA_CALC,
             Context.MODE_PRIVATE)
-        sharedPref?.getInt(CalcolaFragment.INT_OBIETTIVO,0)?.let { obiettivoAttualeTextView.setText("${it.toString()} KCalorie") }
+        sharedPref?.getInt(CalcolaFragment.INT_OBIETTIVO,0)?.let { val s =
+            "$it KCalorie"
+            obiettivoAttualeTextView.text = s
+        }
         val sharedPrefUser = activity?.getSharedPreferences(ModifyUserFragment.SHARED_PREF_USER_DATA,Context.MODE_PRIVATE)
         val stringNomeUser = sharedPrefUser!!.getString(ModifyUserFragment.STRING_NOME_USER,"Name")
-        val mailUser = sharedPrefUser!!.getString(ModifyUserFragment.STRING_MAIL_USER,"example@ex.com")
+        val mailUser = sharedPrefUser.getString(ModifyUserFragment.STRING_MAIL_USER,"example@ex.com")
 
-        titoloTextView.text = "Ciao, $stringNomeUser"
-        NomeUserTextView.text = stringNomeUser
+        val s = "Ciao, $stringNomeUser"
+        titoloTextView.text = s
+        nomeUserTextView.text = stringNomeUser
         mailUserTextView.text=mailUser
-    }
-    override fun onDestroyView() {
-        super.onDestroyView()
     }
 }
