@@ -199,5 +199,4 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextCalorieObiettivo"
         tools:ignore="TextContrastCheck" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

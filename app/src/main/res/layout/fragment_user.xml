@@ -26,7 +26,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Saluto"
-        android:backgroundTint="?attr/colorPrimaryContainer"
+        android:backgroundTint="?attr/colorSecondaryContainer"
         style="@style/Widget.Material3.CardView.Outlined"
         >
 
@@ -132,6 +132,5 @@
             android:textStyle="bold"/>
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
