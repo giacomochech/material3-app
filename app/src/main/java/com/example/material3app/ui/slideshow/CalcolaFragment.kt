@@ -53,7 +53,7 @@ class CalcolaFragment : Fragment() {
 
                 val peso   = editTextPeso.text.toString().toInt()
                 val eta  = editTextEta.text.toString().toInt()
-                    editTextCalObiettivo.setText(MET(peso,eta, isF).toString()) }
+                    editTextCalObiettivo.setText(met(peso,eta, isF).toString()) }
         }
 
 
@@ -78,7 +78,7 @@ class CalcolaFragment : Fragment() {
 
        return rootView
     }
-    private fun MET(Peso :Int, eta : Int, sesso : Boolean): Int {
+    private fun met(Peso :Int, eta : Int, sesso : Boolean): Int {
         val met: Double
         if(sesso) {
             met = when(eta) {

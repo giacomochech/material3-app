@@ -1,3 +1,5 @@
+@file:Suppress("RedundantSamConstructor")
+
 package com.example.material3app.ui.home
 
 import android.annotation.SuppressLint
