@@ -66,7 +66,7 @@ class ListaCiboFragment : Fragment() {
         textGiorno.text = date.dayOfMonth.toString()
         textMese.text = date.month.toString()
 
-        mFoodViewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
+        mFoodViewModel = ViewModelProvider(this)[FoodViewModel::class.java]
         mFoodViewModel.readFoodInSpecifiedDay(date.format(DateTimeFormatter.ISO_DATE)).
         observe(viewLifecycleOwner, Observer{
             food ->
@@ -106,7 +106,7 @@ class ListaCiboFragment : Fragment() {
         outState.putSerializable(DATE_SAVE,date)
     }
 
-    fun toMutableCibo(food: List<Food>) : MutableList<Cibo>{
+    private fun toMutableCibo(food: List<Food>) : MutableList<Cibo>{
         //List<Food> ---> MutableList<Cibo>
         val ret = mutableListOf<Cibo>()
         val it: ListIterator<Food> = food.listIterator()

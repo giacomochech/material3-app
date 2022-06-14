@@ -15,7 +15,7 @@ class CalcolaFragment : Fragment() {
 
 
 
-    lateinit var dorpDown : AutoCompleteTextView
+    private lateinit var dorpDown : AutoCompleteTextView
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

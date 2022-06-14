@@ -32,7 +32,7 @@ class CiboAdapter :
             nomeTextView.text = nome
             kCalTextView.text = Kcal.toString()
             deleteButton.setOnClickListener {
-                mFoodViewModel = ViewModelProvider(itemView.context as ViewModelStoreOwner).get(FoodViewModel::class.java)
+                mFoodViewModel = ViewModelProvider(itemView.context as ViewModelStoreOwner)[FoodViewModel::class.java]
                 runBlocking { delay(200) }
                 mFoodViewModel.deleteFood(id)
             }

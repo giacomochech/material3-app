@@ -13,10 +13,10 @@ import com.example.material3app.ui.slideshow.CalcolaFragment
 import com.google.android.material.card.MaterialCardView
 
 class UserFragment : Fragment() {
-    lateinit var titoloTextView : TextView
+    private lateinit var titoloTextView : TextView
     private lateinit var nomeUserTextView : TextView
-    lateinit var mailUserTextView : TextView
-    lateinit var obiettivoAttualeTextView : TextView
+    private lateinit var mailUserTextView : TextView
+    private lateinit var obiettivoAttualeTextView : TextView
 
 
 
