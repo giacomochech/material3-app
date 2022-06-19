@@ -7,11 +7,10 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="12dp"
-        android:layout_margin="10dp"
-        android:clickable="true"
-        app:cardElevation="7dp">
+        android:layout_margin="8dp"
+        android:clickable="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,24 +19,39 @@
 
             <ImageView
                 android:id="@+id/cover"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="194dp"
                 android:adjustViewBounds="true"
-                android:scaleType="centerInside"
+                android:scaleType="centerCrop"
+
                 android:contentDescription="@string/cover"
                 android:src="@drawable/fagiolata" />
-
-            <TextView
-                android:id="@+id/nomeRicetta"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/nameplaceholder"
-                android:textSize="15sp"
-                android:lines="2"
-                android:textStyle="bold"/>
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView
+                    android:id="@+id/nomeRicetta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nameplaceholder"
+                    android:textAppearance="?attr/textAppearanceTitleLarge"
+                    android:textStyle="bold"/>
 
 
-       </LinearLayout>
+                <TextView
+                    android:id="@+id/kcalRicetta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/_400_kcal"
+                    android:lines="2"
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
+                    android:textColor="?android:attr/textColorSecondary"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
