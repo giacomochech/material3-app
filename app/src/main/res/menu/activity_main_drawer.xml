@@ -11,17 +11,11 @@
 
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_calc"
             android:enabled="true"
 
             android:icon="@drawable/calc_selected"
             android:title="@string/menu_slideshow" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:enabled="true"
-
-            android:icon="@drawable/user_selected"
-            android:title="@string/menu_gallery" />
 
         <item
             android:id="@+id/nav_recipes"
@@ -29,5 +23,15 @@
 
             android:icon="@drawable/user_selected"
             android:title="@string/ricettario" />
+
+
+        <item
+            android:id="@+id/nav_user"
+            android:enabled="true"
+
+            android:icon="@drawable/user_selected"
+            android:title="@string/menu_gallery" />
+
+
 
 </menu>
