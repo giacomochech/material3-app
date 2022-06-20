@@ -70,6 +70,7 @@ class ListaCiboFragment : Fragment() {
 
         mFoodViewModel = ViewModelProvider(this)[FoodViewModel::class.java]
         mFoodViewModel.readFoodInSpecifiedDay(date.format(DateTimeFormatter.ISO_DATE)).
+
         observe(viewLifecycleOwner, Observer{
             food ->
             val listaCibo = toMutableCibo(food)

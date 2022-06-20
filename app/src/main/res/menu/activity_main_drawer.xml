@@ -17,6 +17,12 @@
             android:icon="@drawable/calc_selected"
             android:title="@string/menu_slideshow" />
         <item
+            android:id="@+id/nav_fragment_grafici"
+            android:enabled="true"
+
+            android:icon="@drawable/grafici_selected"
+            android:title="@string/nav_grafici" />
+        <item
             android:id="@+id/nav_gallery"
             android:enabled="true"
 

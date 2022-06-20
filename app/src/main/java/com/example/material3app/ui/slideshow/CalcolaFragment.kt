@@ -35,7 +35,7 @@ class CalcolaFragment : Fragment() {
         sharedPref?.getInt(INT_OBIETTIVO,0)?.let { editTextCalObiettivo.setText(it.toString()) }
 
         val sex = resources.getStringArray(R.array.SelectSex)
-        val ad =ArrayAdapter.createFromResource(requireContext(),R.array.SelectSex,R.layout.dropdown_sesso_item)
+        val ad =ArrayAdapter(requireContext(),R.layout.dropdown_sesso_item,sex)
         dorpDown.setAdapter(ad)
 
         buttonCalcola.setOnClickListener {

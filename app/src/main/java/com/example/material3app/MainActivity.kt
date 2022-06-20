@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         window.navigationBarColor= Color.TRANSPARENT
 
         val navigationBar = findViewById<BottomNavigationView>(R.id.bottom_navigation_main)
-        navigationBar.setOnApplyWindowInsetsListener{ _,insets->
+        navigationBar.setOnApplyWindowInsetsListener{ _,insets->//nascondere la status bar e navigationBar
             val inset1= WindowInsetsCompat.toWindowInsetsCompat(insets).getInsets(WindowInsetsCompat.Type.systemBars())
             navigationBar.setPadding(0,0,0,inset1.bottom)
             findViewById<View>(R.id.fr_wreapper).setPadding(0,inset1.top,0,0)
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        navigationBar.setupWithNavController((supportFragmentManager.findFragmentById(R.id.fr_wreapper) as NavHostFragment).navController)
+        navigationBar.setupWithNavController((supportFragmentManager.findFragmentById(R.id.fr_wreapper) as NavHostFragment).navController)//gestisce Fr wrapper
 
 
 

@@ -42,6 +42,7 @@
     <string name="placeholder_mail">example@gmail.com</string>
     <string name="nome_utente">Nome Utente</string>
     <string name="immagine_utente">immagine Utente</string>
+    <string name="nav_grafici">Dati</string>
 
 
     <string-array name="SelectSex">

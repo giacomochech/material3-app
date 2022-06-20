@@ -38,8 +38,9 @@ android {
     buildFeatures {
         viewBinding true
     }
+
 }
-repositories {}
+
 dependencies {
 
     //noinspection GradleDependency
@@ -64,4 +65,6 @@ dependencies {
     kapt "androidx.room:room-compiler:2.4.2"
     implementation "androidx.room:room-ktx:2.4.2"
     androidTestImplementation "androidx.room:room-testing:2.4.2"
+    // MPAndroidChart components
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }
