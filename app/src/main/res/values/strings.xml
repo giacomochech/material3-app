@@ -42,7 +42,12 @@
     <string name="placeholder_mail">example@gmail.com</string>
     <string name="nome_utente">Nome Utente</string>
     <string name="immagine_utente">immagine Utente</string>
-    <string name="nav_grafici">Dati</string>
+    <string name="cover">Cover</string>
+    <string name="author_placeholder">Author PlaceHolder</string>
+    <string name="nameplaceholder">NamePlaceholder</string>
+    <string name="desc_placeholder">Description Placeholder</string>
+    <string name="_400_kcal">400 kcal</string>
+    <string name="ricettario">Ricettario</string>
 
 
     <string-array name="SelectSex">

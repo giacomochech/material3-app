@@ -5,18 +5,20 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Dao
+import com.example.material3app.Cibo
 
 @Dao
 interface FoodDao
 {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addFood(food:Food)
+
+    suspend fun addFood(food: Cibo)
 
     @Query("SELECT * FROM food_table ORDER BY id ASC")
-    fun readAllData(): LiveData<List<Food>>
+    fun readAllData(): LiveData<List<Cibo>>
 
     @Query("SELECT * FROM food_table WHERE date = :date ")
-    fun readFoodInSpecifiedDay(date: String): LiveData<List<Food>>
+    fun readFoodInSpecifiedDay(date: String): LiveData<List<Cibo>>
 
     @Query("DELETE FROM food_table WHERE id = :id")
     fun delete(id:Int)
