@@ -67,7 +67,7 @@ class AddFragmentDialog : DialogFragment() {
         mFoodViewModel = ViewModelProvider(this)[FoodViewModel::class.java]
         confirmButton.setOnClickListener{
 
-            var alimento = Cibo(0, "", "",0)
+            var alimento = Cibo(0, "", "",-1)
                 try {
                 alimento = Cibo(0,dataPiked.format(DateTimeFormatter.ISO_DATE), nomeCibo.text.toString(),  kCal.text.toString().toInt())
             } catch (e:  java.lang.NumberFormatException) {
@@ -76,7 +76,7 @@ class AddFragmentDialog : DialogFragment() {
             }
 
 
-            insertDataToDatabase(alimento,dataPiked)
+            insertDataToDatabase(alimento)
 
             dismiss()
         }
@@ -86,20 +86,21 @@ class AddFragmentDialog : DialogFragment() {
         return rootView
     }
 
-    //TODO: Pulisci codice
+
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun insertDataToDatabase(alimento: Cibo, data: LocalDate){ //TODO: Possibile eliminazione variabile data
+    private fun insertDataToDatabase(alimento: Cibo){
 
         val nome = alimento.getName()
         val kcal = alimento.getKcal()
-        val date = data.format(DateTimeFormatter.ISO_DATE) //TODO: Variabile ridondande oggetto Cibo
+        val date = alimento.getDate()
+
 
         if(inputCheck(alimento,date)){
-            val food = Cibo(0,date,nome,kcal) //TODO: Variab ridodnd ragiona id probabile unico, probabile già presente in alimento
+            val food = Cibo(0,date,nome,kcal)
 
             mFoodViewModel.addFood(food)
             Toast.makeText(requireContext(),"Dati inseriti correttamente", Toast.LENGTH_LONG).show()
-            // Navigate Back
+
         }
         else{
             Toast.makeText(requireContext(), "Dati non inseriti", Toast.LENGTH_SHORT).show()
