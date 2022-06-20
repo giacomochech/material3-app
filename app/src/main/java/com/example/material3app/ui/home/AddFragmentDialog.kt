@@ -17,7 +17,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.material3app.Cibo
 import com.example.material3app.R
-import com.example.material3app.data.Food
 import com.example.material3app.data.FoodViewModel
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.time.LocalDate
@@ -68,16 +67,16 @@ class AddFragmentDialog : DialogFragment() {
         mFoodViewModel = ViewModelProvider(this)[FoodViewModel::class.java]
         confirmButton.setOnClickListener{
 
-            var alimento = Cibo(0, "",0)
+            var alimento = Cibo(0, "", "",-1)
                 try {
-                alimento = Cibo(0,nomeCibo.text.toString(),  kCal.text.toString().toInt())
+                alimento = Cibo(0,dataPiked.format(DateTimeFormatter.ISO_DATE), nomeCibo.text.toString(),  kCal.text.toString().toInt())
             } catch (e:  java.lang.NumberFormatException) {
-                Cibo(0,nomeCibo.text.toString(),  -1)
+                Cibo(0,dataPiked.format(DateTimeFormatter.ISO_DATE), nomeCibo.text.toString(), -1)
 
             }
 
 
-            insertDataToDatabase(alimento,dataPiked)
+            insertDataToDatabase(alimento)
 
             dismiss()
         }
@@ -87,19 +86,21 @@ class AddFragmentDialog : DialogFragment() {
         return rootView
     }
 
+
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun insertDataToDatabase(alimento: Cibo, data: LocalDate){
+    private fun insertDataToDatabase(alimento: Cibo){
 
         val nome = alimento.getName()
         val kcal = alimento.getKcal()
-        val date = data.format(DateTimeFormatter.ISO_DATE)
+        val date = alimento.getDate()
+
 
         if(inputCheck(alimento,date)){
-            val food = Food(0,date,nome,kcal)
+            val food = Cibo(0,date,nome,kcal)
 
             mFoodViewModel.addFood(food)
             Toast.makeText(requireContext(),"Dati inseriti correttamente", Toast.LENGTH_LONG).show()
-            // Navigate Back
+
         }
         else{
             Toast.makeText(requireContext(), "Dati non inseriti", Toast.LENGTH_SHORT).show()

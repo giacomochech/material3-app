@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
         navigationBar.setupWithNavController((supportFragmentManager.findFragmentById(R.id.fr_wreapper) as NavHostFragment).navController)
 
 

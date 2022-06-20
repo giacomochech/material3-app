@@ -1,5 +1,6 @@
 package com.example.material3app.ui.recipes
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.material3app.R
+import com.example.material3app.RICETTA_ID_EXTRA
 import com.example.material3app.Ricetta
 import com.example.material3app.databinding.ActivityMainBinding
 
-class ListaRicettaFragment : Fragment() {
+class ListaRicettaFragment : Fragment(), RicettaClickListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -50,6 +52,7 @@ class ListaRicettaFragment : Fragment() {
         //TODO(Prendi da database)
 
         val ricetta1 = Ricetta(
+            1,
             R.drawable.fagiolata,
             "Fagiolata",
             350,
@@ -59,6 +62,7 @@ class ListaRicettaFragment : Fragment() {
         recipes.add(ricetta1)
 
         val ricetta2 = Ricetta(
+            2,
             R.drawable.ravioli,
             "Ravioli",
             800,
@@ -68,6 +72,7 @@ class ListaRicettaFragment : Fragment() {
         recipes.add(ricetta2)
 
         val ricetta3 = Ricetta(
+            3,
             R.drawable.cassatina,
             "Cassatina",
             400,
@@ -76,5 +81,11 @@ class ListaRicettaFragment : Fragment() {
         )
         recipes.add(ricetta3)
 
+    }
+
+    override fun onClick(recipe: Ricetta) {
+
+        val intent = Intent(activity,RicettaDetail::class.java)
+        intent.putExtra(RICETTA_ID_EXTRA,recipe.id)
     }
 }

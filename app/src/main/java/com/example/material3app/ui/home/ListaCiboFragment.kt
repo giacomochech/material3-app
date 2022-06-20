@@ -16,9 +16,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.example.material3app.Cibo
 import com.example.material3app.R
-import com.example.material3app.data.Food
 import com.example.material3app.data.FoodViewModel
 import com.example.material3app.ui.slideshow.CalcolaFragment
 import com.example.material3app.ui.slideshow.CalcolaFragment.Companion.SHARED_PREF_PAGINA_CALC
@@ -72,7 +70,7 @@ class ListaCiboFragment : Fragment() {
         mFoodViewModel.readFoodInSpecifiedDay(date.format(DateTimeFormatter.ISO_DATE)).
         observe(viewLifecycleOwner, Observer{
             food ->
-            val listaCibo = toMutableCibo(food)
+            val listaCibo = food
             kCalAssunte=0
             listaCibo.forEach {
                 kCalAssunte += it.getKcal()
@@ -108,19 +106,6 @@ class ListaCiboFragment : Fragment() {
         outState.putSerializable(DATE_SAVE,date)
     }
 
-    private fun toMutableCibo(food: List<Food>) : MutableList<Cibo>{
-        //List<Food> ---> MutableList<Cibo>
-        val ret = mutableListOf<Cibo>()
-        val it: ListIterator<Food> = food.listIterator()
-
-        while (it.hasNext()) {
-            val e = it.next()
-            val c = Cibo(e.id, /*LocalDate.parse(e.date),*/e.nome,e.calorie)
-            ret.add(c)
-        }
-
-        return ret
-    }
 
 companion object {
     const val KCAL_SAVE = "KCal"
