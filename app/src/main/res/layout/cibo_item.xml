@@ -39,7 +39,7 @@
 
             <Button
                 android:id="@+id/deleteButton"
-                style="@style/Widget.Material3.Button.TextButton.Icon"
+                style="@style/Widget.App.Button.OutlinedButton.IconOnly"
                 android:layout_width="51dp"
                 android:layout_height="48dp"
 
