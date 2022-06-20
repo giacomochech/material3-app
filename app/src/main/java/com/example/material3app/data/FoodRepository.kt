@@ -1,18 +1,19 @@
 package com.example.material3app.data
 
 import androidx.lifecycle.LiveData
+import com.example.material3app.Cibo
 
 
 class FoodRepository(private val foodDao:FoodDao)
 {
-    val readAllData: LiveData<List<Food>> = foodDao.readAllData()
+    val readAllData: LiveData<List<Cibo>> = foodDao.readAllData()
 
 
-     fun readFoodInSpecifiedDay(date : String) : LiveData<List<Food>>{
+     fun readFoodInSpecifiedDay(date : String) : LiveData<List<Cibo>>{
         return foodDao.readFoodInSpecifiedDay(date)
     }
 
-    suspend fun addFood(food : Food){
+    suspend fun addFood(food : Cibo){
         foodDao.addFood(food)
     }
 

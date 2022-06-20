@@ -17,7 +17,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.material3app.Cibo
 import com.example.material3app.R
-import com.example.material3app.data.Food
 import com.example.material3app.data.FoodViewModel
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.time.LocalDate
@@ -68,11 +67,11 @@ class AddFragmentDialog : DialogFragment() {
         mFoodViewModel = ViewModelProvider(this)[FoodViewModel::class.java]
         confirmButton.setOnClickListener{
 
-            var alimento = Cibo(0, "",0)
+            var alimento = Cibo(0, "", "",0)
                 try {
-                alimento = Cibo(0,nomeCibo.text.toString(),  kCal.text.toString().toInt())
+                alimento = Cibo(0,dataPiked.format(DateTimeFormatter.ISO_DATE), nomeCibo.text.toString(),  kCal.text.toString().toInt())
             } catch (e:  java.lang.NumberFormatException) {
-                Cibo(0,nomeCibo.text.toString(),  -1)
+                Cibo(0,dataPiked.format(DateTimeFormatter.ISO_DATE), nomeCibo.text.toString(), -1)
 
             }
 
@@ -87,15 +86,16 @@ class AddFragmentDialog : DialogFragment() {
         return rootView
     }
 
+    //TODO: Pulisci codice
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun insertDataToDatabase(alimento: Cibo, data: LocalDate){
+    private fun insertDataToDatabase(alimento: Cibo, data: LocalDate){ //TODO: Possibile eliminazione variabile data
 
         val nome = alimento.getName()
         val kcal = alimento.getKcal()
-        val date = data.format(DateTimeFormatter.ISO_DATE)
+        val date = data.format(DateTimeFormatter.ISO_DATE) //TODO: Variabile ridondande oggetto Cibo
 
         if(inputCheck(alimento,date)){
-            val food = Food(0,date,nome,kcal)
+            val food = Cibo(0,date,nome,kcal) //TODO: Variab ridodnd ragiona id probabile unico, probabile già presente in alimento
 
             mFoodViewModel.addFood(food)
             Toast.makeText(requireContext(),"Dati inseriti correttamente", Toast.LENGTH_LONG).show()

@@ -4,12 +4,13 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.material3app.Cibo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class FoodViewModel(application: Application): AndroidViewModel(application)
 {
-    private val readAllData:LiveData<List<Food>>
+    private val readAllData:LiveData<List<Cibo>>
 
     private val repository: FoodRepository
 
@@ -20,13 +21,13 @@ class FoodViewModel(application: Application): AndroidViewModel(application)
 
     }
 
-    fun addFood(food: Food){
+    fun addFood(food: Cibo){
         viewModelScope.launch(Dispatchers.IO){
             repository.addFood(food)
         }
     }
 
-    fun readFoodInSpecifiedDay(date : String) : LiveData<List<Food>>{
+    fun readFoodInSpecifiedDay(date : String) : LiveData<List<Cibo>>{
         return repository.readFoodInSpecifiedDay(date)
     }
 
