@@ -5,19 +5,29 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.material3app.R
 import com.example.material3app.Ricetta
 
 
-class RicettaAdapter
+class RicettaAdapter(
+    private val clickListener: RicettaClickListener
+)
     : RecyclerView.Adapter<RicettaAdapter.RicettaViewHolder>() {
     val recipeList: MutableList<Ricetta> = mutableListOf()
-    class RicettaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+
+    class RicettaViewHolder(
+        itemView: View,
+        val clickListener: RicettaClickListener
+    ) : RecyclerView.ViewHolder(itemView)
+    {
 
         private val coverImageView: ImageView = itemView.findViewById(R.id.cover)
         private val nomeTextView: TextView = itemView.findViewById(R.id.nomeRicetta)
         private val kcalTextView: TextView = itemView.findViewById(R.id.kcalRicetta)
+        private val ricettaCardView: CardView = itemView.findViewById(R.id.cardView)
 
         //Viewmodel DB
 
@@ -26,6 +36,9 @@ class RicettaAdapter
             coverImageView.setImageResource(ricetta.cover)
             nomeTextView.text = ricetta.nome
             kcalTextView.text = ricetta.kcal.toString()
+            ricettaCardView.setOnClickListener{
+                clickListener.onClick(ricetta)
+            }
 
         }
 
@@ -36,7 +49,7 @@ class RicettaAdapter
             .inflate(R.layout.ricetta_item,parent,false)
 
 
-        return RicettaViewHolder(view)
+        return RicettaViewHolder(view, clickListener)
     }
 
     override fun onBindViewHolder(holder: RicettaViewHolder, position: Int) {

@@ -37,7 +37,7 @@ class ListaRicettaFragment : Fragment(), RicettaClickListener {
         val recyclerView : RecyclerView = view.findViewById(R.id.recyclerView)
 
 
-        val ricettaAdapter = RicettaAdapter()
+        val ricettaAdapter = RicettaAdapter(this)
         recyclerView.adapter = ricettaAdapter
         populateBooks(ricettaAdapter.recipeList)
 
