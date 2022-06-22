@@ -12,11 +12,12 @@
     android:gravity="center_horizontal"
     app:shapeAppearanceOverlay= "?attr/shapeAppearanceMediumComponent"
     android:background="@drawable/dialog_bg"
+    android:padding="24dp"
     >
 
     <TextView
         android:id="@+id/titoloFrag"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:text="@string/inserisci_la_tua_ricetta"
         android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
@@ -43,7 +44,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:hint="@string/kcal"
-        android:minHeight="48dp"
         android:layout_margin="5dp"
         >
         <com.google.android.material.textfield.TextInputEditText
@@ -101,29 +101,31 @@
                 android:id="@+id/addDesc"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
+                android:maxLines="15"
                 tools:ignore="TextContrastCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/annullaButton"
-            android:layout_width="146dp"
-            android:layout_height="53dp"
-            android:layout_marginEnd="32dp"
-            android:text="@string/annulla" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:text="@string/annulla"
+            android:padding="8dp"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
         android:id="@+id/salvaButton"
-        android:layout_width="146dp"
-        android:layout_height="53dp"
-
-        android:text="@string/salva" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/salva"
+            style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 
 </LinearLayout>

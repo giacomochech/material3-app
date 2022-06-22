@@ -64,7 +64,8 @@ class RicettaAdapter(
 
                 val dialog : DialogFragment = AddRicettaDialog()
                 val args = Bundle()
-                args.putInt("id",ricetta.id)
+                val idRicetta = ricetta.id
+                args.putInt("id",idRicetta)
                 dialog.arguments = args
                 dialog.show((itemView.context as FragmentActivity).getSupportFragmentManager(),"ADD DIALOG")
 

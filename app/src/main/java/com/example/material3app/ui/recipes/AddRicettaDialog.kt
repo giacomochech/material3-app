@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.material3app.R
 import com.example.material3app.Ricetta
 import com.example.material3app.data.FoodViewModel
+import com.google.android.material.textfield.TextInputEditText
 
 
 class AddRicettaDialog: DialogFragment() {
@@ -32,19 +33,19 @@ class AddRicettaDialog: DialogFragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_addricetta_dialog, container, false)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        val id = getArguments()?.getInt("num")
+        val id = getArguments()?.getInt("id")
 
 
 
-        val imageButtonView : Button = rootView.findViewById(R.id.image_button)
+        val imageButtonView : Button = rootView.findViewById(R.id.image_button) //TODO:Controlla se va bene EditText
 
-        val nomeRicettaView : EditText = rootView.findViewById(R.id.addNomeRicetta)
+        val nomeRicettaView : TextInputEditText = rootView.findViewById(R.id.addNomeRicetta)
 
-        val kcalRicettaView : EditText = rootView.findViewById(R.id.addKcal)
+        val kcalRicettaView : TextInputEditText  = rootView.findViewById(R.id.addKcal)
 
-        val ingredientiView : EditText = rootView.findViewById(R.id.addIng)
+        val ingredientiView : TextInputEditText = rootView.findViewById(R.id.addIng)
 
-        val descrizioneView : EditText = rootView.findViewById(R.id.addDesc)
+        val descrizioneView : TextInputEditText  = rootView.findViewById(R.id.addDesc)
 
 
 
@@ -53,13 +54,19 @@ class AddRicettaDialog: DialogFragment() {
 
         var imageBitmap  = BitmapFactory.decodeResource(resources, R.drawable.default2)
 
+        mFoodViewModel = ViewModelProvider(this)[FoodViewModel::class.java]
+
         if(id != 0 && id != null){
             mFoodViewModel.selectRicettabyId(id).observe(viewLifecycleOwner, Observer {
 
                 ricetta->
 
                 imageBitmap = ricetta.cover
-                //nomeRicettaView.setT
+                nomeRicettaView.setText(ricetta.nome)
+                kcalRicettaView.setText(ricetta.kcal.toString())
+                ingredientiView.setText(ricetta.ingredienti)
+                descrizioneView.setText(ricetta.descrizione)
+
             })
 
 
@@ -84,7 +91,7 @@ class AddRicettaDialog: DialogFragment() {
 
 
             insertDataToDatabase(ricetta)
-
+            if(id != 0 && id != null) mFoodViewModel.deleteRicetta(id)
             dismiss()
         }
         annullaButton.setOnClickListener {
