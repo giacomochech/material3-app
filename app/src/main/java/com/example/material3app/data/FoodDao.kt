@@ -1,10 +1,7 @@
 package com.example.material3app.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Dao
+import androidx.room.*
 import com.example.material3app.Cibo
 
 @Dao
@@ -22,5 +19,8 @@ interface FoodDao
 
     @Query("DELETE FROM food_table WHERE id = :id")
     fun delete(id:Int)
+
+    @Query("SELECT date as giorno, SUM(Kcal) as somma FROM food_table GROUP BY date")
+    suspend fun readDaySumCal(): List<GionoSommaCal>
 
 }

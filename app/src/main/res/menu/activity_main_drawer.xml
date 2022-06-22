@@ -23,7 +23,12 @@
 
             android:icon="@drawable/user_selected"
             android:title="@string/ricettario" />
+        <item
+            android:id="@+id/nav_fragment_grafici"
+            android:enabled="true"
 
+            android:icon="@drawable/grafici_selected"
+            android:title="@string/nav_grafici" />
 
         <item
             android:id="@+id/nav_user"

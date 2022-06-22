@@ -35,7 +35,7 @@
     <string name="inserisci_i_dati">Inserisci i dati</string>
     <string name="e_mail">e-mail</string>
     <string name="canc">canc</string>
-    <string name="ok">OK</string>
+    <string name="ok">ok</string>
     <string name="_2500">2500</string>
     <string name="Saluto">Ciao, Nome Utente</string>
     <string name="titolo_obiettivo">Il tuo obiettivo calorico attuale è di</string>
@@ -48,6 +48,8 @@
     <string name="desc_placeholder">Description Placeholder</string>
     <string name="_400_kcal">400 kcal</string>
     <string name="ricettario">Ricettario</string>
+    <string name="title">Seleziona Data</string>
+    <string name="nav_grafici">Grafici</string>
 
 
     <string-array name="SelectSex">

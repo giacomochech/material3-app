@@ -26,6 +26,7 @@
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/dialog_bg.xml" value="0.5475" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/grafici_selected.xml" value="0.4055" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_baseline_calculate_24.xml" value="0.3105" />
+        <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.4055" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_baseline_fastfood_24.xml" value="0.3255" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.3105" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_baseline_perm_identity_24.xml" value="0.3105" />
@@ -53,16 +54,19 @@
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/cibo_item.xml" value="0.31354166666666666" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/cibo_null_item.xml" value="0.3958333333333333" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/content_main.xml" value="0.22" />
+        <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/dialog_date_year.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/dorpdown_sesso_item.xml" value="0.39895833333333336" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/dropdown_sesso_item.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_add.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_add_dialog.xml" value="0.33" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_blank.xml" value="0.5497435897435897" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_calcola.xml" value="0.25" />
+        <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_dialog_date_year.xml" value="0.40625" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_gallery.xml" value="0.33" />
-        <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_grafici_mensili.xml" value="0.40625" />
+        <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_grafici_mensili.xml" value="0.33" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_home.xml" value="0.5" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_lista_cibo.xml" value="0.25" />
+        <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_lista_ricette.xml" value="0.3385416666666667" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_modify_user.xml" value="0.1" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_slideshow.xml" value="0.33" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/layout/fragment_user.xml" value="0.1" />

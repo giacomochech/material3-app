@@ -23,6 +23,7 @@
         android:name="com.example.material3app.ui.slideshow.CalcolaFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_calcola" />
+
     <fragment
         android:id="@+id/nav_fragment_grafici"
         android:name="com.example.material3app.ui.graph.GraficiMensiliFragment"
