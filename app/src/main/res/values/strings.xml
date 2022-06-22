@@ -48,6 +48,15 @@
     <string name="desc_placeholder">Description Placeholder</string>
     <string name="_400_kcal">400 kcal</string>
     <string name="ricettario">Ricettario</string>
+    <string name="inserisci_la_tua_ricetta">Inserisci la tua Ricetta</string>
+    <string name="kcal">KCal</string>
+    <string name="immagine">Immagine:</string>
+    <string name="ingredienti">Ingredienti</string>
+    <string name="seleziona">Seleziona</string>
+    <string name="descrizione">Descrizione</string>
+    <string name="annulla">Annulla</string>
+    <string name="salva">Salva</string>
+    <string name="nome_ricetta">Nome ricetta</string>
 
 
     <string-array name="SelectSex">

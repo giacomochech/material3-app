@@ -5,19 +5,22 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.material3app.Cibo
+import com.example.material3app.Ricetta
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class FoodViewModel(application: Application): AndroidViewModel(application)
 {
-    private val readAllData:LiveData<List<Cibo>>
+    private val readAllCibo:LiveData<List<Cibo>>
+
 
     private val repository: FoodRepository
 
     init {
         val foodDao = FoodDatabase.getDatabase(application).foodDao()
         repository = FoodRepository(foodDao)
-        readAllData = repository.readAllData
+        readAllCibo = repository.readAllCibo
+
 
     }
 
@@ -27,14 +30,35 @@ class FoodViewModel(application: Application): AndroidViewModel(application)
         }
     }
 
+    fun deleteFood(id: Int){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteCibo(id)
+        }
+    }
+
     fun readFoodInSpecifiedDay(date : String) : LiveData<List<Cibo>>{
         return repository.readFoodInSpecifiedDay(date)
     }
 
-    fun deleteFood(id: Int){
+
+    //Ricetta
+    fun addRicetta(ricetta: Ricetta){
         viewModelScope.launch(Dispatchers.IO){
-            repository.delete(id)
+            repository.addRicetta(ricetta)
         }
     }
 
+    fun selectRicettabyId(id: Int): LiveData<Ricetta>{
+        return repository.selectRicettabyId(id)
+    }
+
+    fun readAllRicetta(): LiveData<List<Ricetta>>{
+        return repository.readAllRicetta()
+    }
+
+    fun deleteRicetta(id: Int){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteRicetta(id)
+        }
+    }
 }

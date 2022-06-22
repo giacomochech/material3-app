@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".ui.recipes.AddRicettaDialog"
+    android:layout_gravity="center"
+    android:gravity="center_horizontal"
+    app:shapeAppearanceOverlay= "?attr/shapeAppearanceMediumComponent"
+    android:background="@drawable/dialog_bg"
+    >
+
+    <TextView
+        android:id="@+id/titoloFrag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/inserisci_la_tua_ricetta"
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/AddNomeRicettaTextInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/nome_ricetta"
+            android:minHeight="48dp"
+            android:layout_margin="5dp"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:id="@+id/addNomeRicetta"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                tools:ignore="TextContrastCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/AddKcalTextInput"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="@string/kcal"
+        android:minHeight="48dp"
+        android:layout_margin="5dp"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:id="@+id/addKcal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="text"
+            tools:ignore="TextContrastCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/immagine"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+        <Button
+            android:id="@+id/image_button"
+            android:layout_width="134dp"
+            android:layout_height="48dp"
+            android:text="@string/seleziona"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/AddIngTextInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/ingredienti"
+            android:layout_margin="5dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:id="@+id/addIng"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                tools:ignore="TextContrastCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/AddDescTextInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/descrizione"
+            android:layout_margin="5dp"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:id="@+id/addDesc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                tools:ignore="TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/annullaButton"
+            android:layout_width="146dp"
+            android:layout_height="53dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/annulla" />
+
+        <Button
+        android:id="@+id/salvaButton"
+        android:layout_width="146dp"
+        android:layout_height="53dp"
+
+        android:text="@string/salva" />
+    </LinearLayout>
+
+</LinearLayout>

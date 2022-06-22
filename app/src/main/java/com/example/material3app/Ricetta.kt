@@ -1,18 +1,20 @@
 package com.example.material3app
 
+import android.graphics.Bitmap
 import androidx.room.ColumnInfo
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
 const val RICETTA_ID_EXTRA: String ="ricettaExtra"
 
-
+@Entity(tableName = "recipe_table")
 data class Ricetta (
     @PrimaryKey(autoGenerate = true)
     val id : Int,
 
     @ColumnInfo
-    var cover: Int,
+    var cover: Bitmap,
 
     @ColumnInfo
     var nome: String,

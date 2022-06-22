@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Material3App">
         <activity
-            android:name=".ui.recipes.RicettaDetail"
+            android:name=".ui.recipes.RicettaDetailFragment"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

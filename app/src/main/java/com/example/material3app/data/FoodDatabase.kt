@@ -4,10 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.example.material3app.Cibo
+import com.example.material3app.Ricetta
 
 
-@Database(entities = [Cibo::class], version = 1, exportSchema = false)
+@Database(entities = [Cibo::class, Ricetta::class], version = 1, exportSchema = false)
+@TypeConverters(ImageConverter::class)
 abstract class FoodDatabase: RoomDatabase()
 {
     abstract fun foodDao(): FoodDao

@@ -1,8 +1,9 @@
 package com.example.material3app.ui.recipes
 
+import android.view.View
 import com.example.material3app.Ricetta
 
 interface RicettaClickListener
 {
-    fun onClick(recipe: Ricetta)
+    fun onClick(view: View, ricetta: Ricetta)
 }

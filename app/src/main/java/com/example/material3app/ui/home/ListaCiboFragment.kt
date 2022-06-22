@@ -68,27 +68,37 @@ class ListaCiboFragment : Fragment() {
 
         mFoodViewModel = ViewModelProvider(this)[FoodViewModel::class.java]
         mFoodViewModel.readFoodInSpecifiedDay(date.format(DateTimeFormatter.ISO_DATE)).
-        observe(viewLifecycleOwner, Observer{
-            food ->
-            val listaCibo = food
-            kCalAssunte=0
-            listaCibo.forEach {
+        observe(viewLifecycleOwner, Observer { food ->
+            kCalAssunte = 0
+            food.forEach {
                 kCalAssunte += it.getKcal()
             }
 
             textKcalAssunte.text = kCalAssunte.toString()
 
-            val sharedPref = activity?.getSharedPreferences(SHARED_PREF_PAGINA_CALC,Context.MODE_PRIVATE)
-            val obiettivo = sharedPref?.getInt(CalcolaFragment.INT_OBIETTIVO,0)
-           if(kCalAssunte> obiettivo!!){
-                textKcalAssunte.setTextColor(ResourcesCompat.getColor(resources, m3_sys_color_dark_error_container,null))
-            }
-            else{
-               textKcalAssunte.setTextColor(ResourcesCompat.getColor(resources, com.google.android.material.R.color.primary_text_default_material_light,null))
+            val sharedPref =
+                activity?.getSharedPreferences(SHARED_PREF_PAGINA_CALC, Context.MODE_PRIVATE)
+            val obiettivo = sharedPref?.getInt(CalcolaFragment.INT_OBIETTIVO, 0)
+            if (kCalAssunte > obiettivo!!) {
+                textKcalAssunte.setTextColor(
+                    ResourcesCompat.getColor(
+                        resources,
+                        m3_sys_color_dark_error_container,
+                        null
+                    )
+                )
+            } else {
+                textKcalAssunte.setTextColor(
+                    ResourcesCompat.getColor(
+                        resources,
+                        com.google.android.material.R.color.primary_text_default_material_light,
+                        null
+                    )
+                )
             }
 
             ciboAdapter.listaCibo.clear()
-            ciboAdapter.listaCibo.addAll(listaCibo)
+            ciboAdapter.listaCibo.addAll(food)
             ciboAdapter.notifyDataSetChanged()
         })
 

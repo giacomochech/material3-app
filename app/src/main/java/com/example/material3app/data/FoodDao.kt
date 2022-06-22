@@ -6,21 +6,37 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Dao
 import com.example.material3app.Cibo
+import com.example.material3app.Ricetta
 
 @Dao
 interface FoodDao
 {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    //Query dell'entità Cibo
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addFood(food: Cibo)
 
     @Query("SELECT * FROM food_table ORDER BY id ASC")
-    fun readAllData(): LiveData<List<Cibo>>
+    fun readAllCibo(): LiveData<List<Cibo>>
 
     @Query("SELECT * FROM food_table WHERE date = :date ")
     fun readFoodInSpecifiedDay(date: String): LiveData<List<Cibo>>
 
     @Query("DELETE FROM food_table WHERE id = :id")
-    fun delete(id:Int)
+    fun deleteCibo(id:Int)
+
+    //Query dell'entità Ricetta
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addRicetta(ricetta: Ricetta)
+
+    @Query("SELECT * FROM recipe_table WHERE id = :id")
+    fun selectRicettabyId(id: Int): LiveData<Ricetta>
+
+    @Query("SELECT * FROM recipe_table ORDER BY id ASC")
+    fun readAllRicetta(): LiveData<List<Ricetta>>
+
+    @Query("DELETE FROM recipe_table WHERE id = :id")
+    fun deleteRicetta(id:Int)
 
 }

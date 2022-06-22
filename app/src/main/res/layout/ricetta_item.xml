@@ -3,7 +3,8 @@
     xmlns:app = "http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    >
 
     <com.google.android.material.card.MaterialCardView
         android:id='@+id/cardView'
@@ -11,7 +12,8 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="12dp"
         android:layout_margin="8dp"
-        android:clickable="true">
+        android:clickable="true"
+        android:backgroundTint="?attr/colorSurfaceVariant">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,18 +29,20 @@
 
                 android:contentDescription="@string/cover"
                 android:src="@drawable/fagiolata" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="8dp">
+
                 <TextView
                     android:id="@+id/nomeRicetta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/nameplaceholder"
                     android:textAppearance="?attr/textAppearanceTitleLarge"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
 
                 <TextView
@@ -46,12 +50,37 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@string/_400_kcal"
                     android:lines="2"
+                    android:text="@string/_400_kcal"
                     android:textAppearance="?attr/textAppearanceBodyLarge"
-                    android:textColor="?android:attr/textColorSecondary"/>
+                    android:textColor="?android:attr/textColorSecondary" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="right">
 
+                    <Button
+                        android:id="@+id/buttonElimina"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Elimina"
+                        android:textColor="?attr/colorOnTertiaryContainer"
+                        android:layout_marginEnd="16dp"
+                        android:backgroundTint="?attr/colorTertiaryContainer"
+                        />
+
+                    <Button
+                        android:id="@+id/buttonModifica"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Modifica"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:backgroundTint="?attr/colorSecondary"
+                        />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
