@@ -15,8 +15,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="5dp"
-        android:text="Settembre"
-        android:textSize="48dp"
+        android:text="@string/settembre"
+        android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -37,8 +37,8 @@
         android:id="@+id/titoloPb1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Giorni Obiettivo Raggiunto"
-        android:textSize="16dp"
+        android:text="@string/giorni_obiettivo_raggiunto"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/progressBar1"
         app:layout_constraintStart_toStartOf="@+id/progressBar1" />
@@ -47,7 +47,7 @@
         android:id="@+id/infoPb1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="10/30"
+        android:text="@string/_10_30"
         app:layout_constraintBottom_toTopOf="@+id/progressBar1"
         app:layout_constraintEnd_toEndOf="@+id/progressBar1" />
 
@@ -68,8 +68,8 @@
         android:id="@+id/titoloPb2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Giorni Obiettivo Non Raggiunto"
-        android:textSize="16dp"
+        android:text="@string/giorni_obiettivo_non_raggiunto"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/progressBar2"
         app:layout_constraintStart_toStartOf="@+id/progressBar2" />
@@ -78,7 +78,7 @@
         android:id="@+id/infoPb2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="10/30"
+        android:text="@string/_10_30"
         app:layout_constraintBottom_toTopOf="@+id/progressBar2"
         app:layout_constraintEnd_toEndOf="@+id/progressBar2" />
 
@@ -99,8 +99,8 @@
         android:id="@+id/titoloPb3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Giorni Non Inseriti"
-        android:textSize="16dp"
+        android:text="@string/giorni_non_inseriti"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/progressBar3"
         app:layout_constraintStart_toStartOf="@+id/progressBar3" />
@@ -109,7 +109,7 @@
         android:id="@+id/infoPb3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="10/30"
+        android:text="@string/_10_30"
         app:layout_constraintBottom_toTopOf="@+id/progressBar3"
         app:layout_constraintEnd_toEndOf="@+id/progressBar3" />
 
@@ -134,14 +134,16 @@
         android:scaleType="fitCenter"
         android:src="@drawable/ic_baseline_calendar_month_24"
         app:layout_constraintEnd_toEndOf="@+id/titoloMese"
-        app:layout_constraintTop_toBottomOf="@+id/titoloMese" />
+        app:layout_constraintTop_toBottomOf="@+id/titoloMese"
+        tools:ignore="TouchTargetSizeCheck"
+        android:contentDescription="@string/calendario"/>
 
     <TextView
         android:id="@+id/annoSelected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2022"
-        android:textSize="24dp"
+        android:text="@string/_2022"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/titoloMese"
         app:layout_constraintTop_toBottomOf="@+id/titoloMese" />
 
@@ -149,20 +151,47 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dettagli mensili"
-        android:textSize="24dp"
+        android:text="@string/dettagli_mensili"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/titoloMese"
         app:layout_constraintTop_toTopOf="@+id/pieChart" />
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/barChart"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="201dp"
-        android:layout_margin="16dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar3" />
+        app:layout_constraintTop_toBottomOf="@+id/progressBar3"
+        style="@style/Widget.Material3.CardView.Elevated"
+        android:layout_margin="6dp">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/titoloBarChart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/offset_giornaliero"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/barChart"
+                app:layout_constraintStart_toStartOf="@+id/barChart" />
+            <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="match_parent"
+            android:layout_height="201dp"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

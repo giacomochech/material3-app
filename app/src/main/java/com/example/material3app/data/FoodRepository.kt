@@ -9,7 +9,7 @@ class FoodRepository(private val foodDao:FoodDao)
     val readAllData: LiveData<List<Cibo>> = foodDao.readAllData()
 
     suspend fun readDaySumCal(): List<GionoSommaCal> {
-        return foodDao.readDaySumCal();
+        return foodDao.readDaySumCal()
     }
 
      fun readFoodInSpecifiedDay(date : String) : LiveData<List<Cibo>>{

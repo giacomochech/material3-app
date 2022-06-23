@@ -1,9 +1,7 @@
 package com.example.material3app.ui.graph
 
-import java.lang.IllegalArgumentException
 import java.time.LocalDate
 import java.time.Month
-import java.time.Year
 
 data class MonthDetail(
     var month: Month,

@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.example.material3app.Cibo
 import com.example.material3app.ui.graph.MonthDetail
@@ -13,9 +12,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.time.LocalDate
 import java.time.Month
-import java.time.Year
 import java.time.format.DateTimeFormatter
-import java.util.*
 
 class FoodViewModel(application: Application) : AndroidViewModel(application) {
     private val readAllData: LiveData<List<Cibo>>
@@ -29,7 +26,7 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
         readAllData = repository.readAllData
 
     }
-     suspend fun readDaySumCal(): List<GionoSommaCal> {
+     private suspend fun readDaySumCal(): List<GionoSommaCal> {
 
          return repository.readDaySumCal()
     }
@@ -50,7 +47,7 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun getSpecificMonthDetails(month: Month, year: Int, obiettivo : Int, fragment: Fragment) : MonthDetail {
+    fun getSpecificMonthDetails(month: Month, year: Int, obiettivo : Int) : MonthDetail {
         var specificMonthDetail = MonthDetail(month,year)
         val lista= mutableListOf<MonthDetail>()
         var databaseToLista : List<GionoSommaCal>
@@ -59,13 +56,13 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
     }
 
         databaseToLista.forEach {
-                if (it.somma <= 0);
-                else {
+                if (it.somma > 0)
+                {
                     val dataObj = LocalDate.parse(it.giorno, DateTimeFormatter.ISO_DATE)
                     var added = false
 
                     lista.forEach { monthDet ->
-                        if (monthDet.month.equals(dataObj.month) && monthDet.year == dataObj.year) {
+                        if (monthDet.month == dataObj.month && monthDet.year == dataObj.year) {
                             if (it.somma > obiettivo) monthDet.incrementNotGoalReached()
                                 else monthDet.incrementGoalReached()
                             added = true
@@ -85,7 +82,7 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
             }
 
         lista.forEach {
-            if (it.month.equals(month) && it.year == year)
+            if (it.month == month && it.year == year)
                 specificMonthDetail = it
         }
         return specificMonthDetail
@@ -93,7 +90,7 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getMonthDayKal(month: Month, year: Int): List<Int> {
         val retList = mutableListOf<Int>()
-        var specificMonthDetail = MonthDetail(month, year)
+        val specificMonthDetail = MonthDetail(month, year)
         val monthDay = specificMonthDetail.getDayOfMonth()
         var databaseToLista: List<GionoSommaCal>
         runBlocking {
@@ -103,8 +100,7 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
             retList.add(0)
         }
         databaseToLista.forEach{
-            if (it.somma <= 0);
-            else {
+            if (it.somma > 0){
                 val dataObj = LocalDate.parse(it.giorno, DateTimeFormatter.ISO_DATE)
                 if(dataObj.month==month)
                     retList[dataObj.dayOfMonth-1]=it.somma

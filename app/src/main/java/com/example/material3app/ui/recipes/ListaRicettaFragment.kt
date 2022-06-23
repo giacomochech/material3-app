@@ -10,20 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.material3app.R
 import com.example.material3app.RICETTA_ID_EXTRA
 import com.example.material3app.Ricetta
-import com.example.material3app.databinding.ActivityMainBinding
 
 class ListaRicettaFragment : Fragment(), RicettaClickListener {
-
-    private lateinit var binding: ActivityMainBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if(savedInstanceState!= null) {
-          //TODO(salvataggio stato)
-        }
-
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

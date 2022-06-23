@@ -6,7 +6,4 @@ class GionoSommaCal(@ColumnInfo
                      var giorno : String,
                     @ColumnInfo
                     var somma : Int,
-                    ) {
-
-
-}
+                    )

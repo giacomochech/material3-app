@@ -28,6 +28,7 @@
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_baseline_calculate_24.xml" value="0.3105" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.4055" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_baseline_fastfood_24.xml" value="0.3255" />
+        <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_baseline_kitchen_24.xml" value="0.3205" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.3105" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_baseline_perm_identity_24.xml" value="0.3105" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3255" />
@@ -40,10 +41,12 @@
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_twotone_delete_forever_24.xml" value="0.3105" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_twotone_delete_outline_24.xml" value="0.3165" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_twotone_edit_calendar_24.xml" value="0.3105" />
+        <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_twotone_kitchen_24.xml" value="0.3205" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_twotone_menu_book_24.xml" value="0.3105" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_twotone_perm_identity_24.xml" value="0.158" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/ic_user_foreground.xml" value="0.2955" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/munu_selected.xml" value="0.3105" />
+        <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/recipie_selected.xml" value="0.3205" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/side_nav_bar.xml" value="0.2715" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/test.xml" value="0.2615" />
         <entry key="..\:/Users/usalv/AndroidStudioProjects/material3-app/app/src/main/res/drawable/user_selected.xml" value="0.3105" />

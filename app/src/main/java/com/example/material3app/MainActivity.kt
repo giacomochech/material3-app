@@ -10,12 +10,11 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.example.material3app.data.FoodDao
-import com.example.material3app.data.FoodDatabase
 import com.google.android.material.bottomnavigation.BottomNavigationView
+
 @RequiresApi(Build.VERSION_CODES.O)
 
-class MainActivity : AppCompatActivity(),MainActivityData {
+class MainActivity : AppCompatActivity() {
 
 
 

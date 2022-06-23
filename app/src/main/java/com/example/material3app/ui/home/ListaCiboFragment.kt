@@ -6,13 +6,14 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -20,11 +21,8 @@ import com.example.material3app.R
 import com.example.material3app.data.FoodViewModel
 import com.example.material3app.ui.slideshow.CalcolaFragment
 import com.example.material3app.ui.slideshow.CalcolaFragment.Companion.SHARED_PREF_PAGINA_CALC
-import com.google.android.material.R.color.m3_sys_color_dark_error_container
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-
-
 
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -81,13 +79,10 @@ class ListaCiboFragment : Fragment() {
                 activity?.getSharedPreferences(SHARED_PREF_PAGINA_CALC, Context.MODE_PRIVATE)
             val obiettivo = sharedPref?.getInt(CalcolaFragment.INT_OBIETTIVO, 0)
             if (kCalAssunte > obiettivo!!) {
-                textKcalAssunte.setTextColor(
-                    ResourcesCompat.getColor(
-                        resources,
-                        m3_sys_color_dark_error_container,
-                        null
-                    )
-                )
+                val typedValue = TypedValue()
+                context?.theme?.resolveAttribute(androidx.appcompat.R.attr.colorError, typedValue, true)
+                typedValue.data
+                textKcalAssunte.setTextColor(typedValue.data)
             } else {
                 textKcalAssunte.setTextColor(
                     ResourcesCompat.getColor(
