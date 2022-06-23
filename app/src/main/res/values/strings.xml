@@ -18,7 +18,6 @@
     <string name="eta">Età</string>
     <string name="calcola">Calcola</string>
     <string name="calorie_obiettivo">Calorie Obiettivo</string>
-    <string name="maschio">Maschio</string>
     <string name="annulla">Annulla</string>
     <string name="accetta">Accetta</string>
     <string name="add">Add</string>
@@ -28,7 +27,7 @@
     <string name="inserisci_i_dati">Inserisci i dati</string>
     <string name="e_mail">e-mail</string>
     <string name="canc">canc</string>
-    <string name="ok">OK</string>
+    <string name="ok" tools:ignore="ButtonCase,Typos">ok</string>
     <string name="_2500">2500</string>
     <string name="Saluto">Ciao, Nome Utente</string>
     <string name="titolo_obiettivo">Il tuo obiettivo calorico attuale è di</string>
@@ -39,6 +38,17 @@
     <string name="nameplaceholder">NamePlaceholder</string>
     <string name="_400_kcal">400 kcal</string>
     <string name="ricettario">Ricettario</string>
+    <string name="title">Seleziona Data</string>
+    <string name="nav_grafici">Grafici</string>
+    <string name="settembre">Settembre</string>
+    <string name="giorni_obiettivo_raggiunto">Giorni Obiettivo Raggiunto</string>
+    <string name="giorni_obiettivo_non_raggiunto">Giorni Obiettivo Non Raggiunto</string>
+    <string name="_10_30">10/30</string>
+    <string name="giorni_non_inseriti">Giorni Non Inseriti</string>
+    <string name="_2022">2022</string>
+    <string name="calendario">calendario</string>
+    <string name="offset_giornaliero">Offset giornaliero</string>
+    <string name="dettagli_mensili">Dettagli mensili</string>
     <string name="inserisci_la_tua_ricetta">Inserisci la tua Ricetta</string>
     <string name="kcal">KCal</string>
     <string name="immagine">Immagine:</string>

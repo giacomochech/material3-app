@@ -11,9 +11,11 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+
 @RequiresApi(Build.VERSION_CODES.O)
 
 class MainActivity : AppCompatActivity() {
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,15 +32,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-
         navigationBar.setupWithNavController((supportFragmentManager.findFragmentById(R.id.fr_wreapper) as NavHostFragment).navController)
-
-
-
-
-
-
-
 
     }
 

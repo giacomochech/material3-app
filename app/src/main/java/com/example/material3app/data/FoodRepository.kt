@@ -8,6 +8,11 @@ import com.example.material3app.Ricetta
 class FoodRepository(private val foodDao:FoodDao) {
     val readAllCibo: LiveData<List<Cibo>> = foodDao.readAllCibo()
 
+    suspend fun readDaySumCal(): List<GionoSommaCal> {
+        return foodDao.readDaySumCal()
+    }
+
+
     //Cibo
     fun readFoodInSpecifiedDay(date: String): LiveData<List<Cibo>> {
         return foodDao.readFoodInSpecifiedDay(date)
