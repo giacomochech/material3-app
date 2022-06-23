@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.material3app.R
 import com.example.material3app.Ricetta
 import com.example.material3app.data.FoodViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 
 
@@ -45,6 +46,7 @@ class AddRicettaDialog: DialogFragment() {
         val ingredientiView : TextInputEditText = rootView.findViewById(R.id.addIng)
 
         val descrizioneView : TextInputEditText  = rootView.findViewById(R.id.addDesc)
+
 
 
 
@@ -93,6 +95,8 @@ class AddRicettaDialog: DialogFragment() {
             if(id != 0 && id != null) mFoodViewModel.deleteRicetta(id)
             dismiss()
         }
+
+
         annullaButton.setOnClickListener {
             dismiss()
         }

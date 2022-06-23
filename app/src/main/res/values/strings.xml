@@ -8,8 +8,7 @@
     <string name="_2500_kcal">2500 Kcal</string>
     <string name="text">text</string>
     <string name="data">Data</string>
-    <string name="datePlaceHolder">10/07/2020</string>
-    <string name="alimento">Alimento</string>
+    <string name="datePlaceHolder">La data seleziona è \n 10 jun 2020</string>
     <string name="nome">Nome</string>
     <string name="calorie">Calorie</string>
     <string name="aggiungi">Aggiungi</string>
@@ -49,7 +48,7 @@
     <string name="calendario">calendario</string>
     <string name="offset_giornaliero">Offset giornaliero</string>
     <string name="dettagli_mensili">Dettagli mensili</string>
-    <string name="inserisci_la_tua_ricetta">Inserisci la tua Ricetta</string>
+    <string name="inserisci_la_tua_ricetta">Inserisci la tua ricetta</string>
     <string name="kcal">KCal</string>
     <string name="immagine">Immagine:</string>
     <string name="ingredienti">Ingredienti</string>
@@ -60,6 +59,10 @@
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed accumsan mi, sed tempus ante. Curabitur fringilla scelerisque augue, sed elementum mi rhoncus eget. Nulla hendrerit sed urna nec blandit. Vivamus tristique elit eu felis maximus, a elementum mi consectetur. Cras vel sollicitudin purus. Cras eget blandit diam, quis imperdiet enim. Vestibulum a mauris a urna posuere ultricies.</string>
     <string name="elimina">Elimina</string>
     <string name="modifica">Modifica</string>
+    <string name="inserici_alimento">Inserici alimento</string>
+    <string name="seleziona_data">Seleziona data</string>
+    <string name="la_data_seleziona_n10_jun_2020">La data seleziona è \n10 jun 2020</string>
+    <string name="seleziona_la_tua_immagine_ndalla_galleria">Seleziona la tua immagine\ndalla galleria</string>
 
 
     <string-array name="SelectSex">

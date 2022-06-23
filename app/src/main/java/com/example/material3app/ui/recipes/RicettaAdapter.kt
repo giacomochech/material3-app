@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.material3app.R
 import com.example.material3app.Ricetta
 import com.example.material3app.data.FoodViewModel
+import com.example.material3app.ui.home.AddFragmentDialog
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
@@ -42,6 +44,7 @@ class RicettaAdapter(
         private val ricettaCardView: CardView = itemView.findViewById(R.id.cardView)
         private val deleteButton: Button = itemView.findViewById(R.id.buttonElimina)
         private val modifyButton = itemView.findViewById<Button>(R.id.buttonModifica)
+        private val fab = itemView.findViewById<FloatingActionButton>(R.id.fabCard)
 
         private lateinit var mFoodViewModel: FoodViewModel
 
@@ -55,14 +58,24 @@ class RicettaAdapter(
             ingredientiTextView.text = ricetta.ingredienti
             descrizioneTextView.text = ricetta.descrizione
 
+            mFoodViewModel = ViewModelProvider(itemView.context as ViewModelStoreOwner)[FoodViewModel::class.java]
+
             ingredientiTextView.movementMethod = ScrollingMovementMethod()
             descrizioneTextView.movementMethod = ScrollingMovementMethod()
             ricettaCardView.setOnClickListener{
                 clickListener.onClick(it,ricetta)
             }
+            fab.setOnClickListener{
+                val dialog : DialogFragment = AddFragmentDialog()
+                val args = Bundle()
+                val idRicetta = ricetta.id
+                args.putInt("id",idRicetta)
+                dialog.arguments = args
+                dialog.show((itemView.context as FragmentActivity).supportFragmentManager,"ADD DIALOG")
+            }
 
             deleteButton.setOnClickListener {
-                mFoodViewModel = ViewModelProvider(itemView.context as ViewModelStoreOwner)[FoodViewModel::class.java]
+
                 runBlocking { delay(200) }
                 mFoodViewModel.deleteRicetta(ricetta.id)
             }

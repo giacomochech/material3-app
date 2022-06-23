@@ -10,85 +10,25 @@
     android:gravity="center_horizontal"
     app:shapeAppearanceOverlay= "?attr/shapeAppearanceMediumComponent"
     android:background="@drawable/dialog_bg"
+    android:padding="24dp"
     >
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="28dp"
-        style="@style/Widget.Material3.CardView.Outlined"
-        android:layout_marginBottom="8dp"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <Button
-                android:id="@+id/data_button"
-                android:layout_width="150dp"
-                android:layout_height="75dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/data"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:icon="@drawable/ic_twotone_edit_calendar_24"
-                app:iconSize="25dp"
-                app:iconTint="?attr/colorOnPrimary"
-                tools:ignore="TextContrastCheck" />
-
-
-                <TextView
-                    android:id="@+id/dataPiked"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:text="@string/datePlaceHolder"
-                    android:textSize="20sp"
-                    android:textStyle="bold"/>
-
-        </LinearLayout>
-
-
-    </com.google.android.material.card.MaterialCardView>
-    <com.google.android.material.card.MaterialCardView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        app:cardCornerRadius="28dp"
-
-        style="@style/Widget.Material3.CardView.Outlined"
-        >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate2"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:layout_marginBottom="15dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/alimento"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+         <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/inserici_alimento"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                android:layout_gravity="start"
+                android:layout_marginBottom="16dp"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/nome"
                 android:minHeight="48dp"
-                android:layout_margin="5dp"
+                android:layout_marginBottom="5dp"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-
                     android:id="@+id/AddNomeCibo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -103,7 +43,8 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/calorie"
                 android:minHeight="18dp"
-                android:layout_margin="5dp">
+                android:layout_marginBottom="16dp"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
 
@@ -115,35 +56,74 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-    </LinearLayout>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="?attr/colorOnSecondary"
+        style="@style/Widget.Material3.CardView.Outlined"
+        android:layout_marginBottom="24dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/seleziona_data"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dataPiked"
+                android:layout_marginTop="8dp"
+                android:text="@string/la_data_seleziona_n10_jun_2020"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?android:attr/textColorSecondary"
+                />
+            <Button
+                android:id="@+id/data_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/data"
+                app:icon="@drawable/ic_twotone_edit_calendar_24"
+                app:iconTint="?attr/colorOnTertiaryContainer"
+                android:backgroundTint="?attr/colorTertiaryContainer"
+                android:textColor="?attr/colorOnTertiaryContainer"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                tools:ignore="TextContrastCheck" />
+
+        </LinearLayout>
+
+
     </com.google.android.material.card.MaterialCardView>
 
+
     <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+       android:gravity="end">
 
         <Button
             android:id="@+id/AddAnnullaBotton"
-            android:layout_width="135dp"
-            android:layout_height="75dp"
-            android:layout_marginEnd="20dp"
-            android:backgroundTint="?attr/colorTertiaryContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/annulla"
-            android:textColor="?attr/colorOnSecondaryContainer"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            style="?android:attr/buttonBarButtonStyle" />
+            style="@style/Widget.Material3.Button.TextButton"
+          />
 
         <Button
                 android:id="@+id/AddConfermaBotton"
-                android:layout_width="135dp"
-                android:layout_height="75dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/aggiungi"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="?attr/colorOnSecondaryContainer"
-                android:backgroundTint="?attr/colorPrimary"
-            style="?android:attr/buttonBarButtonStyle" />
+                style="@style/Widget.Material3.Button.TextButton.Icon"
+            />
         </LinearLayout>
 
 

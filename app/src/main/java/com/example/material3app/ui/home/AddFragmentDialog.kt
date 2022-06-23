@@ -19,6 +19,7 @@ import com.example.material3app.Cibo
 import com.example.material3app.R
 import com.example.material3app.data.FoodViewModel
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.textfield.TextInputEditText
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -40,13 +41,28 @@ class AddFragmentDialog : DialogFragment() {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val dateButton : Button = rootView.findViewById(R.id.data_button)
         val dateTextView : TextView = rootView.findViewById(R.id.dataPiked)
-        val nomeCibo : EditText = rootView.findViewById(R.id.AddNomeCibo)
-        val kCal : EditText = rootView.findViewById(R.id.AddCalorieCibo)
+        val nomeCibo : TextInputEditText = rootView.findViewById(R.id.AddNomeCibo)
+        val kCal : TextInputEditText = rootView.findViewById(R.id.AddCalorieCibo)
         val confirmButton : Button = rootView.findViewById(R.id.AddConfermaBotton)
         val annullaButton : Button = rootView.findViewById(R.id.AddAnnullaBotton)
         var dataPiked = LocalDate.now()
-        dateTextView.text= dataPiked.format(DateTimeFormatter
-            .ofLocalizedDate(FormatStyle.MEDIUM))
+        dateTextView.text= localDataToSting(dataPiked)
+
+        mFoodViewModel = ViewModelProvider(this)[FoodViewModel::class.java]
+
+
+
+        val id = arguments?.getInt("id")
+        if(id != 0 && id != null) {
+            mFoodViewModel.selectRicettabyId(id).observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+                 it ->
+
+                    nomeCibo.setText(it.nome)
+                    kCal.setText(it.kcal.toString())
+
+            })
+        }
+
 
         val datePicker = MaterialDatePicker.Builder.datePicker()
                 .build()
@@ -59,12 +75,10 @@ class AddFragmentDialog : DialogFragment() {
 
             dataPiked = LocalDateTime.ofInstant(calendar.toInstant(), ZoneId.systemDefault()).toLocalDate()
 
-            dateTextView.text= dataPiked.format(DateTimeFormatter
-                .ofLocalizedDate(FormatStyle.MEDIUM))
+            dateTextView.text= localDataToSting(dataPiked)
         }
 
 
-        mFoodViewModel = ViewModelProvider(this)[FoodViewModel::class.java]
         confirmButton.setOnClickListener{
 
             var alimento = Cibo(0, "", "",-1)
@@ -84,6 +98,17 @@ class AddFragmentDialog : DialogFragment() {
             dismiss()
         }
         return rootView
+    }
+
+    private fun localDataToSting(dataPiked: LocalDate): String {
+        val s = "L'alimento verrà inserito in data \n${
+            dataPiked.format(
+                DateTimeFormatter
+                    .ofLocalizedDate(FormatStyle.LONG)
+            )
+        }"
+        return s
+
     }
 
 
