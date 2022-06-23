@@ -1,26 +1,26 @@
 package com.example.material3app.ui.recipes
 
-import android.content.Intent
+
 import android.os.Bundle
-import android.text.TextUtils
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
+
+import android.widget.LinearLayout
+
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
+
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.AutoTransition
+import androidx.transition.TransitionManager
 import com.example.material3app.R
-import com.example.material3app.RICETTA_ID_EXTRA
+
 import com.example.material3app.Ricetta
 import com.example.material3app.data.FoodViewModel
-import com.example.material3app.databinding.ActivityMainBinding
-import com.example.material3app.ui.home.AddFragmentDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.*
 
@@ -74,8 +74,12 @@ class ListaRicettaFragment : Fragment(), RicettaClickListener {
 
     override fun onClick(view: View, ricetta: Ricetta) {
 
-        val message = ricetta.id
-        val action = ListaRicettaFragmentDirections.actionNavRecipesToNavRecDetail(message)
-        view.findNavController().navigate(action)
+        val detailsLayout = view.findViewById<LinearLayout>(R.id.details)
+        var v: Int = if(detailsLayout.getVisibility() == View.GONE) View.VISIBLE else View.GONE
+
+        TransitionManager.beginDelayedTransition(detailsLayout, AutoTransition()) //TODO controlla transition
+        detailsLayout.setVisibility(v)
+
+
     }
 }

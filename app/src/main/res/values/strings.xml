@@ -56,6 +56,7 @@
     <string name="descrizione">Descrizione</string>
     <string name="salva">Salva</string>
     <string name="nome_ricetta">Nome ricetta</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed accumsan mi, sed tempus ante. Curabitur fringilla scelerisque augue, sed elementum mi rhoncus eget. Nulla hendrerit sed urna nec blandit. Vivamus tristique elit eu felis maximus, a elementum mi consectetur. Cras vel sollicitudin purus. Cras eget blandit diam, quis imperdiet enim. Vestibulum a mauris a urna posuere ultricies.</string>
 
 
     <string-array name="SelectSex">

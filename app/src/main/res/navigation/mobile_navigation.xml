@@ -29,17 +29,6 @@
         android:name="com.example.material3app.ui.recipes.ListaRicettaFragment"
         android:label="@string/ricettario"
         tools:layout="@layout/fragment_lista_ricette" >
-        <action
-            android:id="@+id/action_nav_recipes_to_nav_rec_detail"
-            app:destination="@id/nav_rec_detail" />
     </fragment>
 
-    <fragment
-        android:id="@+id/nav_rec_detail"
-        android:name="com.example.material3app.ui.recipes.RicettaDetailFragment"
-        tools:layout="@layout/fragment_ricetta_detail">
-         <argument
-            android:name="message"
-            app:argType="integer" />
-    </fragment>>
 </navigation>

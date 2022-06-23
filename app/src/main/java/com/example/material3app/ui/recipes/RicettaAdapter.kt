@@ -1,6 +1,7 @@
 package com.example.material3app.ui.recipes
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,8 @@ class RicettaAdapter(
         private val coverImageView: ImageView = itemView.findViewById(R.id.cover)
         private val nomeTextView: TextView = itemView.findViewById(R.id.nomeRicetta)
         private val kcalTextView: TextView = itemView.findViewById(R.id.kcalRicetta)
+        private val ingredientiTextView: TextView = itemView.findViewById(R.id.ingredienti)
+        private val descrizioneTextView: TextView = itemView.findViewById(R.id.descrizione)
         private val ricettaCardView: CardView = itemView.findViewById(R.id.cardView)
         private val deleteButton: Button = itemView.findViewById(R.id.buttonElimina)
         private val modifyButton = itemView.findViewById<Button>(R.id.buttonModifica)
@@ -49,6 +52,11 @@ class RicettaAdapter(
             coverImageView.setImageBitmap(ricetta.cover)
             nomeTextView.text = ricetta.nome
             kcalTextView.text = ricetta.kcal.toString()
+            ingredientiTextView.text = ricetta.ingredienti
+            descrizioneTextView.text = ricetta.descrizione
+
+            ingredientiTextView.movementMethod = ScrollingMovementMethod()
+            descrizioneTextView.movementMethod = ScrollingMovementMethod()
             ricettaCardView.setOnClickListener{
                 clickListener.onClick(it,ricetta)
             }
