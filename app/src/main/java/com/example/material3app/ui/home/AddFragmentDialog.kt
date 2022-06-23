@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.material3app.Cibo
 import com.example.material3app.R
 import com.example.material3app.data.FoodViewModel
+import com.example.material3app.ui.home.HomeFragment.Companion.BOUNDLE_DATE
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputEditText
 import java.time.LocalDate
@@ -45,12 +46,18 @@ class AddFragmentDialog : DialogFragment() {
         val kCal : TextInputEditText = rootView.findViewById(R.id.AddCalorieCibo)
         val confirmButton : Button = rootView.findViewById(R.id.AddConfermaBotton)
         val annullaButton : Button = rootView.findViewById(R.id.AddAnnullaBotton)
-        var dataPiked = LocalDate.now()
-        dateTextView.text= localDataToSting(dataPiked)
+
 
         mFoodViewModel = ViewModelProvider(this)[FoodViewModel::class.java]
 
 
+        val dataCurrent = arguments?.getString(BOUNDLE_DATE,"")
+        var dataPiked = LocalDate.now()
+        if(dataCurrent!="" && dataCurrent != null){
+            dataPiked = LocalDate.parse(dataCurrent, DateTimeFormatter.ISO_DATE)
+        }
+
+        dateTextView.text= localDataToSting(dataPiked)
 
         val id = arguments?.getInt("id")
         if(id != 0 && id != null) {

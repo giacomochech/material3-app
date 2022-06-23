@@ -13,6 +13,7 @@ import android.widget.ImageButton
 import android.widget.NumberPicker
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
@@ -26,9 +27,11 @@ import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.runBlocking
 import java.time.LocalDate
 import java.time.format.TextStyle
 import java.util.*
+import kotlin.properties.Delegates
 
 
 class GraficiMensiliFragment : Fragment() {
@@ -41,6 +44,7 @@ class GraficiMensiliFragment : Fragment() {
     private lateinit var titoloAnno: TextView
     private lateinit var progressBarArray: Array<ProgressBar>
     private lateinit var infoProgressBarArray: Array<TextView>
+    private var obiettivo : Int = 0
 
 
     override fun onCreateView(
@@ -78,12 +82,10 @@ class GraficiMensiliFragment : Fragment() {
                 CalcolaFragment.SHARED_PREF_PAGINA_CALC,
                 Context.MODE_PRIVATE
             )
-        val obiettivo = sharedPref?.getInt(CalcolaFragment.INT_OBIETTIVO, 0)
+        obiettivo = sharedPref?.getInt(CalcolaFragment.INT_OBIETTIVO, 0)!!
 
         stetUp()
-        if (obiettivo != null) {
-            updateAllData(dataPicked, obiettivo)
-        }
+        updateAllData(dataPicked, obiettivo)
 
         calendarButton.setOnClickListener {
             val viewDialog = View.inflate(context, R.layout.dialog_date_year, null)
@@ -114,9 +116,7 @@ class GraficiMensiliFragment : Fragment() {
                     .setPositiveButton(resources.getString(R.string.ok)) { _, _ ->
                         dataPicked = dataPicked.withMonth(pickerMonth.value)
                         dataPicked = dataPicked.withYear(pickerYear.value)
-                        if (obiettivo != null) {
-                            updateAllData(dataPicked, obiettivo)
-                        }
+                        updateAllData(dataPicked, obiettivo)
                     }
                     .show()
             }
@@ -155,7 +155,7 @@ class GraficiMensiliFragment : Fragment() {
     private fun loadProgressBar(monthDetail: MonthDetail) {
         progressBarArray.forEachIndexed { i, it ->
             it.max = monthDetail.getDayOfMonth()
-            it.progress = monthDetail.getDetailInt()[i]
+            it.progress=monthDetail.getDetailInt()[i]
         }
         infoProgressBarArray.forEachIndexed { i, it ->
 
@@ -352,5 +352,8 @@ class GraficiMensiliFragment : Fragment() {
             indexRet
     }
 
-
+    override fun onResume() {
+        super.onResume()
+        updateAllData(dataPicked,obiettivo)
+    }
 }
