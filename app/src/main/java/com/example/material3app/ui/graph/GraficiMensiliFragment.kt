@@ -109,9 +109,9 @@ class GraficiMensiliFragment : Fragment() {
                 MaterialAlertDialogBuilder(it1)
                     .setTitle(resources.getString(R.string.title))
                     .setView(viewDialog)
-                    .setNegativeButton(resources.getString(R.string.canc)) { dialog, which ->
+                    .setNegativeButton(resources.getString(R.string.canc)) { _, _ ->
                     }
-                    .setPositiveButton(resources.getString(R.string.ok)) { dialog, which ->
+                    .setPositiveButton(resources.getString(R.string.ok)) { _, _ ->
                         dataPicked = dataPicked.withMonth(pickerMonth.value)
                         dataPicked = dataPicked.withYear(pickerYear.value)
                         if (obiettivo != null) {
@@ -138,8 +138,8 @@ class GraficiMensiliFragment : Fragment() {
         titoloMese.text = mese
         titoloAnno.text = data.year.toString()
 
-        val monthDetail: MonthDetail
-        monthDetail = mFoodViewModel.getSpecificMonthDetails(data.month, data.year, obiettivo)
+        val monthDetail: MonthDetail =
+            mFoodViewModel.getSpecificMonthDetails(data.month, data.year, obiettivo)
         pieChart.centerText = (" ${
             ((monthDetail.getDetailInt()[0] / monthDetail.getDayOfMonth().toFloat()) * 100).toInt()
         }% ")

@@ -21,7 +21,7 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
     init {
         val foodDao = FoodDatabase.getDatabase(application).foodDao()
         repository = FoodRepository(foodDao)
-        readAllData = repository.readAllData
+        readAllData = repository.readAllCibo
     }
 
      private suspend fun readDaySumCal(): List<GionoSommaCal> {

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">DiarioM3</string>
     <string name="menu_home">Diario</string>
     <string name="menu_gallery">Utente</string>
