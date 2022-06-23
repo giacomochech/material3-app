@@ -30,7 +30,7 @@ class RicettaAdapter(
 
     class RicettaViewHolder(
         itemView: View,
-        val clickListener: RicettaClickListener
+        private val clickListener: RicettaClickListener
     ) : RecyclerView.ViewHolder(itemView)
     {
 
@@ -75,7 +75,7 @@ class RicettaAdapter(
                 val idRicetta = ricetta.id
                 args.putInt("id",idRicetta)
                 dialog.arguments = args
-                dialog.show((itemView.context as FragmentActivity).getSupportFragmentManager(),"ADD DIALOG")
+                dialog.show((itemView.context as FragmentActivity).supportFragmentManager,"ADD DIALOG")
 
             }
 

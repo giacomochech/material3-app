@@ -12,14 +12,12 @@
 
 
         <TextView
-            android:id="@+id/TitoloDialogInsert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/inserisci_i_dati"
             android:layout_margin="24dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/TextInputLayoutNomeUtente"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:hint="@string/nome_utente"
@@ -37,7 +35,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/TextInputMAil"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:hint="@string/e_mail"

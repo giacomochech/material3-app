@@ -12,7 +12,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.DialogFragment
@@ -33,7 +32,7 @@ class AddRicettaDialog: DialogFragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_addricetta_dialog, container, false)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        val id = getArguments()?.getInt("id")
+        val id = arguments?.getInt("id")
 
 
 
@@ -101,12 +100,11 @@ class AddRicettaDialog: DialogFragment() {
 
         val getContent = registerForActivityResult(ActivityResultContracts.GetContent()){uri: Uri?->
 
-            if(uri != null){
-                imageBitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(requireActivity().contentResolver, uri))
+            imageBitmap = if(uri != null){
+                ImageDecoder.decodeBitmap(ImageDecoder.createSource(requireActivity().contentResolver, uri))
                 //imageBitmap = Bitmap.createScaledBitmap(imageBitmap, 800,800, true) Nel caso servisse ridimensionare l'immaginee
-            }
-            else{
-                imageBitmap = BitmapFactory.decodeResource(resources, R.drawable.default2)
+            } else{
+                BitmapFactory.decodeResource(resources, R.drawable.default2)
             }
 
         }

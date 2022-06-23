@@ -1,15 +1,8 @@
 <resources>
     <string name="app_name">DiarioM3</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Diario</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
     <string name="menu_home">Diario</string>
     <string name="menu_gallery">Utente</string>
     <string name="menu_slideshow">Cal. Calorie</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="icona_cibo">icona cibo</string>
     <string name="nome_cibo">Nome Cibo</string>
     <string name="_2500_kcal">2500 Kcal</string>
@@ -43,9 +36,7 @@
     <string name="nome_utente">Nome Utente</string>
     <string name="immagine_utente">immagine Utente</string>
     <string name="cover">Cover</string>
-    <string name="author_placeholder">Author PlaceHolder</string>
     <string name="nameplaceholder">NamePlaceholder</string>
-    <string name="desc_placeholder">Description Placeholder</string>
     <string name="_400_kcal">400 kcal</string>
     <string name="ricettario">Ricettario</string>
     <string name="inserisci_la_tua_ricetta">Inserisci la tua Ricetta</string>
@@ -57,6 +48,8 @@
     <string name="salva">Salva</string>
     <string name="nome_ricetta">Nome ricetta</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed accumsan mi, sed tempus ante. Curabitur fringilla scelerisque augue, sed elementum mi rhoncus eget. Nulla hendrerit sed urna nec blandit. Vivamus tristique elit eu felis maximus, a elementum mi consectetur. Cras vel sollicitudin purus. Cras eget blandit diam, quis imperdiet enim. Vestibulum a mauris a urna posuere ultricies.</string>
+    <string name="elimina">Elimina</string>
+    <string name="modifica">Modifica</string>
 
 
     <string-array name="SelectSex">

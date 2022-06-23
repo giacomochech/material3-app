@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.material3app.R
 import com.example.material3app.databinding.FragmentHomeBinding
-import com.example.material3app.ui.recipes.AddRicettaDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.time.LocalDate
 

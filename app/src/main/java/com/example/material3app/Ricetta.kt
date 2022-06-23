@@ -6,8 +6,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-const val RICETTA_ID_EXTRA: String ="ricettaExtra"
-
 @Entity(tableName = "recipe_table")
 data class Ricetta (
     @PrimaryKey(autoGenerate = true)

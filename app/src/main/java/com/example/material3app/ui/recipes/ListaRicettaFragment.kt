@@ -1,43 +1,30 @@
 package com.example.material3app.ui.recipes
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import android.widget.LinearLayout
-
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import com.example.material3app.R
-
 import com.example.material3app.Ricetta
 import com.example.material3app.data.FoodViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import java.util.*
 
 class ListaRicettaFragment : Fragment(), RicettaClickListener {
 
     private lateinit var mFoodViewModel: FoodViewModel
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if(savedInstanceState!= null) {
-          //TODO(salvataggio stato)
-        }
-
-
-    }
-
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -75,10 +62,10 @@ class ListaRicettaFragment : Fragment(), RicettaClickListener {
     override fun onClick(view: View, ricetta: Ricetta) {
 
         val detailsLayout = view.findViewById<LinearLayout>(R.id.details)
-        var v: Int = if(detailsLayout.getVisibility() == View.GONE) View.VISIBLE else View.GONE
+        val v: Int = if(detailsLayout.visibility == View.GONE) View.VISIBLE else View.GONE
 
         TransitionManager.beginDelayedTransition(detailsLayout, AutoTransition()) //TODO controlla transition
-        detailsLayout.setVisibility(v)
+        detailsLayout.visibility = v
 
 
     }

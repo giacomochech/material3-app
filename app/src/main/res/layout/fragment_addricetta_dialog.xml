@@ -16,13 +16,11 @@
     >
 
     <TextView
-        android:id="@+id/titoloFrag"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:text="@string/inserisci_la_tua_ricetta"
         android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/AddNomeRicettaTextInput"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/nome_ricetta"
@@ -40,7 +38,6 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/AddKcalTextInput"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:hint="@string/kcal"
@@ -56,7 +53,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/immagine"
@@ -71,7 +67,6 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/AddIngTextInput"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/ingredienti"
@@ -90,7 +85,6 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/AddDescTextInput"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/descrizione"

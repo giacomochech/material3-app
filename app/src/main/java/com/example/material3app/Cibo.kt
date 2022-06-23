@@ -28,10 +28,10 @@ data class Cibo(
     }
 
     fun getId(): Int {
-        return id;
+        return id
     }
 
     fun getDate(): String {
-        return date;
+        return date
     }
 }

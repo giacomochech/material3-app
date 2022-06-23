@@ -116,7 +116,6 @@
         app:layout_constraintTop_toBottomOf="@+id/cardUser">
 
         <TextView
-            android:id="@+id/TestoCalorie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/titolo_obiettivo"

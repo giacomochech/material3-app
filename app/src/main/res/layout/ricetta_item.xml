@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app = "http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -60,27 +61,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="right">
+                    android:gravity="end">
 
                     <Button
                         android:id="@+id/buttonElimina"
                         style="@style/Widget.Material3.Button.OutlinedButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Elimina"
-                        android:textColor="?attr/colorOnTertiaryContainer"
                         android:layout_marginEnd="16dp"
                         android:backgroundTint="?attr/colorTertiaryContainer"
-                        />
+                        android:text="@string/elimina"
+                        android:textColor="?attr/colorOnTertiaryContainer"
+                        tools:ignore="TextContrastCheck" />
 
                     <Button
                         android:id="@+id/buttonModifica"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Modifica"
+                        android:text="@string/modifica"
                         android:textColor="?attr/colorOnSecondary"
                         android:backgroundTint="?attr/colorSecondary"
-                        />
+                        tools:ignore="ButtonStyle" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -91,7 +92,6 @@
                     android:visibility="gone">
 
                     <TextView
-                        android:id="@+id/ingredientiLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -110,7 +110,6 @@
                         android:textColor="?android:attr/textColorSecondary" />
 
                     <TextView
-                        android:id="@+id/descrizioneLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
