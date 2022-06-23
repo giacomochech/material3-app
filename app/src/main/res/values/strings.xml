@@ -63,6 +63,7 @@
     <string name="seleziona_data">Seleziona data</string>
     <string name="la_data_seleziona_n10_jun_2020">La data seleziona è \n10 jun 2020</string>
     <string name="seleziona_la_tua_immagine_ndalla_galleria">Seleziona la tua immagine\ndalla galleria</string>
+    <string name="share">share</string>
 
 
     <string-array name="SelectSex">

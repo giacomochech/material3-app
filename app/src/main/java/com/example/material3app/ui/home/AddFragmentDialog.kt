@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -62,9 +61,8 @@ class AddFragmentDialog : DialogFragment() {
         val id = arguments?.getInt("id")
         if(id != 0 && id != null) {
             mFoodViewModel.selectRicettabyId(id).observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-                 it ->
 
-                    nomeCibo.setText(it.nome)
+                nomeCibo.setText(it.nome)
                     kCal.setText(it.kcal.toString())
 
             })
@@ -108,13 +106,12 @@ class AddFragmentDialog : DialogFragment() {
     }
 
     private fun localDataToSting(dataPiked: LocalDate): String {
-        val s = "L'alimento verrà inserito in data \n${
+        return "L'alimento verrà inserito in data \n${
             dataPiked.format(
                 DateTimeFormatter
                     .ofLocalizedDate(FormatStyle.LONG)
             )
         }"
-        return s
 
     }
 

@@ -46,7 +46,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:srcCompat="@drawable/ic_round_add_24"
                     android:layout_margin="6dp"
-                    android:contentDescription="aggiungi"/>
+                    android:contentDescription="@string/aggiungi"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

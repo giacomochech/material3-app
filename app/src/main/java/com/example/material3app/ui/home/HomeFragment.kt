@@ -10,8 +10,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.adapter.FragmentViewHolder
-import com.example.material3app.MainActivity
 import com.example.material3app.MainActivityViewModel
 import com.example.material3app.R
 import com.example.material3app.databinding.FragmentHomeBinding

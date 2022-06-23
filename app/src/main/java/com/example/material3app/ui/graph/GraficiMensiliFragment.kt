@@ -1,19 +1,24 @@
 package com.example.material3app.ui.graph
 
 
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.ColorStateList
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.NumberPicker
-import android.widget.ProgressBar
-import android.widget.TextView
-import androidx.core.view.updateLayoutParams
+import android.widget.*
+import androidx.core.app.ActivityCompat
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
@@ -27,11 +32,14 @@ import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.coroutines.runBlocking
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.*
-import kotlin.properties.Delegates
 
 
 class GraficiMensiliFragment : Fragment() {
@@ -45,14 +53,15 @@ class GraficiMensiliFragment : Fragment() {
     private lateinit var progressBarArray: Array<ProgressBar>
     private lateinit var infoProgressBarArray: Array<TextView>
     private var obiettivo : Int = 0
-
+    private lateinit var shareButton : ImageButton
+    private lateinit var rootView: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val rootView = inflater.inflate(R.layout.fragment_grafici_mensili, container, false)
+        rootView = inflater.inflate(R.layout.fragment_grafici_mensili, container, false)
         progressBarArray = arrayOf(
             rootView.findViewById(R.id.progressBar1),
             rootView.findViewById(R.id.progressBar2),
@@ -70,8 +79,12 @@ class GraficiMensiliFragment : Fragment() {
         barChart = rootView.findViewById(R.id.barChart)
         val calendarButton = rootView.findViewById<ImageButton>(R.id.calendarMonthYear)
 
+        shareButton= rootView.findViewById(R.id.shareButton)
 
-
+        verifyStoragePermission()
+        shareButton.setOnClickListener{
+            takeScreenShot()
+        }
 
 
         mFoodViewModel =
@@ -130,6 +143,141 @@ class GraficiMensiliFragment : Fragment() {
 
         return rootView
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private fun takeScreenShot() {
+
+        val format: CharSequence =LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM-dd-yyyy_hh:mm:ss"))
+
+        try {
+            val mainDir = File(
+                requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES), "FilShare"
+            )
+            if (!mainDir.exists()) {
+                mainDir.mkdir()
+            }
+
+            val path = "$mainDir/TrendOceans-$format.jpeg"
+            val v = rootView.findViewById<View>(R.id.layoutGrafici)
+            val bitmap = Bitmap.createBitmap(v.width,v.height,Bitmap.Config.ARGB_8888)
+            val canvas = Canvas(bitmap)
+            v.draw(canvas)
+
+
+            val imageFile = File(path)
+            val fileOutputStream = FileOutputStream(imageFile)
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream)
+            fileOutputStream.flush()
+            fileOutputStream.close()
+
+            shareScreenShot(imageFile)
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+
+
+
+    private fun shareScreenShot(imageFile: File) {
+
+        val uri: Uri = FileProvider.getUriForFile(
+            requireContext(),
+            "com.example.material3app.fileprovider",
+            imageFile
+        )
+
+        //Explicit intent
+        val intent = Intent()
+        intent.action = Intent.ACTION_SEND
+        intent.type = "image/*"
+        intent.putExtra(Intent.EXTRA_TEXT, "Guarda i miei RISULTATI\n tutto grazie a DiarioM3")
+        intent.putExtra(Intent.EXTRA_STREAM, uri)
+
+        //It will show the application which are available to share Image; else Toast message will throw.
+        try {
+            requireActivity().startActivity(Intent.createChooser(intent, "Share With"))
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(requireContext(), "No App Available", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private val REQUEST_EXTERNAL_STORAGE = 1
+    private val PERMISSION_STORAGE = arrayOf(
+        android.Manifest.permission.READ_EXTERNAL_STORAGE,
+        android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+    )
+    private fun verifyStoragePermission() {
+        val permission = ActivityCompat.checkSelfPermission(
+            requireActivity(),
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                PERMISSION_STORAGE,
+                REQUEST_EXTERNAL_STORAGE
+            )
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     private fun updateAllData(data: LocalDate, obiettivo: Int) {
