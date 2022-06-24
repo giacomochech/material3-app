@@ -11,14 +11,14 @@
 
     <ImageButton
         android:id="@+id/shareButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:background="@null"
+        android:contentDescription="@string/share"
         android:src="@drawable/ic_baseline_share_24"
-        app:layout_constraintEnd_toStartOf="@+id/calendarMonthYear"
-        app:layout_constraintStart_toEndOf="@+id/annoSelected"
-        app:layout_constraintTop_toBottomOf="@+id/titoloMese"
-        android:contentDescription="@string/share" />
+        app:layout_constraintEnd_toEndOf="@+id/progressBar3"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar3"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/titoloMese"
@@ -177,7 +177,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar3">
+        app:layout_constraintTop_toBottomOf="@+id/shareButton">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -196,7 +196,7 @@
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/barChart"
                 android:layout_width="match_parent"
-                android:layout_height="201dp"
+                android:layout_height="180dp"
                 android:layout_margin="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
