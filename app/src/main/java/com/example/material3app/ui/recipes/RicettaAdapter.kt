@@ -60,7 +60,7 @@ class RicettaAdapter(
 
             mFoodViewModel = ViewModelProvider(itemView.context as ViewModelStoreOwner)[FoodViewModel::class.java]
 
-            ingredientiTextView.movementMethod = ScrollingMovementMethod()
+            ingredientiTextView.movementMethod = ScrollingMovementMethod()  //TODO controlla se serve
             descrizioneTextView.movementMethod = ScrollingMovementMethod()
             ricettaCardView.setOnClickListener{
                 clickListener.onClick(it,ricetta)

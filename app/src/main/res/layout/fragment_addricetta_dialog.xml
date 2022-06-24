@@ -23,6 +23,7 @@
         android:layout_marginBottom="16dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/addNomeRicettaLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/nome_ricetta"
@@ -41,12 +42,14 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/addKcalLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:hint="@string/kcal"
         android:layout_marginBottom="8dp"
         app:errorEnabled="true"
         >
+
         <com.google.android.material.textfield.TextInputEditText
 
             android:id="@+id/addKcal"
