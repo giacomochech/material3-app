@@ -64,7 +64,7 @@ class ListaRicettaFragment : Fragment(), RicettaClickListener {
         val detailsLayout = view.findViewById<LinearLayout>(R.id.details)
         val v: Int = if(detailsLayout.visibility == View.GONE) View.VISIBLE else View.GONE
 
-        TransitionManager.beginDelayedTransition(detailsLayout, AutoTransition()) //TODO controlla transition
+        TransitionManager.beginDelayedTransition(detailsLayout, AutoTransition())
         detailsLayout.visibility = v
 
 

@@ -92,6 +92,17 @@
                 android:textColor="?attr/colorOnTertiaryContainer"
 
                 />
+            <Button
+                android:id="@+id/remove_image_button"
+                android:layout_width="134dp"
+                android:layout_height="48dp"
+                android:text="@string/rimuovi"
+                android:layout_gravity="end"
+                android:backgroundTint="?attr/colorTertiary"
+                android:textColor="?attr/colorOnTertiary"
+                android:visibility="gone"
+
+                />
 
 
         </LinearLayout>

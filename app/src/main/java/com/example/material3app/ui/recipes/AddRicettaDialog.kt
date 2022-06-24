@@ -1,6 +1,7 @@
 package com.example.material3app.ui.recipes
 
 
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.ImageDecoder
@@ -20,7 +21,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.material3app.R
 import com.example.material3app.Ricetta
 import com.example.material3app.data.FoodViewModel
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 
 
@@ -37,7 +37,9 @@ class AddRicettaDialog: DialogFragment() {
 
 
 
-        val imageButtonView : Button = rootView.findViewById(R.id.image_button) //TODO:Controlla se va bene EditText
+        val imageButtonView : Button = rootView.findViewById(R.id.image_button)
+
+        val removeImageButtonView : Button = rootView.findViewById(R.id.remove_image_button)
 
         val nomeRicettaView : TextInputEditText = rootView.findViewById(R.id.addNomeRicetta)
 
@@ -67,7 +69,7 @@ class AddRicettaDialog: DialogFragment() {
                 kcalRicettaView.setText(ricetta.kcal.toString())
                 ingredientiView.setText(ricetta.ingredienti)
                 descrizioneView.setText(ricetta.descrizione)
-
+                removeImageButtonView.visibility = View.VISIBLE
             })
 
 
@@ -101,14 +103,16 @@ class AddRicettaDialog: DialogFragment() {
             dismiss()
         }
 
-
         val getContent = registerForActivityResult(ActivityResultContracts.GetContent()){uri: Uri?->
 
-            imageBitmap = if(uri != null){
-                ImageDecoder.decodeBitmap(ImageDecoder.createSource(requireActivity().contentResolver, uri))
-                //imageBitmap = Bitmap.createScaledBitmap(imageBitmap, 800,800, true) Nel caso servisse ridimensionare l'immaginee
+
+            if(uri != null){
+                val notScaledImage = ImageDecoder.decodeBitmap(ImageDecoder.createSource(requireActivity().contentResolver, uri))
+                imageBitmap = resize(notScaledImage)
+                removeImageButtonView.visibility = View.VISIBLE
+
             } else{
-                BitmapFactory.decodeResource(resources, R.drawable.default2)
+               imageBitmap =  BitmapFactory.decodeResource(resources, R.drawable.default2)
             }
 
         }
@@ -117,6 +121,11 @@ class AddRicettaDialog: DialogFragment() {
 
             getContent.launch("image/*")
 
+        }
+
+        removeImageButtonView.setOnClickListener{
+            imageBitmap =  BitmapFactory.decodeResource(resources, R.drawable.default2)
+            removeImageButtonView.visibility = View.GONE
         }
         return rootView
     }
@@ -144,5 +153,29 @@ class AddRicettaDialog: DialogFragment() {
 
     private fun inputCheck(name : String, kcal: Int) : Boolean{
         return !(TextUtils.isEmpty(name) || (kcal == -1) )
+    }
+
+    private fun resize(image: Bitmap): Bitmap {
+        val maxWidth = 1066
+        val maxHeight = 800
+        var img = image
+        return if (maxHeight > 0 && maxWidth > 0) {
+            val width = img.width
+            val height = img.height
+            val ratioBitmap = width.toFloat() / height.toFloat()
+            val ratioMax = maxWidth.toFloat() / maxHeight.toFloat()
+            var finalWidth = maxWidth
+            var finalHeight = maxHeight
+            if (ratioMax > ratioBitmap) {
+                finalWidth = (maxHeight.toFloat() * ratioBitmap).toInt()
+            } else {
+                finalHeight = (maxWidth.toFloat() / ratioBitmap).toInt()
+            }
+
+            img = Bitmap.createScaledBitmap(img, finalWidth, finalHeight, true)
+            img
+        } else {
+            img
+        }
     }
 }
