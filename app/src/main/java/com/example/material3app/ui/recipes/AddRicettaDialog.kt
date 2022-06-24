@@ -46,8 +46,9 @@ class AddRicettaDialog : DialogFragment() {
 
         kcalRicettaView = rootView.findViewById(R.id.addKcal)
 
-        nomeRicettaLayout = rootView.findViewById<TextInputLayout>(R.id.addNomeRicettaLayout)
-        kcalRicettaLayout = rootView.findViewById<TextInputLayout>(R.id.addKcalLayout)
+        rootView.findViewById<TextInputLayout>(R.id.addNomeRicettaLayout)
+            .also { nomeRicettaLayout = it }
+        rootView.findViewById<TextInputLayout>(R.id.addKcalLayout).also { kcalRicettaLayout = it }
 
         val ingredientiView: TextInputEditText = rootView.findViewById(R.id.addIng)
 

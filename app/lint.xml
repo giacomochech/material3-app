@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconExtension">
+        <ignore path="src/main/res/drawable/avatar.jpg" />
+    </issue>
+    <issue id="IconLocation">
+        <ignore path="src/main/res/drawable/avatar.jpg" />
+        <ignore path="src/main/res/drawable/default2.png" />
+        <ignore path="src/main/res/drawable/fagiolata.jpg" />
+    </issue>
+</lint>

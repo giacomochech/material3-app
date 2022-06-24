@@ -38,10 +38,10 @@ class ModifyUserFragment : DialogFragment() {
         val rootView = inflater.inflate(R.layout.fragment_modify_user, container, false)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        textEditNomeUser = rootView.findViewById<TextInputEditText>(R.id.editTextInputNomeUtente)
-        textEditMail = rootView.findViewById<TextInputEditText>(R.id.editTextInputMail)
-        textEditNomeUserLayout = rootView.findViewById<TextInputLayout>(R.id.layoutInputNomeUtente)
-        textEditMailLayout = rootView.findViewById<TextInputLayout>(R.id.layoutInputMail)
+        textEditNomeUser = rootView.findViewById(R.id.editTextInputNomeUtente)
+        textEditMail = rootView.findViewById(R.id.editTextInputMail)
+        textEditNomeUserLayout = rootView.findViewById(R.id.layoutInputNomeUtente)
+        textEditMailLayout = rootView.findViewById(R.id.layoutInputMail)
 
         val buttonOk = rootView.findViewById<Button>(R.id.accettoUtenteButton)
         val buttonCanc = rootView.findViewById<Button>(R.id.annullaUtenteButton)
@@ -127,9 +127,8 @@ class ModifyUserFragment : DialogFragment() {
         val baos = ByteArrayOutputStream()
         image.compress(Bitmap.CompressFormat.PNG, 100, baos)
         val b: ByteArray = baos.toByteArray()
-        val imageEncoded: String = Base64.encodeToString(b, Base64.DEFAULT)
 
-        return imageEncoded
+        return Base64.encodeToString(b, Base64.DEFAULT)
     }
 
     private fun resize(image: Bitmap): Bitmap {

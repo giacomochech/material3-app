@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="?attr/colorOnSecondary"
         style="@style/Widget.Material3.CardView.Outlined"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="8dp"
         >
 
