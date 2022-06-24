@@ -1,11 +1,8 @@
 package com.example.material3app.ui.recipes
 
 
-import android.animation.Animator
-import android.animation.LayoutTransition
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +11,6 @@ import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
-import androidx.core.view.ViewCompat.animate
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
