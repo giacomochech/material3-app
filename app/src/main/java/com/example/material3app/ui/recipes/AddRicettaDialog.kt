@@ -1,14 +1,10 @@
 package com.example.material3app.ui.recipes
 
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.graphics.ImageDecoder
+import android.graphics.*
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +23,8 @@ import com.google.android.material.textfield.TextInputEditText
 class AddRicettaDialog: DialogFragment() {
 
     private lateinit var mFoodViewModel: FoodViewModel
+    private  lateinit var nomeRicettaView : TextInputEditText
+    private  lateinit var kcalRicettaView : TextInputEditText
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,9 +39,9 @@ class AddRicettaDialog: DialogFragment() {
 
         val removeImageButtonView : Button = rootView.findViewById(R.id.remove_image_button)
 
-        val nomeRicettaView : TextInputEditText = rootView.findViewById(R.id.addNomeRicetta)
+         nomeRicettaView = rootView.findViewById(R.id.addNomeRicetta)
 
-        val kcalRicettaView : TextInputEditText  = rootView.findViewById(R.id.addKcal)
+         kcalRicettaView = rootView.findViewById(R.id.addKcal)
 
         val ingredientiView : TextInputEditText = rootView.findViewById(R.id.addIng)
 
@@ -78,6 +76,7 @@ class AddRicettaDialog: DialogFragment() {
 
 
         mFoodViewModel = ViewModelProvider(this)[FoodViewModel::class.java]
+
         salvaButton.setOnClickListener{
 
 
@@ -93,9 +92,10 @@ class AddRicettaDialog: DialogFragment() {
             }
 
 
-            insertDataToDatabase(ricetta)
-            if(id != 0 && id != null) mFoodViewModel.deleteRicetta(id)
-            dismiss()
+            if(insertDataToDatabase(ricetta)){
+                if(id != 0 && id != null) mFoodViewModel.deleteRicetta(id)
+                dismiss()
+            }
         }
 
 
@@ -130,7 +130,7 @@ class AddRicettaDialog: DialogFragment() {
         return rootView
     }
 
-    private fun insertDataToDatabase(ricetta: Ricetta){
+    private fun insertDataToDatabase(ricetta: Ricetta): Boolean {
 
         val immagine = ricetta.cover
         val nome = ricetta.nome
@@ -139,20 +139,29 @@ class AddRicettaDialog: DialogFragment() {
         val description = ricetta.descrizione
 
 
-        if(inputCheck(nome,kcal)){
+        if(inputCheck()){
             val recipe = Ricetta(0,immagine,nome,kcal,ing,description)
 
             mFoodViewModel.addRicetta(recipe)
             Toast.makeText(requireContext(),"Dati inseriti correttamente", Toast.LENGTH_LONG).show()
-
+            return true
         }
         else{
-            Toast.makeText(requireContext(), "Dati non inseriti", Toast.LENGTH_SHORT).show()
+
+            if(nomeRicettaView.text.isNullOrBlank())
+                nomeRicettaView.error = "Nome non valido"
+
+            if(kcalRicettaView.text.isNullOrBlank())
+                kcalRicettaView.error = "Valore non valido"
+
+
+
+            return false
         }
     }
 
-    private fun inputCheck(name : String, kcal: Int) : Boolean{
-        return !(TextUtils.isEmpty(name) || (kcal == -1) )
+    private fun inputCheck() : Boolean{
+        return !(nomeRicettaView.text.isNullOrBlank()||kcalRicettaView.text.isNullOrBlank())
     }
 
     private fun resize(image: Bitmap): Bitmap {

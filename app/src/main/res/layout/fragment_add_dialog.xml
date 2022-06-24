@@ -26,6 +26,7 @@
                 android:hint="@string/nome"
                 android:minHeight="48dp"
                 android:layout_marginBottom="5dp"
+                app:errorEnabled="true"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -44,6 +45,7 @@
                 android:hint="@string/calorie"
                 android:minHeight="18dp"
                 android:layout_marginBottom="16dp"
+                app:errorEnabled="true"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText

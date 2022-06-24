@@ -4,12 +4,10 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -31,6 +29,8 @@ import java.util.*
 class AddFragmentDialog : DialogFragment() {
 
     private lateinit var mFoodViewModel: FoodViewModel
+    private lateinit var nomeCibo : TextInputEditText
+    private lateinit var kCal : TextInputEditText
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -41,8 +41,8 @@ class AddFragmentDialog : DialogFragment() {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val dateButton : Button = rootView.findViewById(R.id.data_button)
         val dateTextView : TextView = rootView.findViewById(R.id.dataPiked)
-        val nomeCibo : TextInputEditText = rootView.findViewById(R.id.AddNomeCibo)
-        val kCal : TextInputEditText = rootView.findViewById(R.id.AddCalorieCibo)
+        nomeCibo = rootView.findViewById(R.id.AddNomeCibo)
+        kCal  = rootView.findViewById(R.id.AddCalorieCibo)
         val confirmButton : Button = rootView.findViewById(R.id.AddConfermaBotton)
         val annullaButton : Button = rootView.findViewById(R.id.AddAnnullaBotton)
         var dataPiked = LocalDate.now()
@@ -90,9 +90,9 @@ class AddFragmentDialog : DialogFragment() {
             }
 
 
-            insertDataToDatabase(alimento)
-
-            dismiss()
+            if(insertDataToDatabase(alimento)) {
+                dismiss()
+            }
         }
         annullaButton.setOnClickListener {
             dismiss()
@@ -113,29 +113,37 @@ class AddFragmentDialog : DialogFragment() {
 
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun insertDataToDatabase(alimento: Cibo){
+    private fun insertDataToDatabase(alimento: Cibo): Boolean{
 
         val nome = alimento.getName()
         val kcal = alimento.getKcal()
         val date = alimento.getDate()
 
 
-        if(inputCheck(alimento,date)){
+        if(inputCheck()){
             val food = Cibo(0,date,nome,kcal)
 
             mFoodViewModel.addFood(food)
             Toast.makeText(requireContext(),"Dati inseriti correttamente", Toast.LENGTH_LONG).show()
-
+            return true
         }
         else{
-            Toast.makeText(requireContext(), "Dati non inseriti", Toast.LENGTH_SHORT).show()
+            if(nomeCibo.text.isNullOrBlank())
+                nomeCibo.error = "Nome non valido"
+
+            if(kCal.text.isNullOrBlank())
+                kCal.error = "Valore non valido"
+
+
+
+            return false
         }
     }
 
-    private fun inputCheck(food: Cibo, date: String) : Boolean{
-        return !(TextUtils.isEmpty(food.getName()) || (food.getKcal() == -1) || TextUtils.isEmpty(date) )
-    }
 
+    private fun inputCheck() : Boolean{
+        return !(nomeCibo.text.isNullOrBlank()||kCal.text.isNullOrBlank())
+    }
 }
 
 
