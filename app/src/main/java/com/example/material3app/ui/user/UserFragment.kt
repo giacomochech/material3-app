@@ -51,7 +51,7 @@ class UserFragment : Fragment() {
             Context.MODE_PRIVATE)
         sharedPref?.getInt(CalcolaFragment.INT_OBIETTIVO,0)?.let {
 
-            val s = "$it KCalorie"
+            val s = it.toString()
             obiettivoAttualeTextView.text = s
         }
         val sharedPrefUser = activity?.getSharedPreferences(ModifyUserFragment.SHARED_PREF_USER_DATA,Context.MODE_PRIVATE)
@@ -76,7 +76,7 @@ class UserFragment : Fragment() {
             CalcolaFragment.SHARED_PREF_PAGINA_CALC,
             Context.MODE_PRIVATE)
         sharedPref?.getInt(CalcolaFragment.INT_OBIETTIVO,0)?.let { val s =
-            "$it KCalorie"
+            "$it"
             obiettivoAttualeTextView.text = s
         }
         val sharedPrefUser = activity?.getSharedPreferences(ModifyUserFragment.SHARED_PREF_USER_DATA,Context.MODE_PRIVATE)

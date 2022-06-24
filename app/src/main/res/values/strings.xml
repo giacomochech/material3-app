@@ -8,7 +8,6 @@
     <string name="_2500_kcal">2500 Kcal</string>
     <string name="text">text</string>
     <string name="data">Data</string>
-    <string name="datePlaceHolder">La data seleziona è \n 10 jun 2020</string>
     <string name="nome">Nome</string>
     <string name="calorie">Calorie</string>
     <string name="aggiungi">Aggiungi</string>
@@ -18,7 +17,6 @@
     <string name="calcola">Calcola</string>
     <string name="calorie_obiettivo">Calorie Obiettivo</string>
     <string name="annulla">Annulla</string>
-    <string name="accetta">Accetta</string>
     <string name="add">Add</string>
     <string name="_15">15</string>
     <string name="maggio">maggio</string>
@@ -63,7 +61,10 @@
     <string name="seleziona_data">Seleziona data</string>
     <string name="la_data_seleziona_n10_jun_2020">La data seleziona è \n10 jun 2020</string>
     <string name="seleziona_la_tua_immagine_ndalla_galleria">Seleziona la tua immagine\ndalla galleria</string>
-    <string name="rimuovi">Rimuovi</string>
+    <string name="share">share</string>
+    <string name="kcalorie">KCalorie</string>
+    <string name="calcolatrice_calorie">Calcolatrice calorie</string>
+    <string name="addbutton">AddButton</string>
 
 
     <string-array name="SelectSex">

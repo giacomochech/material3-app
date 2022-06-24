@@ -8,15 +8,20 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.material3app.MainActivityViewModel
 import com.example.material3app.R
 import com.example.material3app.databinding.FragmentHomeBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
+
+    private val viewModel by activityViewModels<MainActivityViewModel>()
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -35,7 +40,11 @@ class HomeFragment : Fragment() {
         val fab = root.findViewById<FloatingActionButton>(R.id.floating_action_button)
         fab.setOnClickListener {
             val dialog : DialogFragment = AddFragmentDialog()
+            val args = Bundle()
+            args.putString(BOUNDLE_DATE,viewModel.data.format(DateTimeFormatter.ISO_DATE))
+            dialog.arguments = args
             dialog.show(parentFragmentManager,"ADD DIALOG")
+
         }
 
         val viewPager = binding.ViewPager//r.id.text_home
@@ -57,10 +66,16 @@ class HomeFragment : Fragment() {
             return ListaCiboFragment().apply {
                 date=key
                 kCalAssunte=0
+
             }
         }
 
 
 
     }
+    companion object{
+        const val BOUNDLE_DATE = "dateCurret"
+    }
+
+
 }

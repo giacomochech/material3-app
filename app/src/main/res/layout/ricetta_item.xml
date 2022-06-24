@@ -37,16 +37,17 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/fabCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
+                <ImageButton
+                    android:id="@+id/ImageButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="6dp"
+                    android:elevation="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:srcCompat="@drawable/ic_round_add_24"
-                    android:layout_margin="6dp"
-                    android:contentDescription="aggiungi"/>
+                    android:background="@drawable/bg_round"
+                    android:contentDescription="@string/addbutton" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -56,9 +57,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="8dp">
-
-
-
                 <TextView
                     android:id="@+id/nomeRicetta"
                     android:layout_width="wrap_content"
@@ -110,7 +108,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    android:animateLayoutChanges="true">
 
                     <TextView
                         android:layout_width="wrap_content"

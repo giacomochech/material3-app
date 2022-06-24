@@ -6,6 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
+import android.view.animation.AnimationSet
+import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
@@ -18,6 +22,7 @@ import com.example.material3app.R
 import com.example.material3app.Ricetta
 import com.example.material3app.data.FoodViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+
 
 class ListaRicettaFragment : Fragment(), RicettaClickListener {
 
@@ -61,11 +66,30 @@ class ListaRicettaFragment : Fragment(), RicettaClickListener {
 
     override fun onClick(view: View, ricetta: Ricetta) {
 
-        val detailsLayout = view.findViewById<LinearLayout>(R.id.details)
-        val v: Int = if(detailsLayout.visibility == View.GONE) View.VISIBLE else View.GONE
 
-        TransitionManager.beginDelayedTransition(detailsLayout, AutoTransition())
-        detailsLayout.visibility = v
+
+        val detailsLayout = view.findViewById<LinearLayout>(R.id.details)
+        if(detailsLayout.visibility == View.GONE){
+            val set = AnimationSet(true)
+
+            val animateT = TranslateAnimation(0f,0f ,500F,0F )
+            animateT.duration = 200
+            set.addAnimation(animateT)
+
+            val anim : Animation = AlphaAnimation(0F, 1.0f)
+            anim.duration =300
+            animateT.fillAfter = true
+            set.addAnimation(anim)
+            detailsLayout.startAnimation(set)
+
+            detailsLayout.visibility = View.VISIBLE
+
+        }
+        else {
+            detailsLayout.visibility = View.GONE
+        }
+
+
 
 
     }

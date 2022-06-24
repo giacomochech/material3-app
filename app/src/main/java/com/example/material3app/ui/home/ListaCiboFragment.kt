@@ -14,9 +14,11 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.example.material3app.MainActivityViewModel
 import com.example.material3app.R
 import com.example.material3app.data.FoodViewModel
 import com.example.material3app.ui.slideshow.CalcolaFragment
@@ -27,6 +29,7 @@ import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.O)
 class ListaCiboFragment : Fragment() {
+    private val viewModel by activityViewModels<MainActivityViewModel>()
     var kCalAssunte :Int = 0
     lateinit var date : LocalDate
     private lateinit var mFoodViewModel: FoodViewModel
@@ -112,6 +115,10 @@ class ListaCiboFragment : Fragment() {
         outState.putSerializable(DATE_SAVE,date)
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.data = date
+    }
 
 companion object {
     const val KCAL_SAVE = "KCal"
