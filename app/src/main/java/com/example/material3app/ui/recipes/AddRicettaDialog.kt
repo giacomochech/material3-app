@@ -20,7 +20,7 @@ import com.example.material3app.data.FoodViewModel
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
-
+//dialog aggiunta delle ricette
 class AddRicettaDialog : DialogFragment() {
 
     private lateinit var mFoodViewModel: FoodViewModel

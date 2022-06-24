@@ -15,7 +15,7 @@ import com.example.material3app.data.FoodViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
-
+//adapter per il singolo alimento
 
 class CiboAdapter :
     RecyclerView.Adapter<CiboAdapter.CiboViewHolder>() {

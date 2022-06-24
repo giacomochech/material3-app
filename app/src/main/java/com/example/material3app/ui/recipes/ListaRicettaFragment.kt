@@ -21,7 +21,7 @@ import com.example.material3app.Ricetta
 import com.example.material3app.data.FoodViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-
+//fragment base delle Ricette
 class ListaRicettaFragment : Fragment(), RicettaClickListener {
 
     private lateinit var mFoodViewModel: FoodViewModel

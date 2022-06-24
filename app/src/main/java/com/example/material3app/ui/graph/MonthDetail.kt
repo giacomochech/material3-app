@@ -2,7 +2,7 @@ package com.example.material3app.ui.graph
 
 import java.time.LocalDate
 import java.time.Month
-
+//data class per i dettagli mensili : mese, anno, giorni inseriti , giorni in cui l'obiettivo è stato raggiunto, giorni in cui l'obeittivo è stato sforato
 data class MonthDetail(
     var month: Month,
     val year: Int

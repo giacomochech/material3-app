@@ -22,7 +22,7 @@ import com.example.material3app.ui.home.AddFragmentDialog
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
-
+//adapter per la visualizzazione delle ricette
 class RicettaAdapter(
     private val clickListener: RicettaClickListener
 )
@@ -60,7 +60,7 @@ class RicettaAdapter(
 
             mFoodViewModel = ViewModelProvider(itemView.context as ViewModelStoreOwner)[FoodViewModel::class.java]
 
-            ingredientiTextView.movementMethod = ScrollingMovementMethod()  //TODO controlla se serve
+            ingredientiTextView.movementMethod = ScrollingMovementMethod()
             descrizioneTextView.movementMethod = ScrollingMovementMethod()
             ricettaCardView.setOnClickListener{
                 clickListener.onClick(it,ricetta)

@@ -40,7 +40,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.*
-
+/*frgment dei grafici*/
 
 class GraficiMensiliFragment : Fragment() {
 
@@ -99,7 +99,7 @@ class GraficiMensiliFragment : Fragment() {
 
         stetUp()
         updateAllData(dataPicked, obiettivo)
-
+/*Creazione e visualizzazione del dialog inserimento mesi*/
         calendarButton.setOnClickListener {
             val viewDialog = View.inflate(context, R.layout.dialog_date_year, null)
             val pickerMonth = viewDialog.findViewById<NumberPicker>(R.id.pickerMonth)
@@ -145,7 +145,7 @@ class GraficiMensiliFragment : Fragment() {
     }
 
 
-
+    /*Funzione che fa lo schreenshot dell'applicazione*/
     private fun takeScreenShot() {
 
         val format: CharSequence =LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM-dd-yyyy_hh:mm:ss"))
@@ -178,7 +178,7 @@ class GraficiMensiliFragment : Fragment() {
     }
 
 
-
+//funzione per condividere lo screenshot tramite intent
 
     private fun shareScreenShot(imageFile: File) {
 
@@ -191,7 +191,7 @@ class GraficiMensiliFragment : Fragment() {
         val intent = Intent()
         intent.action = Intent.ACTION_SEND
         intent.type = "image/*"
-        intent.putExtra(Intent.EXTRA_TEXT, "Guarda i miei RISULTATI\n tutto grazie a DiarioM3")
+        intent.putExtra(Intent.EXTRA_TEXT, "Guarda i miei RISULTATI\ntutto grazie alla mia nuova applicazione DiarioM3")
         intent.putExtra(Intent.EXTRA_STREAM, uri)
 
         try {
@@ -220,6 +220,7 @@ class GraficiMensiliFragment : Fragment() {
         }
     }
 
+//funzione che aggiorna tutti e 3 gli elementi grafici
 
 
 
@@ -255,6 +256,7 @@ class GraficiMensiliFragment : Fragment() {
         }
 
     }
+//funzione inizializza i due grafici,della libreria MPAndroidChart
 
     private fun stetUp() {
         dataPicked = LocalDate.now()
@@ -276,7 +278,7 @@ class GraficiMensiliFragment : Fragment() {
         //pieChart.setSingleLine(true);
 
     }
-
+    //funzione inizializza i l'istogramma MPAndroidChart
     private fun setupBarChart() {
 
         barChart.description.isEnabled = false
@@ -299,6 +301,7 @@ class GraficiMensiliFragment : Fragment() {
 
 
     }
+    //funzione carica i dati nel grafico a ciambella  MPAndroidChart
 
     private fun loadPieChartData(monthDetail: MonthDetail) {
         val entries: ArrayList<PieEntry> = ArrayList()
@@ -342,6 +345,7 @@ class GraficiMensiliFragment : Fragment() {
         pieChart.invalidate()
         pieChart.animateY(1400, Easing.EaseOutCirc)
     }
+    //funzione carica i dati nell'istogramma  MPAndroidChart
 
     private fun loadBarChartData(listKcalDay: List<Int>, obiettivo: Int) {
         val entries: ArrayList<BarEntry> = ArrayList()
@@ -422,6 +426,7 @@ class GraficiMensiliFragment : Fragment() {
 
 
     }
+    //funzione per avere gli indici minimo e max dei dati dell'istogramma
 
     private fun getIndexMin(listKcal: List<Int>, obiettivo: Int): Int {
         var indexRet = 0

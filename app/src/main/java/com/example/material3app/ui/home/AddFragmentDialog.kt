@@ -27,6 +27,7 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.*
 
+//fragment Dialog per l'aggiunta di alimenti
 
 class AddFragmentDialog : DialogFragment() {
 
@@ -111,7 +112,7 @@ class AddFragmentDialog : DialogFragment() {
         }
         return rootView
     }
-
+//funzione per trasformata un local dato nella sua stringa ppersonalizzata
     private fun localDataToSting(dataPiked: LocalDate): String {
         return "L'alimento verrà inserito in data \n${
             dataPiked.format(
@@ -122,7 +123,7 @@ class AddFragmentDialog : DialogFragment() {
 
     }
 
-
+//funzione per aggiungere i dati al Database
     @RequiresApi(Build.VERSION_CODES.O)
     private fun insertDataToDatabase(alimento: Cibo): Boolean{
 
@@ -156,7 +157,7 @@ class AddFragmentDialog : DialogFragment() {
         }
     }
 
-
+//funzione di check
     private fun inputCheck() : Boolean{
         return !(nomeCibo.text.isNullOrBlank()||kCal.text.isNullOrBlank())
     }

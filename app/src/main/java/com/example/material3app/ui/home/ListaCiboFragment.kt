@@ -25,7 +25,7 @@ import com.example.material3app.ui.slideshow.CalcolaFragment
 import com.example.material3app.ui.slideshow.CalcolaFragment.Companion.SHARED_PREF_PAGINA_CALC
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-
+//fragment delle schermate del ViewPager
 
 @RequiresApi(Build.VERSION_CODES.O)
 class ListaCiboFragment : Fragment() {
@@ -49,13 +49,13 @@ class ListaCiboFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_lista_cibo, container, false)
-        // Inflate the layout for this fragment
+
         val textKcalAssunte : TextView = view.findViewById(R.id.KcalAssunte)
         val textGiorno : TextView = view.findViewById(R.id.giorno_del_mese)
         val textMese : TextView = view.findViewById(R.id.mese)
-        //val card : CardView = view.findViewById(R.id.cardView)
+
         val recyclerView : RecyclerView = view.findViewById(R.id.recyclerView)
-      //  val
+
 
 
         val ciboAdapter = CiboAdapter()

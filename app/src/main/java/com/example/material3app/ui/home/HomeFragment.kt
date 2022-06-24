@@ -18,7 +18,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 class HomeFragment : Fragment() {
-
+//fragment base della schermata diario
     private lateinit var binding: FragmentHomeBinding
 
     private val viewModel by activityViewModels<MainActivityViewModel>()
@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
 
         return root
     }
-
+//adapter per il viewPager
     inner class AdapterViewPager : FragmentStateAdapter(childFragmentManager,lifecycle){
         override fun getItemCount(): Int {
           return Int.MAX_VALUE
