@@ -29,7 +29,7 @@ import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.O)
 class ListaCiboFragment : Fragment() {
-    val viewModel by activityViewModels<MainActivityViewModel>()
+    private val viewModel by activityViewModels<MainActivityViewModel>()
     var kCalAssunte :Int = 0
     lateinit var date : LocalDate
     private lateinit var mFoodViewModel: FoodViewModel

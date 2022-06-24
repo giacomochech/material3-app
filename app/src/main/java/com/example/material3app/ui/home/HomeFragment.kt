@@ -21,7 +21,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
 
-    val viewModel by activityViewModels<MainActivityViewModel>()
+    private val viewModel by activityViewModels<MainActivityViewModel>()
 
 
     @RequiresApi(Build.VERSION_CODES.O)

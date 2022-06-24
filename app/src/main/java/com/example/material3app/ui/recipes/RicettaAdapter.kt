@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -18,7 +19,6 @@ import com.example.material3app.R
 import com.example.material3app.Ricetta
 import com.example.material3app.data.FoodViewModel
 import com.example.material3app.ui.home.AddFragmentDialog
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
@@ -44,7 +44,7 @@ class RicettaAdapter(
         private val ricettaCardView: CardView = itemView.findViewById(R.id.cardView)
         private val deleteButton: Button = itemView.findViewById(R.id.buttonElimina)
         private val modifyButton = itemView.findViewById<Button>(R.id.buttonModifica)
-        private val fab = itemView.findViewById<FloatingActionButton>(R.id.fabCard)
+        private val addImageButton = itemView.findViewById<ImageButton>(R.id.ImageButton)
 
         private lateinit var mFoodViewModel: FoodViewModel
 
@@ -65,7 +65,7 @@ class RicettaAdapter(
             ricettaCardView.setOnClickListener{
                 clickListener.onClick(it,ricetta)
             }
-            fab.setOnClickListener{
+            addImageButton.setOnClickListener{
                 val dialog : DialogFragment = AddFragmentDialog()
                 val args = Bundle()
                 val idRicetta = ricetta.id

@@ -19,9 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="18dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
             style="?attr/materialCardViewFilledStyle"
             android:backgroundTint="?attr/colorPrimaryContainer"
             >
@@ -48,14 +48,13 @@
                         android:orientation="vertical"
                         android:gravity="center"
                         android:layout_gravity="center_horizontal|center_vertical"
-                        android:layout_margin="15dp">
+                        android:layout_margin="12dp">
                         <TextView
                             android:id="@+id/giorno_del_mese"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/_15"
                             android:textSize="50sp"
-                            android:textStyle="bold"
                             android:textColor="?android:attr/textColorSecondary"
                             />
 
@@ -65,7 +64,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/maggio"
-                            android:textStyle="bold"
                             android:textColor="?android:attr/textColorSecondary"/>
 
 
@@ -84,7 +82,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/calorie_assunte"
-                        android:textStyle="bold"
                         android:textAppearance="?attr/textAppearanceTitleMedium"
                         android:textColor="?android:attr/textColorSecondary"/>
                     <TextView

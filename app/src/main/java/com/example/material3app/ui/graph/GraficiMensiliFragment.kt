@@ -146,29 +146,6 @@ class GraficiMensiliFragment : Fragment() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private fun takeScreenShot() {
 
         val format: CharSequence =LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM-dd-yyyy_hh:mm:ss"))
@@ -211,14 +188,12 @@ class GraficiMensiliFragment : Fragment() {
             imageFile
         )
 
-        //Explicit intent
         val intent = Intent()
         intent.action = Intent.ACTION_SEND
         intent.type = "image/*"
         intent.putExtra(Intent.EXTRA_TEXT, "Guarda i miei RISULTATI\n tutto grazie a DiarioM3")
         intent.putExtra(Intent.EXTRA_STREAM, uri)
 
-        //It will show the application which are available to share Image; else Toast message will throw.
         try {
             requireActivity().startActivity(Intent.createChooser(intent, "Share With"))
         } catch (e: ActivityNotFoundException) {
@@ -226,8 +201,8 @@ class GraficiMensiliFragment : Fragment() {
         }
     }
 
-    private val REQUEST_EXTERNAL_STORAGE = 1
-    private val PERMISSION_STORAGE = arrayOf(
+    private val requetE = 1
+    private val permissionE = arrayOf(
         android.Manifest.permission.READ_EXTERNAL_STORAGE,
         android.Manifest.permission.WRITE_EXTERNAL_STORAGE
     )
@@ -239,43 +214,11 @@ class GraficiMensiliFragment : Fragment() {
         if (permission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
                 requireActivity(),
-                PERMISSION_STORAGE,
-                REQUEST_EXTERNAL_STORAGE
+                permissionE,
+                requetE
             )
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -367,7 +310,7 @@ class GraficiMensiliFragment : Fragment() {
         val colors: ArrayList<Int> = ArrayList()
         val typedValue = TypedValue()
         context?.theme?.resolveAttribute(
-            com.google.android.material.R.attr.colorPrimaryContainer,
+            com.google.android.material.R.attr.colorPrimary,
             typedValue,
             true
         )
@@ -378,7 +321,12 @@ class GraficiMensiliFragment : Fragment() {
             true
         )
         colors.add(typedValue.data)
-        colors.add(Color.GRAY)
+        context?.theme?.resolveAttribute(
+            com.google.android.material.R.attr.colorTertiaryContainer,
+            typedValue,
+            true
+        )
+        colors.add(typedValue.data)
 
         progressBarArray.forEachIndexed { i, it ->
             it.progressTintList = ColorStateList.valueOf(colors[i])
@@ -434,7 +382,6 @@ class GraficiMensiliFragment : Fragment() {
         val colors: ArrayList<Int> = ArrayList()
         listKcalDay.forEach {
             if (it > obiettivo) {
-                //colors.add(getContext().getTheme().resolveAttribute(android.R.attr.colorPrimary, value, true))
                 val typedValue = TypedValue()
                 context?.theme?.resolveAttribute(
                     com.google.android.material.R.attr.colorError,
