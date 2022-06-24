@@ -16,8 +16,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.AutoTransition
-import androidx.transition.TransitionManager
 import com.example.material3app.R
 import com.example.material3app.Ricetta
 import com.example.material3app.data.FoodViewModel

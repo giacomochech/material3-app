@@ -65,6 +65,7 @@
     <string name="kcalorie">KCalorie</string>
     <string name="calcolatrice_calorie">Calcolatrice calorie</string>
     <string name="addbutton">AddButton</string>
+    <string name="rimuovi">Rimuovi</string>
 
 
     <string-array name="SelectSex">
