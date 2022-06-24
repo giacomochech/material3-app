@@ -18,13 +18,17 @@ import com.example.material3app.R
 import com.example.material3app.Ricetta
 import com.example.material3app.data.FoodViewModel
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 
-class AddRicettaDialog: DialogFragment() {
+class AddRicettaDialog : DialogFragment() {
 
     private lateinit var mFoodViewModel: FoodViewModel
-    private  lateinit var nomeRicettaView : TextInputEditText
-    private  lateinit var kcalRicettaView : TextInputEditText
+    private lateinit var nomeRicettaView: TextInputEditText
+    private lateinit var kcalRicettaView: TextInputEditText
+    private lateinit var nomeRicettaLayout: TextInputLayout
+    private lateinit var kcalRicettaLayout: TextInputLayout
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,33 +38,33 @@ class AddRicettaDialog: DialogFragment() {
         val id = arguments?.getInt("id")
 
 
+        val imageButtonView: Button = rootView.findViewById(R.id.image_button)
 
-        val imageButtonView : Button = rootView.findViewById(R.id.image_button)
+        val removeImageButtonView: Button = rootView.findViewById(R.id.remove_image_button)
 
-        val removeImageButtonView : Button = rootView.findViewById(R.id.remove_image_button)
+        nomeRicettaView = rootView.findViewById(R.id.addNomeRicetta)
 
-         nomeRicettaView = rootView.findViewById(R.id.addNomeRicetta)
+        kcalRicettaView = rootView.findViewById(R.id.addKcal)
 
-         kcalRicettaView = rootView.findViewById(R.id.addKcal)
+        nomeRicettaLayout = rootView.findViewById<TextInputLayout>(R.id.addNomeRicettaLayout)
+        kcalRicettaLayout = rootView.findViewById<TextInputLayout>(R.id.addKcalLayout)
 
-        val ingredientiView : TextInputEditText = rootView.findViewById(R.id.addIng)
+        val ingredientiView: TextInputEditText = rootView.findViewById(R.id.addIng)
 
-        val descrizioneView : TextInputEditText  = rootView.findViewById(R.id.addDesc)
-
-
+        val descrizioneView: TextInputEditText = rootView.findViewById(R.id.addDesc)
 
 
-        val salvaButton : Button = rootView.findViewById(R.id.salvaButton)
-        val annullaButton : Button = rootView.findViewById(R.id.annullaButton)
+        val salvaButton: Button = rootView.findViewById(R.id.salvaButton)
+        val annullaButton: Button = rootView.findViewById(R.id.annullaButton)
 
-        var imageBitmap  = BitmapFactory.decodeResource(resources, R.drawable.default2)
+        var imageBitmap = BitmapFactory.decodeResource(resources, R.drawable.default2)
 
         mFoodViewModel = ViewModelProvider(this)[FoodViewModel::class.java]
 
-        if(id != 0 && id != null){
+        if (id != 0 && id != null) {
             mFoodViewModel.selectRicettabyId(id).observe(viewLifecycleOwner, Observer {
 
-                ricetta->
+                    ricetta ->
 
                 imageBitmap = ricetta.cover
                 nomeRicettaView.setText(ricetta.nome)
@@ -77,23 +81,36 @@ class AddRicettaDialog: DialogFragment() {
 
         mFoodViewModel = ViewModelProvider(this)[FoodViewModel::class.java]
 
-        salvaButton.setOnClickListener{
+        salvaButton.setOnClickListener {
 
 
-
-            var ricetta = Ricetta(0, imageBitmap, "",-1, "","")
+            var ricetta = Ricetta(0, imageBitmap, "", -1, "", "")
 
 
             try {
-                ricetta = Ricetta(0,imageBitmap, nomeRicettaView.text.toString(),kcalRicettaView.text.toString().toInt(), ingredientiView.text.toString(),descrizioneView.text.toString())
-            } catch (e:  java.lang.NumberFormatException) {
-                Ricetta(0,imageBitmap, nomeRicettaView.text.toString(),-1, ingredientiView.text.toString(),descrizioneView.text.toString())
+                ricetta = Ricetta(
+                    0,
+                    imageBitmap,
+                    nomeRicettaView.text.toString(),
+                    kcalRicettaView.text.toString().toInt(),
+                    ingredientiView.text.toString(),
+                    descrizioneView.text.toString()
+                )
+            } catch (e: java.lang.NumberFormatException) {
+                Ricetta(
+                    0,
+                    imageBitmap,
+                    nomeRicettaView.text.toString(),
+                    -1,
+                    ingredientiView.text.toString(),
+                    descrizioneView.text.toString()
+                )
 
             }
 
 
-            if(insertDataToDatabase(ricetta)){
-                if(id != 0 && id != null) mFoodViewModel.deleteRicetta(id)
+            if (insertDataToDatabase(ricetta)) {
+                if (id != 0 && id != null) mFoodViewModel.deleteRicetta(id)
                 dismiss()
             }
         }
@@ -103,28 +120,34 @@ class AddRicettaDialog: DialogFragment() {
             dismiss()
         }
 
-        val getContent = registerForActivityResult(ActivityResultContracts.GetContent()){uri: Uri?->
+        val getContent =
+            registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
 
 
-            if(uri != null){
-                val notScaledImage = ImageDecoder.decodeBitmap(ImageDecoder.createSource(requireActivity().contentResolver, uri))
-                imageBitmap = resize(notScaledImage)
-                removeImageButtonView.visibility = View.VISIBLE
+                if (uri != null) {
+                    val notScaledImage = ImageDecoder.decodeBitmap(
+                        ImageDecoder.createSource(
+                            requireActivity().contentResolver,
+                            uri
+                        )
+                    )
+                    imageBitmap = resize(notScaledImage)
+                    removeImageButtonView.visibility = View.VISIBLE
 
-            } else{
-               imageBitmap =  BitmapFactory.decodeResource(resources, R.drawable.default2)
+                } else {
+                    imageBitmap = BitmapFactory.decodeResource(resources, R.drawable.default2)
+                }
+
             }
 
-        }
-
-        imageButtonView.setOnClickListener{
+        imageButtonView.setOnClickListener {
 
             getContent.launch("image/*")
 
         }
 
-        removeImageButtonView.setOnClickListener{
-            imageBitmap =  BitmapFactory.decodeResource(resources, R.drawable.default2)
+        removeImageButtonView.setOnClickListener {
+            imageBitmap = BitmapFactory.decodeResource(resources, R.drawable.default2)
             removeImageButtonView.visibility = View.GONE
         }
         return rootView
@@ -139,20 +162,24 @@ class AddRicettaDialog: DialogFragment() {
         val description = ricetta.descrizione
 
 
-        if(inputCheck()){
-            val recipe = Ricetta(0,immagine,nome,kcal,ing,description)
+        if (inputCheck()) {
+            val recipe = Ricetta(0, immagine, nome, kcal, ing, description)
 
             mFoodViewModel.addRicetta(recipe)
-            Toast.makeText(requireContext(),"Dati inseriti correttamente", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Dati inseriti correttamente", Toast.LENGTH_LONG)
+                .show()
             return true
-        }
-        else{
+        } else {
 
-            if(nomeRicettaView.text.isNullOrBlank())
-                nomeRicettaView.error = "Nome non valido"
+            if (nomeRicettaView.text.isNullOrBlank())
+                nomeRicettaLayout.error = "Nome non valido"
+            else
+                nomeRicettaLayout.error = null
 
-            if(kcalRicettaView.text.isNullOrBlank())
-                kcalRicettaView.error = "Valore non valido"
+            if (kcalRicettaView.text.isNullOrBlank())
+                kcalRicettaLayout.error = "Valore non valido"
+            else
+                kcalRicettaLayout.error = null
 
 
 
@@ -160,8 +187,8 @@ class AddRicettaDialog: DialogFragment() {
         }
     }
 
-    private fun inputCheck() : Boolean{
-        return !(nomeRicettaView.text.isNullOrBlank()||kcalRicettaView.text.isNullOrBlank())
+    private fun inputCheck(): Boolean {
+        return !(nomeRicettaView.text.isNullOrBlank() || kcalRicettaView.text.isNullOrBlank())
     }
 
     private fun resize(image: Bitmap): Bitmap {

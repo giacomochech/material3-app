@@ -18,6 +18,7 @@ import com.example.material3app.R
 import com.example.material3app.data.FoodViewModel
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -31,6 +32,8 @@ class AddFragmentDialog : DialogFragment() {
     private lateinit var mFoodViewModel: FoodViewModel
     private lateinit var nomeCibo : TextInputEditText
     private lateinit var kCal : TextInputEditText
+    private lateinit var nomeCibolayout : TextInputLayout
+    private lateinit var kCalLayout : TextInputLayout
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -43,6 +46,9 @@ class AddFragmentDialog : DialogFragment() {
         val dateTextView : TextView = rootView.findViewById(R.id.dataPiked)
         nomeCibo = rootView.findViewById(R.id.AddNomeCibo)
         kCal  = rootView.findViewById(R.id.AddCalorieCibo)
+
+        nomeCibolayout = rootView.findViewById(R.id.AddNomeCiboLayout)
+        kCalLayout  = rootView.findViewById(R.id.AddCalorieCiboLayout)
         val confirmButton : Button = rootView.findViewById(R.id.AddConfermaBotton)
         val annullaButton : Button = rootView.findViewById(R.id.AddAnnullaBotton)
         var dataPiked = LocalDate.now()
@@ -129,10 +135,15 @@ class AddFragmentDialog : DialogFragment() {
         }
         else{
             if(nomeCibo.text.isNullOrBlank())
-                nomeCibo.error = "Nome non valido"
+                nomeCibolayout.error = "Nome non valido"
+            else
+                nomeCibolayout.error = null
 
             if(kCal.text.isNullOrBlank())
-                kCal.error = "Valore non valido"
+                kCalLayout.error = "Valore non valido"
+            else
+                kCalLayout.error = null
+
 
 
 
