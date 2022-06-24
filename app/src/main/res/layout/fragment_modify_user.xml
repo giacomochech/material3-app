@@ -9,16 +9,62 @@
     android:orientation="vertical"
     android:background="@drawable/dialog_bg">
 
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="?attr/colorOnSecondary"
+        style="@style/Widget.Material3.CardView.Outlined"
+        android:layout_marginBottom="8dp"
+        >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/immagine"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dataPiked"
+                android:layout_marginTop="8dp"
+                android:text="@string/seleziona_la_tua_immagine_ndalla_galleria"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?android:attr/textColorSecondary"
+                />
+            <Button
+                android:id="@+id/image_user_button"
+                android:layout_width="134dp"
+                android:layout_height="48dp"
+                android:text="@string/seleziona"
+                android:layout_gravity="end"
+                android:backgroundTint="?attr/colorTertiaryContainer"
+                android:textColor="?attr/colorOnTertiaryContainer"
+
+                />
+
+
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/inserisci_i_dati"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             android:layout_margin="24dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="220dp"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:hint="@string/nome_utente"
             android:minWidth="60dp"
@@ -63,7 +109,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/canc"
-                android:textColor="?attr/colorSecondary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/accettoUtenteButton"
                 app:layout_constraintTop_toTopOf="parent"
