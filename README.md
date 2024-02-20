@@ -20,6 +20,8 @@ L’aspetto Iconoclastic, definito come, *How can software exhibit the awareness
 
 Il principio “Spirited” è, infine,  *imbue digital development with the spirit of the natural world, sense of aliveness through shapes and motions*. Questo è stato raggiunto grazie ad elementi di layout come le *Material Cards* oppure i diversi stili di bottoni, che rendono le superfici più naturali, emulando materiali del mondo reale come ad esempio la schermata principale, che cerca di rappresentare un calendario stampato senza elementi in rilievo.
 
+
+
 **Struttura**
 
 ***DiarioM3*** è composta da 3 da tre pagine:*diario, cal. calorie* e *profilo*.
@@ -32,9 +34,7 @@ Al di sotto si trova la lista degli alimenti mangiati, con le relative calorie a
 La seconda schermata, “***Calc. Calorie***” è utile per segnare l'obiettivo calorico giornaliero. È inoltre presente una calcolatrice del fabbisogno calorico che utilizza un’equazione indicata dall'OMS per ottenere il *Metabolic Equivalent of Task* a riposo.
 L'ultima pagina, “Profilo”, racchiude i dati principali dell'utente che sono: l'obiettivo calorico, il nome e la mail. 
 
-![Immagine che contiene testo, elettronico, screenshot
-
-Descrizione generata automaticamente](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.001.png)![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.002.png)![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.003.png)
+![DiarioM3 schermate principali](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.001.png)![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.002.png)![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.003.png)
 
 *DiarioM3 schermate principali*
 
@@ -56,11 +56,7 @@ In questa sezione andremo ad esporre le principali funzionalità della nostra ap
 - Due input di testo di tipo *Outlined text field*
 - Un *MaterialDatePicker* 
 
-![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.004.png)![Immagine che contiene testo
-
-Descrizione generata automaticamente](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.005.png)![Immagine che contiene testo
-
-Descrizione generata automaticamente](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.006.png)
+![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.004.png)![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.005.png)![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.006.png)
 
 
 
@@ -83,13 +79,7 @@ I componenti di material design 3 presenti in questo *Fragment* sono:
 - Un *Icon text button* per ogni alimento
 
 
-![Immagine che contiene testo, elettronico, screenshot
-
-Descrizione generata automaticamente](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.007.png)![Immagine che contiene testo, elettronico, screenshot
-
-Descrizione generata automaticamente](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.008.png)![Immagine che contiene testo, screenshot, elettronico, martinetto
-
-Descrizione generata automaticamente](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.009.png)
+![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.007.png)![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.008.png)![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.009.png)
 
 
 
@@ -140,9 +130,7 @@ I componenti di Material design 3 presenti in questa sezione sono:
 
 Ancora una volta, l’utilizzo di elementi di design come i *Text Button* rendono più intuitiva e semplice l’applicazione. Questi pulsanti, infatti, suggeriscono all’utente che le informazioni immesse non sono rilevanti per il corretto utilizzo dell’applicazione a differenza dei dialog e pulsanti precedentemente mostrati.
 
-![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.011.png)![Immagine che contiene testo, screenshot, elettronico
-
-Descrizione generata automaticamente](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.012.png)
+![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.011.png)![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.012.png)
 
 *DiarioM3 schermata Utente*
 
@@ -174,11 +162,7 @@ Volendo concentrarci al massimo sulla pulizia del design, abbiamo deciso di rend
 
 Per essere coerenti al massimo con questa filosofia abbiamo reso lo status bar *translucid.*
 
-![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.013.png)![Immagine che contiene testo
-
-Descrizione generata automaticamente](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.014.png)![Immagine che contiene testo
-
-Descrizione generata automaticamente](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.015.png)
+![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.013.png)![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.014.png)![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.015.png)
 
 *DiarioM3 NavigationBar e gestureButton*
 
@@ -199,9 +183,7 @@ Le implementazioni di questi componenti sono avvenute in questo modo:
 
 1. Navigation bar: questa è stata implementata all'interno della file *activity\_main.xml* nel seguente modo
 
-![Immagine che contiene testo
-
-Descrizione generata automaticamente](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.017.png)
+![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.017.png)
 
 in particolare la line app:labelVisibilityMode="selected" serve per far si che le label vengano nascoste quando non è selezionata la schermata.
 
@@ -211,15 +193,11 @@ Gli elementi della Navigation bar sono descritti nel file *activity\_menu\_drawe
 
 Questo è implementato con il seguente codice
 
-![Immagine che contiene testo
-
-Descrizione generata automaticamente](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.018.png)
+![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.018.png)
 
 
 
-1. ![Immagine che contiene testo
-
-Descrizione generata automaticamente](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.019.png)I *Button* sono implementati in maniera classica, ma ad essi viene applicato lo stile a seconda del tipo di bottone.
+1. ![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.019.png)I *Button* sono implementati in maniera classica, ma ad essi viene applicato lo stile a seconda del tipo di bottone.
    Questi sono quelli utilizzate nel nostro codice : *elevated Botton, filled Button, text button* e *text icon button.*
    Questo è un esempio base di come tutti i bottoni sono stati implementati*
 
@@ -236,9 +214,7 @@ Descrizione generata automaticamente](./images/Aspose.Words.0e14c6c9-c761-4f03-b
 
 
 
-1. ![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.020.png)![Immagine che contiene testo
-
-Descrizione generata automaticamente](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.021.png)Le Card in Materia Design 3 sono di 3 tipi, tutti presenti all’interno di “DiarioM3”, essi sono: *Elevated card, Filled card* ed *Outlined card*
+1. ![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.020.png)![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.021.png)Le Card in Materia Design 3 sono di 3 tipi, tutti presenti all’interno di “DiarioM3”, essi sono: *Elevated card, Filled card* ed *Outlined card*
    Queste Card sono state implementate nel seguente modo:
 
    nel quale style qualifica ancora una volta il tipo di Card.
@@ -246,8 +222,6 @@ Descrizione generata automaticamente](./images/Aspose.Words.0e14c6c9-c761-4f03-b
 
 1. I Text fields che sono presenti in “DiarioM3” sono tutti di tipo *Outlined text field* e li abbiamo implementati grazie al seguente codice
 
-![Immagine che contiene testo
-
-Descrizione generata automaticamente](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.022.png)
+![](./images/Aspose.Words.0e14c6c9-c761-4f03-b468-5fe76f013fea.022.png)
 
 
